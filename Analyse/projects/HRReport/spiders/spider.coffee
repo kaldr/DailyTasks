@@ -1,6 +1,7 @@
 CSON = require 'cson'
 fs = require 'fs'
 request = require 'request'
+_ = require 'lodash'
 
 #basic spider class
 class spider
@@ -10,9 +11,11 @@ class spider
     @config = @globalConfig[@name]
     @config.outputFolder = __dirname + '/../output/dajie/'
     @getCookie()
-  crawl: () ->
-  nextUrl: (index, current) ->
-
+  constructGetUrl: (url, parameters) ->
+    url += '?'
+    _.forEach parameters, (value, key) ->
+      url += key + "="+value+"&"
+    url
   getCookie: () ->
     request.get @config.requestOptions.url
       .on 'response', (response) =>

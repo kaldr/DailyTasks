@@ -1,13 +1,31 @@
 # This is a crawler for http://www.dajie.com
 {spider} = require __dirname + '/spider.coffee'
-
+request = require 'request'
 
 class Dajie extends spider
    constructor: () ->
      super 'dajie'
+     console.log @config
+   nextPageUrl: (pageIndex) ->
+     @config.parameters.page = if pageIndex? then pageIndex else @config.parameters.page += 1
+     @getUrl()
 
-new Dajie()
+   getUrl: () ->
+     @constructGetUrl @config.url, @config.parameters
 
+   crawlFirstUrl: () ->
+     request @config.requestOptions, (error, response, body) ->
+       console.log body
+
+   crawlNextUrl: () ->
+     request @nextPageUrl(), @crawlNextUrl
+
+   start: () ->
+     @crawlFirstUrl()
+     #@crawlNextUrl()
+
+dj = new Dajie()
+dj.start()
 exports.Dajie = Dajie
 
 # Titles = [
@@ -17,8 +35,4 @@ exports.Dajie = Dajie
 #   ".net工程师"
 #   "前端开发工程师"
 # ]
-
-s = 'http://so.dajie.com/job/ajax/search/filter?jobsearch=0&pagereferer=blank&ajax=1&keyword=&page=1&order=0&from=user&salary=&recruitType=&city=330200&positionIndustry=&positionFunction=&degree=&quality=&experience=&_CSRFToken='
-s.split '&'
-  .forEach (item) ->
-   console.log item.replace "=",":"
+# ]
