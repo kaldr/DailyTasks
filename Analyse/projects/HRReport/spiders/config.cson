@@ -1,0 +1,25 @@
+dajie:
+  url: "http://so.dajie.com/job/ajax/search/filter"
+  pageIndex: 'page'
+  parameters:
+    jobsearch: 0
+    ajax: 1
+    keyword: ''
+    page: 1
+    order: 0
+    from: user
+    salary: ''
+    recruitType: ''
+    city: 330200
+    positionIndustry: ''
+    positionFunction: ''
+    degree: ''
+    quality: ''
+    experience: ''
+    _CSRFToken: ''
+  requestOptions:
+    url: 'http://so.dajie.com/job/ajax/search/filter?jobsearch=0&pagereferer=blank&ajax=1&keyword=&page=1&order=0&from=user&salary=&recruitType=&city=330200&positionIndustry=&positionFunction=&degree=&quality=&experience=&_CSRFToken='
+    headers:
+      Cookie: 'SO_COOKIE=eb66qw4OxNVBWHtLrJNnwRo/1s3B+aEvLZqt9p59qErRwjSsoGl9yt/H+5nEULgNbzpXq2/qt7qiiFIHfKSNTRKa6FLq7adZTn2r; DJ_RF=empty; DJ_EU=http%3A%2F%2Fso.dajie.com%2Fjob%2Fsearch%3Fkeyword%3Dphp%25E5%25B7%25A5%25E7%25A8%258B%25E5%25B8%2588%26f%3Dnav; DJ_UVID=MTQ3ODY3MjI5Nzc5MzYzMzQ0; __login_tips=1; dj_cap=471d2f9ecc2a7a7ccf7072fb11d6b3a2; SO_COOKIE=e342oxoZEnp9c6lkrs8G6iSmTSpzZGyTSJ6QyHRU+jLQRt2LK9OSXVi2pHCWq7LZ+oByH5Kb1dEEMxr8ruHdoD2VA//BgF0Sj54F'
+      Referer: 'http://so.dajie.com/job/search'
+      Host: 'so.dajie.com'
