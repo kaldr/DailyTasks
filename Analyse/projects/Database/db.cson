@@ -15,4 +15,4 @@ destination:
     password: 'huangyu'
     db: 'DatabaseTasks'
   dajie:
-    collection: 'DisneyTicketReservationHistory'
+    collection: 'DisneyTicketReservationHistory_copy'
