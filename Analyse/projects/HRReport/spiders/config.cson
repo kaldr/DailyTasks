@@ -1,3 +1,9 @@
+db:
+  ip: '218.244.158.177'
+  port: 27200
+  username: 'huangyu'
+  password: 'huangyu'
+  db: 'HRReport'
 dajie:
   url: "http://so.dajie.com/job/ajax/search/filter"
   pageIndex: 'page'
