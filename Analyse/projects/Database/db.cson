@@ -13,6 +13,6 @@ destination:
     port: 27200
     username: 'huangyu'
     password: 'huangyu'
-    db: 'DatabaseTasks'
+    db: 'erp'
   dajie:
     collection: 'DisneyTicketReservationHistory_copy'
