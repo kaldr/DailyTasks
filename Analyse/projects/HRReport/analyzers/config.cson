@@ -1,3 +1,4 @@
+# TODO: Different site should have different collection
 db:
   ip: '218.244.158.177'
   port: 27200

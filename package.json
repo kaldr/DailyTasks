@@ -10,6 +10,7 @@
   "dependencies": {
     "angular": "^1.5.8",
     "better-require": "0.0.3",
+    "chalk": "^1.1.3",
     "cheerio": "^0.22.0",
     "coffee-script": "^1.11.1",
     "cson": "^4.0.0",
@@ -19,8 +20,10 @@
     "minimongo": "^4.3.0",
     "moment": "^2.17.0",
     "mongodb": "^2.2.11",
+    "mongojs": "^2.4.0",
     "mongoose": "^4.6.6",
     "request": "^2.78.0",
+    "segment": "^0.1.3",
     "simplecrawler": "^1.0.3",
     "url": "^0.11.0"
   },
