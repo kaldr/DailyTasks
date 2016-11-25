@@ -23,12 +23,22 @@ class spider
       url += key + "="+value+"&"
     url
 
+  ###
+    链接数据库
+    @method connectDB
+    @return {[type]} [description]
+  ###
   connectDB: () ->
     mongo = 'mongodb://' + @globalConfig.db.username + ":"+@globalConfig.db.password+"@"+ @globalConfig.db.ip + ":" + @globalConfig.db.port+"/" + @globalConfig.db.db+"?authSource=admin"
     console.log "Connecting to mongodb " + mongo + " ..."
     MongoClient.connect mongo, (err, db) =>
       @db = db
 
+  ###
+    获取cookie
+    @method getCookie
+    @return {[type]} [description]
+  ###
   getCookie: () =>
     console.log "Getting cookie from site "+@config.requestOptions.headers.Referer+" ..."
     request.get @config.requestOptions.headers.Referer

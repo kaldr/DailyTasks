@@ -10,3 +10,13 @@ order.DateInfo =
 	month: parseInt moment(order.Timestamp).format "M"
 	dayOfMonth: parseInt moment(order.Timestamp).format "D"
 console.log order
+
+###
+  [game description]
+  @method game
+  @param {[type]} a [description]
+  @param {[type]} b [description]
+  @return {[type]} [description]
+###
+game = (a, b) ->
+	1

@@ -4,7 +4,7 @@ _ = require 'lodash'
 MongoClient = require 'mongodb'
   .MongoClient
 
-###*
+###
  Connector 类，用于链接到mongodb
 ###
 class Connector
@@ -19,7 +19,7 @@ class Connector
   _config: () =>
     @dbConfig = CSON.load __dirname + '/../db.cson'
 
-  ###*
+  ###
        连接到源数据的数据库
        @method _connect_src_db
        @param {Function} callback 回调方法
