@@ -116,7 +116,6 @@ class Importer
 		@DB._connect_src_db (db) =>
 			col = db.collection 'DisneyTicketStock'
 			col.find {
-				#VisitDate: '2016-11-16'
 				count:
 					$gt: 0
 				} , {

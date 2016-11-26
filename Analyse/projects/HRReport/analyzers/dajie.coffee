@@ -20,8 +20,8 @@ class DaJieAnalyzer extends Analyzer
     @tasks = []
 
 
-  # TODO: 将原始数据处理成标准数据
-  # TODO: 获取采集过的数据的数量
+  # #Analyze:10 将原始数据处理成标准数据
+  # #Analyze:20 获取采集过的数据的数量
 
 
   analyseAnJobItem: () =>
@@ -65,7 +65,7 @@ class DaJieAnalyzer extends Analyzer
             TotalCount: totalCount
 
 
-  # TODO: 查看标准数据，并且查找进一步的统计方案
+  # #Analyze:0 查看标准数据，并且查找进一步的统计方案
 
   getCountOfCrawledData: () =>
     @db.DaJieCrawled.findOne (err, doc) ->
