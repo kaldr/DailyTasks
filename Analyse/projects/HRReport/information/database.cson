@@ -1,0 +1,18 @@
+collectionDictionary:
+    industry:
+        collectionName: 'industry'
+        title: "行业"
+        intro: "每个行业有多个岗位，有多家公司。每个行业有所属的领域。"
+        scope: "人力资源中岗位的行业分类"
+        columns:
+            id: "51job中使用的id"
+            name: "行业名称"
+            type: "所属的领域"
+    domain:
+        collectionName: 'domain'
+        title: "领域"
+        intro: "每个领域包含多个行业"
+        scope: "人力资源中岗位的分类"
+        columns:
+            name: "领域名称"
+            industryList: "包含的领域的列表"
