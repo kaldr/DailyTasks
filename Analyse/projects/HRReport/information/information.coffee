@@ -5,7 +5,7 @@ __projectPath = _.dropRight(__dirname.split('/'), 4).join "/"
 connect = require 'mongojs'
 CSON = require 'cson'
 
-async = require 'async'
+async = require 'async-q'
 Q = require 'q'
 
 ###
@@ -33,6 +33,7 @@ class information
       @return {[type]} [description]
     ###
     constructor: () ->
+        @dbname = 'localhost'# or 'dbserver'
         @configuration()
         @connectDB()
 
@@ -46,7 +47,7 @@ class information
       @globalConfig = CSON.load __dirname + "/config.cson"
       @databaseConfig = CSON.load __dirname + "/database.cson"
       @config =
-        db: @globalConfig.db
+        db: @globalConfig.db[@dbname]
         initialData: @databaseConfig
 
 
@@ -56,7 +57,10 @@ class information
       @return {db} 数据库对象
     ###
     connectDB: (callback) =>
-      mongodb = 'mongodb://' + @globalConfig.db.username + ":"+@globalConfig.db.password+"@"+ @globalConfig.db.ip + ":" + @globalConfig.db.port+"/" + @globalConfig.db.db+"?authSource=admin"
+      if @globalConfig.db[@dbname].username
+        mongodb = 'mongodb://' + @globalConfig.db[@dbname].username + ":"+@globalConfig.db[@dbname].password+"@"+ @globalConfig.db[@dbname].ip + ":" + @globalConfig.db[@dbname].port+"/" + @globalConfig.db[@dbname].db+"?authSource=admin"
+      else
+        mongodb = 'mongodb://'+ @globalConfig.db[@dbname].ip + ":" + @globalConfig.db[@dbname].port+"/" + @globalConfig.db[@dbname].db
       console.log "Connecting to mongodb " + mongodb + " ..."
       @db = connect mongodb
       callback? null, 'connected to mongodb'
@@ -88,24 +92,39 @@ class information
 
     updateDomain: () =>
 
-
+    ###
+      更新一条行业信息
+      @method updateAnIndustryItem
+      @param {String} item 行业ID
+      @return {无} 无
+    ###
     updateAnIndustryItem: (item) =>
-      id = @databaseConfig.industry[item]
+      name = @databaseConfig.industry[item]
       type = _.find @databaseConfig.domain, (domainItem) ->
-        true if _.indexOf(domainItem.data, id) >-1
-      @db.industry.update {
-        id: parseInt id
+        return true if _.indexOf(domainItem.data, item) >-1
+      industry = @db.collection 'industry'
+      industry.update {
+        id: parseInt item
       } , {
-        id: parseInt id
-        name: item
+        id: parseInt item
+        name: name
         type: type.title.c
       } , {
         upsert: true
-      }
+      } , (err, res) =>
+        console.log 'Industry ' + item + " inserted." if not err
 
+    ###
+      更新行业
+      @method updateIndustry
+      @return {无} 无
+    ###
     updateIndustry: () =>
-      async.every _.keys(@databaseConfig.industry), updateAnIndustryItem, (err, items) =>
-        @tasks
+       Q.all _.keys(@databaseConfig.industry).map(
+           @updateAnIndustryItem
+        )
+
+
     ###
       插入一条表注释
       @method upsertCD
@@ -145,3 +164,8 @@ class information
           console.log "Done"
 
 A = new information()
+d = Q.nbind A.updateIndustry
+d().done (err, doc) ->
+    console.log "OK"
+    A.closeDB()
+#A.updateIndustry().fin () ->console.log "OK"

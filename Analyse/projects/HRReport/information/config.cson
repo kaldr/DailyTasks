@@ -1,8 +1,13 @@
 db:
-  ip: '218.244.158.177'
-  port: 27200
-  username: 'huangyu'
-  password: 'huangyu'
-  db: 'HRReport'
+  localhost:
+    ip: '127.0.0.1'
+    port: 27017
+    db: 'HRReport'
+  dbserver:
+    ip: '218.244.158.177'
+    port: 27200
+    username: 'huangyu'
+    password: 'huangyu'
+    db: 'HRReport'
 profession:
   collection: 'profession'
