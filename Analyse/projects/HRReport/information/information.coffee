@@ -1,16 +1,55 @@
-connect = require 'mongojs'
-CSON = require 'cson'
-async = require 'async'
 _ = require 'lodash'
-sync = require 'synchronize'
 __projectPath = _.dropRight(__dirname.split('/'), 4).join "/"
 {TimeInfo} = require __projectPath + "/Util/Time/TimeInfo.coffee"
 
+connect = require 'mongojs'
+CSON = require 'cson'
+
+async = require 'async'
+Q = require 'q'
+
+###
+  处理基本信息的类
+  1.导入数据库基础数据
+  [1]表结构
+  [2]领域domain
+  [3]行业industry
+
+###
 class information
+    ###
+    #===========================================================================
+    构造器与初始化函数
+    @method constructor 构造器
+    @method connectDB 连接数据库
+    @method config 初始化配置
+    @method closeDB 关闭数据库
+    #===========================================================================
+    ###
+
+    ###
+      构造器
+      @method constructor
+      @return {[type]} [description]
+    ###
     constructor: () ->
-        @globalConfig = CSON.load __dirname + "/config.cson"
-        @databaseConfig = CSON.load __dirname + "/database.cson"
+        @configuration()
         @connectDB()
+
+
+    ###
+      配置
+      @method config
+      @return {Object} 配置对象
+    ###
+    configuration: () =>
+      @globalConfig = CSON.load __dirname + "/config.cson"
+      @databaseConfig = CSON.load __dirname + "/database.cson"
+      @config =
+        db: @globalConfig.db
+        initialData: @databaseConfig
+
+
     ###
       连接到mongodb
       @method connectDB
@@ -22,6 +61,51 @@ class information
       @db = connect mongodb
       callback? null, 'connected to mongodb'
 
+
+    ###
+      关闭数据库连接
+      @method closeDB
+      @return {[type]} [description]
+    ###
+    closeDB: () =>
+      console.log "Closing the database"
+      @db.close()
+
+
+    ###
+    #===========================================================================
+    数据库基础数据操作
+    @method updateCollectionDictionary 更新数据库的数据字典
+    @method upsertCD 更新一条数据字典
+    #===========================================================================
+    ###
+    generateBasicData: () =>
+      @tasks =
+        updateIndustry: false
+        updateDomain: false
+        updateCollectionDictionary: false
+
+
+    updateDomain: () =>
+
+
+    updateAnIndustryItem: (item) =>
+      id = @databaseConfig.industry[item]
+      type = _.find @databaseConfig.domain, (domainItem) ->
+        true if _.indexOf(domainItem.data, id) >-1
+      @db.industry.update {
+        id: parseInt id
+      } , {
+        id: parseInt id
+        name: item
+        type: type.title.c
+      } , {
+        upsert: true
+      }
+
+    updateIndustry: () =>
+      async.every _.keys(@databaseConfig.industry), updateAnIndustryItem, (err, items) =>
+        @tasks
     ###
       插入一条表注释
       @method upsertCD
@@ -47,6 +131,7 @@ class information
                 upsert: true
             } , (err, doc) =>
                 callback err, collectionName
+
     ###
       更新数据字典
       @method updateCollectionDictionary
@@ -58,14 +143,5 @@ class information
         async.every _.keys(@collectionDictionary), @upsertCD, (err, items) =>
           callback? err, 'updateCollectionDictionary finished'
           console.log "Done"
-    ###
-      关闭数据库连接
-      @method closeDB
-      @return {[type]} [description]
-    ###
-    closeDB: () =>
-      console.log "Closing the database"
-      @db.close()
+
 A = new information()
-A.updateCollectionDictionary()
-A.close()
