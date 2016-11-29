@@ -7,7 +7,7 @@ class TimeInfo
   getTimeInfo: (time) ->
     return TimeInfo =
       timestamp: parseInt moment(time).format 'X'
-      date: parseInt moment(time).format "YYYY-MM-DD"
+      date: parseInt moment(time).format "YYYYMMDDHHmmss"
       dayOfWeek: parseInt moment(time).format "E"
       weekOfYear: parseInt moment(time).format "w"
       year: parseInt moment(time).format "YYYY"

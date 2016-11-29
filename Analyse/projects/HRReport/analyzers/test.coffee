@@ -4,61 +4,69 @@ sync = require 'synchronize'
 async = require 'async'
 fs = require 'fs'
 sync fs, 'readFile'
-
+_ = require 'lodash'
 Q = require 'q'
-# fs.readFile __dirname + '/README.md','utf8', (err, data) ->
-#   console.log data
-# console.log "this will be done before fs.readFile"
+
+Request = require 'request'
+
+api = "http://erptest.iflying.com/purchaseCenter/Disney/Test/"
+
+dog = api + "dog"
+cat = api + "cat"
+turkey = api + "turkey"
+food = api + "food"
+breed = api + "breed"
+fish = api + "fish"
+
+i = 1
 
 
-# sync.fiber () ->
-#   console.log "==========================="
-#   data = fs.readFile __dirname + '/README.md','utf8'
-#   console.log data
-#   console.log "done"
-
-#a = new Analyzer()
-#console.log a.analyseKeywords "瑞士高薪技术聘请", true
-
-# a =
-#   a: 1
-#   b:
-#     a: 1
-#     b: 3
-#
-# congsole.log true if a.b?.c == 1
-
-class test
+class Test
   constructor: (@i) ->
+  deferredRequest: (url) ->
 
-  step1 : (j) =>
-    @i += j + 5
-    console.log 'this is step 1 ' + @i
-    @i
+  request : (url) ->
+    deferred = Q.defer() #⭐️ 很关键
+    #console.log 'step ' + i++ + " the url is " + url
+    Request url, (err, res, body) =>
+      console.log 'finished step ' + url
+      deferred.resolve JSON.parse body#⭐️ 很关键
+    deferred.promise#⭐️ 很关键，要把当前的
 
-  step2 : (j) =>
-    @i += j + 2
-    console.log 'this is step 2 ' + @i
-    @i
+  game : () ->
+    rs = [
+      turkey
+      dog
+      cat
+      fish
+    ]
+    data = {}
+    Q.all rs.map @request
+      .then (response) =>
+        console.log response
+        Q.all [food, breed].map @request
+    Q.all [
+      @request dog
+      @request cat
+      @request turkey
+      @request fish
+        .then (res) =>
+          data.fish = res
+          return @request food
+        .then (res) =>
+          data.food = res
+          return @request breed
+        .then (res) =>
+          data.breed = res
+          return data
+    ]
+      .then (response) ->
+        console.log response
 
-  step3 : (j) =>
-    @i += j + 22
-    console.log 'this is step 3 ' + @i
-    @i
-
-  step4 : (j = 50) =>
-    @i += j + 100
-    console.log 'this is step 4 ' + @i
-    @i
-
-  run: () =>
-    Q.when @step4
-      .then @step2
-      .then @step1
-      .then @step3
-      .done () =>
-        console.log @i
-    console.log "OK"
-new test 300
-game = [1, 33, 55].map (v) ->v
-console.log game
+# test = new Test()
+# test.game()
+#   .then () ->console.log 'Then'
+#   .done () ->console.log "OK"
+come = (value, key) =>
+  console.log "hello "+key+", it's "+value+"元"
+console.log _.map {a: 12, b: 33} , come
