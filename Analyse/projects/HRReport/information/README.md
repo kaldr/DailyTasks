@@ -19,11 +19,21 @@ importDBData.generateBasicData true#true means close database connection after o
 
 ```
 ## Collection Classes
+Classes used in this database-generation task.
 ### Domain.coffee
+The collection for domain.
+
 ### Industry.coffee
+The collection for industry.
+
 ### Profession.coffee
+The collection for profession.
+
 ### ProfessionDomain.coffee
+The collection for profession domain.
+
 ### CollectionDictionary.coffee
+The collection for collection dictionary.
 
 ## Configs
 ### config.cson
