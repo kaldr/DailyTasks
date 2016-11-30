@@ -65,6 +65,7 @@ s_key_words['厨师助理'] = '配菜|打荷|砧板|后厨|切配|加工'
 s_key_words['房地产中介'] = '一手房销售|二手房销售'
 s_key_words['房产销售'] = '一手房销售|二手房销售'
 s_key_words['置业顾问'] = '一手房销售|二手房销售'
+
 funct_key_words = []
 funct_key_words['互联网软件开发工程师']   = 'Java|php|C++|.NET|J2ee|C|delphi|程序员|软件工程师|前端开发|网站开发|前端|软件开发'
 funct_key_words['软件工程师']   = 'Java|php|C++|.NET|J2ee|C|delphi|程序员|软件工程师|前端开发|网站开发|前端'

@@ -1,9 +1,10 @@
 {information} = require './information'
-
+Q = require 'q'
+_ = require 'lodash'
+__projectPath = _.dropRight(__dirname.split('/'), 4).join "/"
+{TimeInfo} = require __projectPath + "/Util/Time/TimeInfo.coffee"
+connect = require 'mongojs'
 class Profession extends information
-  constructor: (@dbname) ->
-    super @dbname
-
   ###
     更新岗位
     @method updateProfession

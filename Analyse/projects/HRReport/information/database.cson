@@ -78,6 +78,7 @@ industry:
   '20':'环保'
   '29':'农/林/牧/渔'
   '58':'多元化业务集团公司'
+
 domain: [
   {
   'title': {'c': '计算机 | 互联网 | 通信 | 电子', 'e': 'Computer, Internet, Telecom, Electronics'} ,

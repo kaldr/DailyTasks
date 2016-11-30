@@ -1,42 +1,40 @@
 Q = require 'q'
-{collectionDictionary} = require './collectionDictionary'
+CSON = require 'cson'
+{CollectionDictionary} = require './collectionDictionary'
 
-{industry} = require "./industry"
-{domain} = require './domain'
+{Industry} = require "./industry"
+{Domain} = require './domain'
 
-{profession} = require './profession'
-{professionDomain} = require './professionDomain'
+{Profession} = require './profession'
+{ProfessionDomain} = require './professionDomain'
 
 class BasicData
 	constructor: (@dbname = 'localhost') ->
-		@domain = new domain @dbname
-		@industry = new industry @dbname
-		@collectionDictionary = new collectionDictionary @dbname
-		@profession = new profession @dbname
-		@professionDomain = new professionDomain @dbname
+		@Domain = new Domain @dbname
+		@Industry = new Industry @dbname
+		@CollectionDictionary = new CollectionDictionary @dbname
+		@Profession = new Profession @dbname
+		@ProfessionDomain = new ProfessionDomain @dbname
 
 	generateBasicData: (closeDB = false) =>
-      Q.all [
-        @collectionDictionary.updateCollectionDictionary()
-        @industry.updateIndustry()
-        @profession.updateProfession()
-      ]
-        .then () =>
-          Q.all [
-            @domain.updateDomain()
-            @professionDomain.updateProfessionDomain()
-          ]
-        .then @industry.updateIndustryDomainItem
-        .then @profession.updateProfessionType
-        .done () =>
-          if closeDB
-						Q.all[
-							@domain.closeDB()
-							@industry.closeDB()
-							@collectionDictionary.closeDB()
-							@profession.closeDB()
-							@professionDomain.closeDB()
-							]
+		Q.all [
+				@Profession.updateProfession()
+					.then @ProfessionDomain.updateProfessionDomain
+					.then @Profession.updateProfessionType
+        @CollectionDictionary.updateCollectionDictionary()
+				@Industry.updateIndustry()
+					.then @Domain.updateDomain
+					.then @Industry.updateIndustryDomainItem
+				]
+    		.then () =>
+					if closeDB
+						Q.all [
+							@Domain.closeDB()
+							@Industry.closeDB()
+							@CollectionDictionary.closeDB()
+							@Profession.closeDB()
+							@ProfessionDomain.closeDB()
+						]
 					console.log "\n🍺 All tasks done."
 
 exports.BasicData = BasicData

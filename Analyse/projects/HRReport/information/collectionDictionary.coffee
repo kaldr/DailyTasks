@@ -1,9 +1,12 @@
 {information} = require './information'
+Q = require 'q'
+_ = require 'lodash'
+connect = require 'mongojs'
+__projectPath = _.dropRight(__dirname.split('/'), 4).join "/"
+{TimeInfo} = require __projectPath + "/Util/Time/TimeInfo.coffee"
+
 
 class CollectionDictionary extends information
-	constructor: (@dbname) ->
-		super @dbname
-
 
   ###
     插入一条表注释

@@ -35,12 +35,8 @@ class information
     ###
     constructor: (@dbname = 'localhost') ->
         #@dbname = 'dbserver'# 'localhost' or 'dbserver'
-        Q.all [
-          @configuration()
-          @connectDB()
-        ]
-          .then () =>
-            console.log 'initialized'
+        @configuration()
+        @connectDB()
 
     ###
       配置
@@ -50,9 +46,7 @@ class information
     configuration: () =>
       @globalConfig = CSON.load __dirname + "/config.cson"
       @databaseConfig = CSON.load __dirname + "/database.cson"
-      @config =
-        db: @globalConfig.db[@dbname]
-        initialData: @databaseConfig
+      #console.log "finish configuration"
 
 
     ###
@@ -65,7 +59,7 @@ class information
         mongodb = 'mongodb://' + @globalConfig.db[@dbname].username + ":"+@globalConfig.db[@dbname].password+"@"+ @globalConfig.db[@dbname].ip + ":" + @globalConfig.db[@dbname].port+"/" + @globalConfig.db[@dbname].db+"?authSource=admin"
       else
         mongodb = 'mongodb://'+ @globalConfig.db[@dbname].ip + ":" + @globalConfig.db[@dbname].port+"/" + @globalConfig.db[@dbname].db
-      console.log "Connecting to mongodb " + mongodb + " ..."
+      #console.log "Connecting to mongodb " + mongodb + " ..."
       @db = connect mongodb
 
 
@@ -76,7 +70,7 @@ class information
       @return {[type]} [description]
     ###
     closeDB: () =>
-      console.log "\n⏹ Closing the database"
+      #console.log "\n⏹ Closing the database"
       @db.close()
 
     importInfo: (type = '导入初始数据',info='通过nodeJS程序information.coffee导入') =>

@@ -1,9 +1,10 @@
 {information} = require './information'
-
+Q = require 'q'
+_ = require 'lodash'
+__projectPath = _.dropRight(__dirname.split('/'), 4).join "/"
+{TimeInfo} = require __projectPath + "/Util/Time/TimeInfo.coffee"
+connect = require 'mongojs'
 class ProfessionDomain extends information
-	construtor: (@dbname) ->
-		super @dbname
-
 	updateProfessionDomain: () =>
 		updateAnProfessionDomainItem = (item) =>
 			defer = Q.defer()
