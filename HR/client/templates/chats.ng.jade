@@ -1,0 +1,9 @@
+ion-view(view-title='Chats')
+ion-content
+  ion-list
+    ion-item.item-chat.item-remove-animate.item-avatar.item-icon-right(ng-repeat="chat in chats.data | orderBy:'-lastMessage.timestamp'", type='item-text-wrap')
+      img(ng-src='{{ chat.picture }}')
+      h2 {{ chat.name }}
+      p {{ chat.lastMessage.text }}
+      span.last-message-timestamp {{ chat.lastMessage.timestamp }}
+      i.icon.ion-chevron-right.icon-accessory
