@@ -1,11 +1,19 @@
-party-add
+party-add(ng-show='partiesList.isLoggedIn')
+div(ng-hide="partiesList.isLoggedIn") Log in to create a party!
 input(type='search' ng-model="partiesList.searchText" placeholder='Search')
 parties-sort(on-change='partiesList.sortChanged(sort)' property='name' order='1')
 ul
   li(dir-paginate='party in partiesList.parties |itemsPerPage:partiesList.perPage' total-items="partiesList.partiesCount")
     a(ui-sref='partyDetails({partyId:party._id})') {{party.name}}
     p {{party.description}}
-    party-remove(party='party')
+    party-remove(party='party' ng-show="partiesList.isOwner(party)")
+    party-rsvp(party='party' ng-show="partiesList.isLoggedIn")
+    div(ng-hide="partiesList.isLoggedIn")
+      i Sign in to RSVP for this party.
+    party-rsvp-list(rsvps="party.rsvps")
+    party-unanswered(party='party')
+    div(ng-if="party.public") Everyone is invited
     party-creator(party='party')
 
 dir-pagination-controls(on-page-change="partiesList.pageChanged(newPageNumber)")
+parties-map(parties='partiesList.parties')

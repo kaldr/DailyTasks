@@ -27,6 +27,17 @@ if Meteor.isServer
             }
           ]
         }
+        {
+          $and: [
+            {
+              invited: @userId
+            }
+            {
+              invited:
+                $exists: true
+            }
+          ]
+        }
       ]
 
     if typeof searchString == 'string' and searchString.length

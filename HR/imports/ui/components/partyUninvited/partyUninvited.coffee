@@ -16,6 +16,13 @@ class PartyUninvited
       users: () =>Meteor.users.find()
     }
 
+  invite: (user) =>
+    Meteor.call 'invite', @party._id, user._id, (error) =>
+      if error
+        console.log 'Oops,unable to invite!'
+      else
+        console.log "Invited"
+
 name = 'partyUninvited'
 
 component = angular.module name, [

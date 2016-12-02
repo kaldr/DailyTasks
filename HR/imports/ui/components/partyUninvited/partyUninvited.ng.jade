@@ -2,3 +2,5 @@ ul
   | Users to invite:
   li(ng-repeat='user in partyUninvited.users | uninvitedFilter:partyUninvited.party')
     div {{ user | displayNameFilter }}
+    button(ng-click="partyUninvited.invite(user)") Invite
+  li(ng-if="(partyUninvited.users | uninvitedFilter:partyUninvited.party).length <= 0") Everyone are already invited.

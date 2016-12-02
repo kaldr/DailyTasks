@@ -6,6 +6,8 @@ import {Meteor} from 'meteor/meteor'
 import templateUrl from './partyDetails.ng.jade'
 import {Parties} from '../../../api/parties/index.coffee'
 import {PartyUninvited} from '../partyUninvited/partyUninvited.coffee'
+import {PartyMap} from '../partyMap/partyMap.coffee'
+
 class PartyDetails
   constructor: ($stateParams, $scope, $reactive) ->
     'ngInject'
@@ -20,7 +22,16 @@ class PartyDetails
     @helpers {
         party: () =>Parties.findOne {_id: @partyId}
         users: () =>Meteor.users.find {}
+        isLoggedIn: () =>not not Meteor.userId()
+        isOwner: () =>
+          return false if not @party
+          return @party.owner == Meteor.userId()
     }
+
+  canInvite: () =>
+    return false if not @party
+    return not @party.public && @party.owner == Meteor.userId()
+
   save: () =>
     Parties.update {
       _id: @party._id
@@ -29,6 +40,7 @@ class PartyDetails
         name: @party.name
         description: @party.description
         public: @party.public
+        location: @party.location
     } , (error) =>
       if error
         console.log 'Oops, unable to update the party'
@@ -55,6 +67,7 @@ component = angular.module name, [
   angularMeteor
   uiRouter
   PartyUninvited
+  PartyMap
 ]
   .component name, {
     templateUrl: templateUrl

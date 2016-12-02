@@ -2,6 +2,7 @@ angular = require 'angular'
 {Meteor} = require 'meteor/meteor'
 
 import {Socially} from '../imports/ui/components/socially/socially.coffee'
+import 'bootstrap/dist/css/bootstrap.css'
 
 onReady = () =>
   angular.bootstrap document, [
