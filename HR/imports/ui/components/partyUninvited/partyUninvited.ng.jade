@@ -1,0 +1,4 @@
+ul
+  | Users to invite:
+  li(ng-repeat='user in partyUninvited.users | uninvitedFilter:partyUninvited.party')
+    div {{ user | displayNameFilter }}

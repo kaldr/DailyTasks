@@ -1,21 +1,16 @@
 angular = require 'angular'
-angularMeteor = require 'angular-meteor'
+{Meteor} = require 'meteor/meteor'
 
+import {Socially} from '../imports/ui/components/socially/socially.coffee'
 
-angular.module 'socially', [
-  angularMeteor
-]
-  .controller "PartiesListCtrl", ($scope) ->
-    $scope.parties = [
-      {
-      'name': 'Dubstep-Free Zone',
-      'description': 'Can we please just for an evening not listen to dubstep.'
-      } , {
-        'name': 'All dubstep all the time',
-        'description': 'Get it on!'
-      } , {
-        'name': 'Savage lounging',
-        'description': 'Leisure suit required. And only fiercest manners.'
-      }
-    ]
-    false
+onReady = () =>
+  angular.bootstrap document, [
+    Socially
+  ]
+
+if Meteor.isCordova
+	angular.element document
+    .on 'deviceready', onReady
+else
+  angular.element document
+    .ready onReady
