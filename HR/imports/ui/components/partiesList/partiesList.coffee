@@ -13,6 +13,7 @@ import {PartyRsvp} from '../partyRsvp/partyRsvp.coffee'
 import {PartyRsvpsList} from '../partyRsvpsList/partyRsvpsList.coffee'
 import {PartyUnanswered} from '../partyUnanswered/partyUnanswered.coffee'
 import {PartiesMap} from '../partiesMap/partiesMap.coffee'
+
 class PartiesList
   constructor: ($scope, $reactive) ->
     'ngInject'
@@ -72,8 +73,9 @@ PartiesListComponent = angular.module name, [
   PartyRemove
   PartyCreator
   PartyRsvp
+  PartiesMap
   PartyRsvpsList
-  PartyUnanswered
+  #PartyUnanswered
 ]
   .component name, {
     templateUrl: templateUrl
