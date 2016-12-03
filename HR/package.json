@@ -14,15 +14,22 @@
     "angular-meteor": "^1.3.11",
     "angular-sanitize": "^1.5.9",
     "angular-simple-logger": "^0.1.7",
+    "angular-sortable-view": "0.0.15",
     "angular-ui-router": "^0.3.2",
     "angular-utils-pagination": "^0.11.1",
     "babel-runtime": "^6.18.0",
     "bcrypt": "^0.8.7",
+    "filereader": "^0.10.3",
+    "gm": "^1.23.0",
     "ionic-scripts": "^1.3.5",
-    "meteor-node-stubs": "~0.2.0",
+    "meteor-node-stubs": "^0.2.4",
     "moment": "^2.17.0",
+    "ng-file-upload": "^12.2.13",
+    "ng-img-crop": "^0.2.0",
     "q": "^1.4.1",
     "request": "^2.79.0",
+    "spawn-sync": "^1.0.15",
+    "try-thread-sleep": "^1.0.0",
     "underscore": "^1.8.3"
   }
 }

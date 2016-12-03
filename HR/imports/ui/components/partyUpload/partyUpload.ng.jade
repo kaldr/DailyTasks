@@ -1,0 +1,18 @@
+div(layout='column')
+  .drop-box(ngf-drop='', ngf-select='', ngf-change='partyUpload.addImages($files)', ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}", ngf-multiple='false', ngf-allow-dir='false', ngf-accept="'image/*'", ngf-drop-available='true', ng-hide='partyUpload.cropImgSrc')
+    div Click here to select image
+    div
+      strong OR
+    div You can also drop image to here
+  .ng-crop(ng-show='partyUpload.cropImgSrc', layout='column')
+    div
+      h3 Edit & crop
+      md-button.md-primary(ng-click='partyUpload.save()')
+        | Save Image
+      md-button(ng-click='partyUpload.reset()')
+        | Cancel
+    .ng-crop-container
+      img-crop(image='partyUpload.cropImgSrc', result-image='partyUpload.myCroppedImage', area-type='square')
+  .images-container-title(layout='row', sv-root='', sv-part='partyUpload.thumbs')
+    .party-image-container(sv-element='', ng-class="{'main-image': $index === 0}", ng-repeat='thumb in partyUpload.thumbs')
+      img(draggable='false', ng-src='{{ thumb.url }}')

@@ -1,7 +1,7 @@
 import {Meteor} from 'meteor/meteor'
 import {Parties} from '../imports/api/parties/index.coffee'
 import '../imports/api/users.coffee'
-
+import '../imports/api/images/index.coffee'
 Meteor.startup =>
 	if Parties.find().count() == 0
     parties = [

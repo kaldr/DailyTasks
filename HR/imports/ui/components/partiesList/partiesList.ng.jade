@@ -1,5 +1,5 @@
 div(layout='column', layout-padding='')
-  party-add-button(ng-show="partiesList.isLoggedIn")
+  party-add-button
   div(flex='')
     h2.md-display-1 List of the parties:
   div(flex='', layout='row', layout-padding='')
@@ -16,7 +16,10 @@ div(layout='column', layout-padding='')
               | {{party.name}}
               party-remove(party='party')
             span.md-subhead {{party.description}}
-        md-card-content
+          md-card-title-media(ng-if='party.images')
+            .md-media-lg.card-media
+              party-image(images='party.images')
+          md-card-content
           party-rsvps-list(rsvps='party.rsvps')
           party-unanswered(party='party', ng-if='!party.public')
           div(ng-if='party.public')

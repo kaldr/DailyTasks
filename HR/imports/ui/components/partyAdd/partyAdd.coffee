@@ -3,7 +3,7 @@ import {Meteor} from 'meteor/meteor'
 import angularMeteor from 'angular-meteor'
 import {Parties} from '../../../api/parties/index.coffee'
 import templateUrl from './partyAdd.ng.jade'
-
+import {PartyUpload} from "../partyUpload/partyUpload.coffee"
 class PartyAdd
   constructor: () ->
     @party = {}
@@ -21,6 +21,7 @@ name = 'partyAdd'
 
 PartyAddComponent = angular.module name, [
   angularMeteor
+  PartyUpload
 ]
   .component name, {
     templateUrl: templateUrl

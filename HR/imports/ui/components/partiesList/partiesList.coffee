@@ -14,7 +14,7 @@ import {PartyRsvpsList} from '../partyRsvpsList/partyRsvpsList.coffee'
 import {PartyUnanswered} from '../partyUnanswered/partyUnanswered.coffee'
 import {PartiesMap} from '../partiesMap/partiesMap.coffee'
 import {PartyAddButton} from '../partyAddButton/partyAddButton.coffee'
-
+import {PartyImage} from '../partyImage/partyImage.coffee';
 class PartiesList
   constructor: ($scope, $reactive) ->
     'ngInject'
@@ -37,13 +37,13 @@ class PartiesList
     ]
 
     @subscribe 'users'
-
+    @subscribe 'images'
     @helpers
       parties: () =>Parties.find {} , {
         sort: @getReactively 'sort'
       }
       partiesCount: () =>Counts.get 'numberOfParties'
-      isLoggedIn: () =>not not Meteor.userId()
+      isLoggedIn: () => Meteor.userId()
       currentUserId: () =>Meteor.userId()
 
   isOwner: (party) =>@isLoggedIn && party.owner == @currentUserId
@@ -77,6 +77,7 @@ PartiesListComponent = angular.module name, [
   PartiesMap
   PartyRsvpsList
   PartyAddButton
+  PartyImage
   #PartyUnanswered
 ]
   .component name, {
