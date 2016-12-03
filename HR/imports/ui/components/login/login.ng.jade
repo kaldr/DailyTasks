@@ -1,0 +1,45 @@
+md-content(layout='row', layout-align='center start', layout-fill='', layout-margin='')
+  md-whiteframe.md-whiteframe-z2(layout='column', flex='', flex-md='50', flex-lg='50', flex-gt-lg='33', layout-fill='')
+    md-toolbar.md-primary.md-tall(layout='column', layout-align='end', layout-fill='')
+      .md-toolbar-tools.md-toolbar-tools-bottom(layout='row')
+        h3.md-display-1
+          | Sign in
+    div(layout='column', layout-fill='', layout-margin='', layout-padding='')
+      div(layout='row', layout-fill='', layout-margin='')
+        p.md-body-2
+          | Use existing account
+      div(layout='row', layout-fill='', layout-margin='', layout-padding='', layout-wrap='')
+        md-button.md-raised
+          i.icon.ion-social-google(style='color: #DC4A38; font-size: 24px;')
+          span
+            | Google
+        md-button.md-raised
+          i.icon.ion-social-facebook(style='color: #3F62B4; font-size: 24px;')
+          span
+            | Facebook
+        md-button.md-raised
+          i.icon.ion-social-twitter(style='color: #27AAE2; font-size: 24px;')
+          span
+            | Twitter
+      md-divider.inset
+      div(layout='row', layout-fill='', layout-margin='')
+        p.md-body-2
+          | Sign in with your email
+      form(name='loginForm', layout='column', layout-fill='', layout-padding='', layout-margin='')
+        md-input-container
+          label
+            | Email
+          input(type='text', ng-model='login.credentials.email', aria-label='email', required='')
+        md-input-container
+          label
+            | Password
+          input(type='password', ng-model='login.credentials.password', aria-label='password', required='')
+        div(layout='row', layout-align='space-between center')
+          a.md-button(href='/password') Forgot password?
+          md-button.md-raised.md-primary(ng-click='login.login()', aria-label='login', ng-disabled='login.loginForm.$invalid()')
+            | Sign In
+      md-toolbar.md-warn(ng-show='login.error', layout='row', layout-fill='', layout-padding='', layout-margin='')
+        p.md-body-1 {{ login.error }}
+      md-divider
+      div(layout='row', layout-align='center')
+        a.md-button(href='/register') Need an account?

@@ -1,10 +1,16 @@
-| Who is coming: Yes -
-| {{ (partyRsvpsList.rsvps | filter:{rsvp:'yes'}).length }}
-| Maybe -
-| {{ (partyRsvpsList.rsvps | filter:{rsvp:'maybe'}).length }}
-| No -
-| {{ (partyRsvpsList.rsvps | filter:{rsvp:'no'}).length }}
-
-party-rsvp-users(rsvps='partyRsvpsList.rsvps', type='yes')
-party-rsvp-users(rsvps='partyRsvpsList.rsvps', type='maybe')
-party-rsvp-users(rsvps='partyRsvpsList.rsvps', type='no')
+.rsvp-sum
+  .rsvp-amount
+    .amount
+      | {{ (partyRsvpsList.rsvps | filter:{rsvp:'yes'}).length || 0 }}
+    .rsvp-title
+      | YES
+  .rsvp-amount
+    .amount
+      | {{ (partyRsvpsList.rsvps | filter:{rsvp:'maybe'}).length || 0 }}
+    .rsvp-title
+      | MAYBE
+  .rsvp-amount
+    .amount
+      | {{ (partyRsvpsList.rsvps | filter:{rsvp:'no'}).length || 0 }}
+    .rsvp-title
+      | NO

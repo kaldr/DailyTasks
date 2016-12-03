@@ -1,0 +1,10 @@
+md-dialog(aria-label='New party', ng-cloak='')
+  md-toolbar
+    .md-toolbar-tools
+      h2 New party
+      span(flex='')
+      md-button(ng-click='partyAddModal.close()')
+        | Close
+  md-dialog-content
+    .md-dialog-content
+      party-add(done='partyAddModal.close()')

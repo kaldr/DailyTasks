@@ -10,7 +10,7 @@ name = 'partyRsvpsList'
 
 exports.PartyRsvpsList = angular.module name, [
   angularMeteor
-  PartyRsvpUsers
+  #PartyRsvpUsers
 ]
   .component name, {
     templateUrl: templateUrl

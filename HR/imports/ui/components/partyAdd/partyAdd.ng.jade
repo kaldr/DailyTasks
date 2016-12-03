@@ -1,14 +1,14 @@
-form
-  .form-group
+div(layout='column', layout-padding='')
+  md-input-container
     label
       | Party Name:
-    input.form-control(type='text', ng-model='partyAdd.party.name')
-  .form-group
+    input(type='text', ng-model='partyAdd.party.name')
+  md-input-container
     label
       | Description:
-    input.form-control(type='text', ng-model='partyAdd.party.description')
-  .checkbox
-    label
-      input(type='checkbox', ng-model='partyAdd.party.public')
-      |  Public Party?
-  button.btn.btn-success(ng-click='partyAdd.submit()') Add Party!
+    input(type='text', ng-model='partyAdd.party.description')
+  div(flex='')
+    md-checkbox(ng-model='partyAdd.party.public', aria-label='Public Party?')
+      | Public Party?
+  div(flex='')
+    md-button.md-raised(ng-click='partyAdd.submit()') Add Party!

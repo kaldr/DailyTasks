@@ -1,3 +1,4 @@
-input(type='button', value="I'm going!", ng-click='partyRsvp.yes()')
-input(type='button', value='Maybe', ng-click='partyRsvp.maybe()')
-input(type='button', value='No', ng-click='partyRsvp.no()')
+div(layout='row', layout-align='end center')
+  md-button(ng-click='partyRsvp.yes()', ng-class="{'md-primary' : partyRsvp.isYes()}") I'm going!
+  md-button(ng-click='partyRsvp.maybe()', ng-class="{'md-primary' : partyRsvp.isMaybe()}") Maybe
+  md-button(ng-click='partyRsvp.no()', ng-class="{'md-primary' : partyRsvp.isNo()}") No

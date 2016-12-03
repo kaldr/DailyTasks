@@ -11,6 +11,8 @@ class PartyAdd
   submit: () =>
     @party.owner = Meteor.userId()
     Parties.insert @party
+    if @done
+      @done()
     @reset()
 
   reset: () =>@party = {}
@@ -24,6 +26,8 @@ PartyAddComponent = angular.module name, [
     templateUrl: templateUrl
     controllerAs: name
     controller: PartyAdd
+    bindings:
+      done: "&?"
   }
   .name
 

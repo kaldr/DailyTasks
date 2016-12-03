@@ -3,7 +3,7 @@ import angularMeteor from 'angular-meteor'
 import uiRouter from 'angular-ui-router'
 import templateUrl from './partiesList.ng.jade'
 import {Parties} from '../../../api/parties/index.coffee'
-import {PartyAdd} from '../partyAdd/partyAdd.coffee'
+#import {PartyAdd} from '../partyAdd/partyAdd.coffee'
 import {PartyRemove} from '../partyRemove/partyRemove.coffee'
 import utilsPagination from 'angular-utils-pagination'
 import { Counts } from 'meteor/tmeasday:publish-counts'
@@ -13,6 +13,7 @@ import {PartyRsvp} from '../partyRsvp/partyRsvp.coffee'
 import {PartyRsvpsList} from '../partyRsvpsList/partyRsvpsList.coffee'
 import {PartyUnanswered} from '../partyUnanswered/partyUnanswered.coffee'
 import {PartiesMap} from '../partiesMap/partiesMap.coffee'
+import {PartyAddButton} from '../partyAddButton/partyAddButton.coffee'
 
 class PartiesList
   constructor: ($scope, $reactive) ->
@@ -68,13 +69,14 @@ PartiesListComponent = angular.module name, [
   angularMeteor
   uiRouter
   utilsPagination
-  PartyAdd
+  #PartyAdd
   PartiesSort
   PartyRemove
   PartyCreator
   PartyRsvp
   PartiesMap
   PartyRsvpsList
+  PartyAddButton
   #PartyUnanswered
 ]
   .component name, {

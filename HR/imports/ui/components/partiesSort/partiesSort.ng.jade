@@ -1,3 +1,6 @@
-select.form-control(ng-model='partiesSort.order', ng-change='partiesSort.changed()')
-  option(value='1') Ascending
-  option(value='-1') Descending
+md-input-container
+  md-select(ng-model='partiesSort.order', ng-change='partiesSort.changed()')
+    md-option(value='1')
+      | Ascending
+    md-option(value='-1')
+      | Descending
