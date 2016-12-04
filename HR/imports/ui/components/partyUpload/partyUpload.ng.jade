@@ -7,7 +7,7 @@ div(layout='column')
   .ng-crop(ng-show='partyUpload.cropImgSrc', layout='column')
     div
       h3 Edit & crop
-      md-button.md-primary(ng-click='partyUpload.save()')
+      md-button.md-primary(ng-click='partyUpload.save($files)')
         | Save Image
       md-button(ng-click='partyUpload.reset()')
         | Cancel
@@ -16,3 +16,4 @@ div(layout='column')
   .images-container-title(layout='row', sv-root='', sv-part='partyUpload.thumbs')
     .party-image-container(sv-element='', ng-class="{'main-image': $index === 0}", ng-repeat='thumb in partyUpload.thumbs')
       img(draggable='false', ng-src='{{ thumb.url }}')
+  img.comeonbaby

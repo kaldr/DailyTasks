@@ -6,6 +6,12 @@ import modalTemplateUrl from './partyAddModal.ng.jade'
 
 import {PartyAdd} from '../partyAdd/partyAdd.coffee'
 
+class PartyAddModal
+  constructor: ($mdDialog) ->
+    @$mdDialog = $mdDialog
+  close: () =>
+    @$mdDialog.hide()
+
 class PartyAddButton
   constructor: ($mdDialog, $mdMedia) ->
     'ngInject'
@@ -14,10 +20,7 @@ class PartyAddButton
 
   open: (event) =>
     @$mdDialog.show {
-      controller: ($mdDialog) =>
-        'ngInject'
-        @close = () =>
-          $mdDialog.hide()
+      controller: PartyAddModal
       controllerAs: "partyAddModal"
       templateUrl: modalTemplateUrl
       parent: angular.element document.body

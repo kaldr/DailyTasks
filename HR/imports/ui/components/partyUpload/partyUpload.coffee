@@ -38,14 +38,18 @@ class PartyUpload
     else
       @cropImgSrc = undefined
   save: () =>
-    upload @myCroppedImage, @currentFile.name, @$bindToContext((file) =>
+    contextFunc = (file) =>
       @uploaded.push file
       if not @files then @files = []
       @files.push file._id
       @reset()
-    ), (e) =>
+    errorFunc = (e) =>
       console.log "Oops, something went wrong", e
+    #console.log @myCroppedImage
+    upload @myCroppedImage, @currentFile.name, @$bindToContext(contextFunc), errorFunc
   reset: () =>
+    @cropImgSrc = undefined
+    @myCroppedImage = ''
 name = 'partyUpload'
 
 component = angular.module name, [

@@ -2,7 +2,7 @@
   "name": "HR",
   "private": true,
   "scripts": {
-    "start": "mongod --fork --dbpath=/Users/kaldr/Projects/mongodb --quiet --logpath=/Users/kaldr/Projects/mongodb/log;export MONGO_URL=mongodb://127.0.0.1:27017/HRReport;meteor run"
+    "start": "meteor npm install;mongod --fork --dbpath=/Users/kaldr/Projects/mongodb --quiet --logpath=/Users/kaldr/Projects/mongodb/log;export MONGO_URL=mongodb://127.0.0.1:27017/HRReport;meteor run"
   },
   "dependencies": {
     "angular": "^1.5.9",
@@ -20,6 +20,8 @@
     "babel-runtime": "^6.18.0",
     "bcrypt": "^0.8.7",
     "filereader": "^0.10.3",
+    "font-awesome": "^4.7.0",
+    "fontawesome": "^4.7.0",
     "gm": "^1.23.0",
     "ionic-scripts": "^1.3.5",
     "meteor-node-stubs": "^0.2.4",

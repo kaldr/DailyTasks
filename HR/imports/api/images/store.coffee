@@ -12,9 +12,9 @@ ThumbsStore = new UploadFS.store.GridFS {
   transformWrite: (from, to, fileId, file) ->
     gm = require 'gm'
     gm from, file.name
-      .resize 32, 32
+      .resize 300, 300
       .gravity 'Center'
-      .extent 32, 32
+      .extent 300, 300
       .quality 75
       .stream()
       .pipe to

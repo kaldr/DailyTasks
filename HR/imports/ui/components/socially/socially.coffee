@@ -7,8 +7,8 @@ import {PartiesList} from '../partiesList/partiesList.coffee'
 import {Navigation} from '../navigation/navigation.coffee'
 import {PartyDetails} from "../partyDetails/partyDetails.coffee"
 import {Auth} from '../auth/auth.coffee'
-
-
+import 'angular-material/angular-material.min.css'
+import 'font-awesome/css/font-awesome.min.css'
 class Socially
 
 name = 'socially'
