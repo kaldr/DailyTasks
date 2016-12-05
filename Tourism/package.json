@@ -2,7 +2,8 @@
   "name": "Tourism",
   "private": true,
   "scripts": {
-    "start": "meteor remove blaze-html-templates ecmascript autopublish;meteor add angular-templates pbastowski:angular-babel tmeasday:publish-counts pagebakers:ionicons planettraining:material-design-icons jalik:ufs jalik:ufs-gridfs;meteor npm install;meteor npm install --save wechat-api angular angular-meteor babel-runtime angular-ui-router angular-utils-pagination lodash angular-aria angular-animate angular-material ng-file-upload ng-img-crop angular-sortable-view ionic-sdk angular-sanitize;meteor run --port 3001"
+    "start": "meteor remove blaze-html-templates ecmascript autopublish;meteor add herokit:angular-jade coffeescript angular-templates pbastowski:angular-babel tmeasday:publish-counts pagebakers:ionicons planettraining:material-design-icons jalik:ufs jalik:ufs-gridfs;meteor npm install;meteor npm install --production wechat-api angular angular-meteor babel-runtime angular-ui-router angular-utils-pagination lodash angular-aria angular-animate angular-material ng-file-upload ng-img-crop c3 c3-angularjs angular-sortable-view ionic-sdk angular-sanitize;meteor run --no-release-check --port 3001",
+    "run":"meteor run --no-release-check --port 3001"
   },
   "dependencies": {
     "angular": "^1.5.9",
