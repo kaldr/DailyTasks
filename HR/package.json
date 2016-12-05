@@ -32,6 +32,7 @@
     "request": "^2.79.0",
     "spawn-sync": "^1.0.15",
     "try-thread-sleep": "^1.0.0",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "wechat-api": "^1.32.0"
   }
 }
