@@ -32,6 +32,18 @@
     {
       "name": "stripPunctuation",
       "hidden": false
+    },
+    {
+      "name": "TODO",
+      "hidden": false
+    },
+    {
+      "name": "NOTE",
+      "hidden": false
+    },
+    {
+      "name": "XXX",
+      "hidden": false
     }
   ],
   "marked": {
