@@ -73,6 +73,8 @@ components:
   # ❎ 错误做法:按照此时的文件目录，会返回pie文件夹下的pie.coffee
   DiagramComponent=require_component 'common','pie'
 ```
+
+
 重要规则
 
 1. 如果有pie文件夹，无论pie所在的位置，如果pie下有index.coffee，将直接导入index.coffee
