@@ -1,0 +1,27 @@
+{
+    "name": "Tourism",
+    "private": true,
+    "scripts": {
+        "setup": "meteor remove blaze-html-templates ecmascript autopublish;meteor add herokit:angular-jade coffeescript angular-templates pbastowski:angular-babel tmeasday:publish-counts pagebakers:ionicons planettraining:material-design-icons jalik:ufs jalik:ufs-gridfs;meteor npm install;meteor npm install --production wechat-api angular angular-meteor babel-runtime angular-ui-router angular-utils-pagination lodash angular-aria angular-animate angular-material ng-file-upload ng-img-crop c3 c3-angularjs angular-sortable-view ionic-sdk cson angular-sanitize;meteor run --no-release-check --port 3001",
+        "start": "meteor npm install; meteor run --no-release-check --port 3001"
+    },
+    "dependencies": {
+        "angular": "^1.5.9",
+        "angular-animate": "^1.5.9",
+        "angular-aria": "^1.5.9",
+        "angular-material": "^1.1.1",
+        "angular-meteor": "^1.3.11",
+        "angular-sanitize": "^1.5.9",
+        "angular-sortable-view": "0.0.15",
+        "angular-ui-router": "^0.3.2",
+        "angular-utils-pagination": "^0.11.1",
+        "babel-runtime": "^6.18.0",
+        "cson": "^4.0.0",
+        "ionic-sdk": "^1.2.4",
+        "lodash": "^4.17.2",
+        "meteor-node-stubs": "~0.2.0",
+        "ng-file-upload": "^12.2.13",
+        "ng-img-crop": "^0.2.0",
+        "wechat-api": "^1.32.0"
+    }
+}

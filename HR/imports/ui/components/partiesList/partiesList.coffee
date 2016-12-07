@@ -1,6 +1,8 @@
 import angular from 'angular'
 import angularMeteor from 'angular-meteor'
 import uiRouter from 'angular-ui-router'
+import utilsPagination from 'angular-utils-pagination'
+
 import templateUrl from './partiesList.ng.jade'
 import {Parties} from '../../../api/parties/index.coffee'
 #import {PartyAdd} from '../partyAdd/partyAdd.coffee'
