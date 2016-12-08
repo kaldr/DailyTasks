@@ -1,5 +1,5 @@
 { Meteor } = require 'meteor/meteor'
-import '/imports/plugins/util/require/moduleConstructor.coffee'
+import '/imports/plugins/util/smart_require/moduleConstructor.coffee'
 
 Meteor.startup ->
   fs = require 'fs'
