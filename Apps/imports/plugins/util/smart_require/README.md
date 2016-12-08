@@ -7,27 +7,27 @@
 
 - [Smart Require](#smart-require)
 	- [目录](#目录)
-	- [一、必要说明](#一必要说明)
-	- [二、require_config.coffee](#二requireconfigcoffee)
+	- [1. 必要说明](#1-必要说明)
+	- [2. require_config.coffee](#2-requireconfigcoffee)
 		- [1. 调取某个文件夹下的配置](#1-调取某个文件夹下的配置)
 		- [2. 其他用法举例](#2-其他用法举例)
-	- [三、require_component.coffee](#三requirecomponentcoffee)
+	- [3. require_component.coffee](#3-requirecomponentcoffee)
 		- [1. 根据项目目录，从最外层向最里层遍历一个模块](#1-根据项目目录从最外层向最里层遍历一个模块)
 		- [2. 离当前模块文件夹的最近文件夹里的模块](#2-离当前模块文件夹的最近文件夹里的模块)
 		- [3. 指定模块文件夹所在上一级文件夹的导入](#3-指定模块文件夹所在上一级文件夹的导入)
-	- [四、require_routes.coffee （in progress）](#四requireroutescoffee-in-progress)
-	- [五、require_api.coffee](#五requireapicoffee)
+	- [4. require_routes.coffee （in progress）](#4-requireroutescoffee-in-progress)
+	- [5. require_api.coffee](#5-requireapicoffee)
 		- [1. 举例](#1-举例)
 		- [2. 注意](#2-注意)
 
 <!-- /TOC -->
 
-## 一、必要说明
+## 1. 必要说明
 模块名大小写敏感。
 
 当前提供`imports`文件夹下的`api`、`components`、`routes`、`config`的require帮助函数，不提供`plugins`、`logs`、`test`的帮助函数。
 
-## 二、require_config.coffee
+## 2. require_config.coffee
 `config`的下一级目录中，包含各个其子目录的文件，不要出现重名的情况。具体命名规则见`config`文件夹下面的`README.md`。
 
 `config`在client或者server端都可以使用。
@@ -91,7 +91,7 @@
   memory=require_memory_config 'memory'
   memory=require_config "memory",'memory'
 ```
-## 三、require_component.coffee
+## 3. require_component.coffee
 `component`只在client端调用，server端调用无意义。
 
 要求每个模块最后exports导出的时候，都必须是angular的component，例如
@@ -211,7 +211,7 @@ imports:
 
 
 
-## 四、require_routes.coffee （in progress）
+## 4. require_routes.coffee （in progress）
 routes在client端使用，server端调用无意义。
 
 正在考虑和比较两种方案的优劣：
@@ -220,7 +220,7 @@ routes在client端使用，server端调用无意义。
 
 方案二：在components里面直接写routes的config，在component里面加载。
 
-## 五、require_api.coffee
+## 5. require_api.coffee
 api可以在client端或者server端调用。
 调用方法与规则，与`require_component`一致
 
