@@ -27,7 +27,8 @@
 
 当前提供`imports`文件夹下的`api`、`components`、`routes`、`config`的require帮助函数，不提供`plugins`、`logs`、`test`的帮助函数。
 
-## 2. require_config
+
+## 2. 配置
 `config`的下一级目录中，包含各个其子目录的文件，不要出现重名的情况。具体命名规则见`config`文件夹下面的`README.md`。
 
 `config`在client或者server端都可以使用。
@@ -91,7 +92,7 @@
   memory=require_memory_config 'memory'
   memory=require_config "memory",'memory'
 ```
-## 3. require_component
+## 3. 组件
 `component`只在client端调用，server端调用无意义。
 
 要求每个模块最后exports导出的时候，都必须是angular的component，例如
@@ -211,7 +212,9 @@ imports:
 
 
 
-## 4. require_routes （in progress）
+## 4. 路由
+in progress
+
 routes在client端使用，server端调用无意义。
 
 正在考虑和比较两种方案的优劣：
@@ -220,7 +223,7 @@ routes在client端使用，server端调用无意义。
 
 方案二：在components里面直接写routes的config，在component里面加载。
 
-## 5. require_api
+## 5. API
 api可以在client端或者server端调用。
 调用方法与规则，与`require_component`一致
 

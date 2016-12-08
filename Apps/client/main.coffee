@@ -1,6 +1,5 @@
-require '/imports/plugins/util/require/basicRequire.coffee'
+require '/imports/plugins/util/basicRequire.coffee'
 {Tourism} = require '../imports/components/tourism/tourism.coffee'
-
 
 
 onReady = () =>

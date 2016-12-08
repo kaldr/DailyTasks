@@ -1,12 +1,15 @@
-import '/imports/plugins/util/require/basicRequire.coffee'
+_ = require 'lodash'
+sq = require '/imports/plugins/util/smart_require/index.coffee'
+
 
 smartRequire = (filename) ->
   if filename
     templateUrl = require './tourism.ng.jade'
   templateUrl
 
-
 templateUrl = smartRequire 'a'
+
+sq.require_api('index')
 
 class Tourism
 

@@ -1,5 +1,5 @@
 {
-  "name": "Tourism",
+  "name": "Apps",
   "private": true,
   "scripts": {
     "setup": "meteor remove blaze-html-templates autopublish;meteor add herokit:angular-jade coffeescript@1.11.1_4 angular-templates pbastowski:angular-babel tmeasday:publish-counts pagebakers:ionicons planettraining:material-design-icons jalik:ufs jalik:ufs-gridfs;meteor npm install;meteor npm install --production wechat-api angular angular-meteor babel-runtime angular-ui-router angular-utils-pagination lodash angular-aria angular-animate angular-material ng-file-upload ng-img-crop c3 c3-angularjs angular-sortable-view ionic-sdk cson angular-sanitize;meteor run --no-release-check --port 3001",
@@ -21,8 +21,10 @@
     "ionic-sdk": "^1.2.4",
     "lodash": "^4.17.2",
     "meteor-node-stubs": "~0.2.0",
+    "moment": "^2.17.1",
     "ng-file-upload": "^12.2.13",
     "ng-img-crop": "^0.2.0",
+    "season": "^5.4.1",
     "wechat-api": "^1.32.0"
   }
 }
