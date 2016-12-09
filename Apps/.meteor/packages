@@ -26,3 +26,4 @@ jalik:ufs
 jalik:ufs-gridfs
 herokit:angular-jade
 coffeescript@1.11.1_4
+stylus

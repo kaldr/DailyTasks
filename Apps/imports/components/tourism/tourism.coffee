@@ -1,15 +1,4 @@
-_ = require 'lodash'
-sq = require '/imports/plugins/util/smart_require/index.coffee'
-
-
-smartRequire = (filename) ->
-  if filename
-    templateUrl = require './tourism.ng.jade'
-  templateUrl
-
-templateUrl = smartRequire 'a'
-
-sq.require_api('index')
+templateUrl = require './tourism.ng.jade'
 
 class Tourism
 
@@ -17,6 +6,7 @@ name = 'tourism'
 
 exports.Tourism = angular.module name, [
   'angular-meteor'
+  'ui.router'
 ]
   .component name, {
     templateUrl: templateUrl.default

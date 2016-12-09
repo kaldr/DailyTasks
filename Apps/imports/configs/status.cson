@@ -1,0 +1,40 @@
+createApp:[
+  {
+    id:1
+    status:1
+    type:'success'
+    msg:'创建APP成功'
+    info:"成功创建项目"
+  }
+  {
+    id:2
+    status:2
+    type:"error"
+    msg:"创建失败"
+    info:"已经存在这个APP，请更换APP名称"
+  }
+]
+createComponent:[
+  {
+    id:3
+    status:1
+    type:"success"
+    msg:"创建模块成功"
+    info:"成功创建模块"
+  }
+  {
+    id:4
+    status:2
+    type:"error"
+    msg:"创建模块失败"
+    info:"已经存在这个模块，请更换模块名称"
+  }
+  {
+    id:5
+    status:3
+    type:"error"
+    msg:"创建模块失败"
+    info:"App不存在，请选择一个存在的APP"
+  }
+
+]

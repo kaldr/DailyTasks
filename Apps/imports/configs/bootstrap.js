@@ -40,6 +40,17 @@ module_bootstrap={
                     "filePath": "/imports/components/api/api.coffee",
                     "folderType": "components",
                     "type": "file"
+                },
+                {
+                    "path": "api",
+                    "parent": "builder",
+                    "fileName": "api.coffee",
+                    "name": "api.coffee",
+                    "moduleName": "api",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/builder/api/api.coffee",
+                    "folderType": "components",
+                    "type": "file"
                 }
             ],
             "index": [
@@ -110,6 +121,97 @@ module_bootstrap={
                     "type": "file"
                 }
             ],
+            "addApp": [
+                {
+                    "path": "addApp",
+                    "parent": "app",
+                    "fileName": "addApp.coffee",
+                    "name": "addApp.coffee",
+                    "moduleName": "addApp",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/builder/app/addApp/addApp.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                }
+            ],
+            "app": [
+                {
+                    "path": "app",
+                    "parent": "builder",
+                    "fileName": "app.coffee",
+                    "name": "app.coffee",
+                    "moduleName": "app",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/builder/app/app.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                }
+            ],
+            "appList": [
+                {
+                    "path": "appList",
+                    "parent": "app",
+                    "fileName": "appList.coffee",
+                    "name": "appList.coffee",
+                    "moduleName": "appList",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/builder/app/appList/appList.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                }
+            ],
+            "component": [
+                {
+                    "path": "component",
+                    "parent": "app",
+                    "fileName": "component.coffee",
+                    "name": "component.coffee",
+                    "moduleName": "component",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/builder/app/component/component.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                }
+            ],
+            "config": [
+                {
+                    "path": "config",
+                    "parent": "builder",
+                    "fileName": "config.coffee",
+                    "name": "config.coffee",
+                    "moduleName": "config",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/builder/config/config.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                }
+            ],
+            "dashboard": [
+                {
+                    "path": "dashboard",
+                    "parent": "builder",
+                    "fileName": "dashboard.coffee",
+                    "name": "dashboard.coffee",
+                    "moduleName": "dashboard",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/builder/dashboard/dashboard.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                }
+            ],
+            "main": [
+                {
+                    "path": "builder",
+                    "parent": "components",
+                    "fileName": "main.coffee",
+                    "name": "main.coffee",
+                    "moduleName": "main",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/builder/main.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                }
+            ],
             "pie": [
                 {
                     "path": "diagram",
@@ -173,6 +275,19 @@ module_bootstrap={
                     "moduleName": "index",
                     "fileType": "coffee",
                     "filePath": "/imports/configs/database/index.coffee",
+                    "folderType": "configs",
+                    "type": "file"
+                }
+            ],
+            "status": [
+                {
+                    "path": "configs",
+                    "parent": "imports",
+                    "fileName": "status.coffee",
+                    "name": "status.coffee",
+                    "moduleName": "status",
+                    "fileType": "coffee",
+                    "filePath": "/imports/configs/status.coffee",
                     "folderType": "configs",
                     "type": "file"
                 }
@@ -277,6 +392,97 @@ module_bootstrap={
                     "moduleName": "basicRequire",
                     "fileType": "coffee",
                     "filePath": "/imports/plugins/util/basicRequire.coffee",
+                    "folderType": "plugins",
+                    "type": "file"
+                }
+            ],
+            "coffee": [
+                {
+                    "path": "file_output",
+                    "parent": "util",
+                    "fileName": "coffee.coffee",
+                    "name": "coffee.coffee",
+                    "moduleName": "coffee",
+                    "fileType": "coffee",
+                    "filePath": "/imports/plugins/util/file_output/coffee.coffee",
+                    "folderType": "plugins",
+                    "type": "file"
+                }
+            ],
+            "cson": [
+                {
+                    "path": "file_output",
+                    "parent": "util",
+                    "fileName": "cson.coffee",
+                    "name": "cson.coffee",
+                    "moduleName": "cson",
+                    "fileType": "coffee",
+                    "filePath": "/imports/plugins/util/file_output/cson.coffee",
+                    "folderType": "plugins",
+                    "type": "file"
+                }
+            ],
+            "jade": [
+                {
+                    "path": "file_output",
+                    "parent": "util",
+                    "fileName": "jade.coffee",
+                    "name": "jade.coffee",
+                    "moduleName": "jade",
+                    "fileType": "coffee",
+                    "filePath": "/imports/plugins/util/file_output/jade.coffee",
+                    "folderType": "plugins",
+                    "type": "file"
+                }
+            ],
+            "js": [
+                {
+                    "path": "file_output",
+                    "parent": "util",
+                    "fileName": "js.coffee",
+                    "name": "js.coffee",
+                    "moduleName": "js",
+                    "fileType": "coffee",
+                    "filePath": "/imports/plugins/util/file_output/js.coffee",
+                    "folderType": "plugins",
+                    "type": "file"
+                }
+            ],
+            "stylus": [
+                {
+                    "path": "file_output",
+                    "parent": "util",
+                    "fileName": "stylus.coffee",
+                    "name": "stylus.coffee",
+                    "moduleName": "stylus",
+                    "fileType": "coffee",
+                    "filePath": "/imports/plugins/util/file_output/stylus.coffee",
+                    "folderType": "plugins",
+                    "type": "file"
+                }
+            ],
+            "header": [
+                {
+                    "path": "component",
+                    "parent": "coffee",
+                    "fileName": "header.coffee",
+                    "name": "header.coffee",
+                    "moduleName": "header",
+                    "fileType": "coffee",
+                    "filePath": "/imports/plugins/util/file_output/template/coffee/component/header.coffee",
+                    "folderType": "plugins",
+                    "type": "file"
+                }
+            ],
+            "component": [
+                {
+                    "path": "template",
+                    "parent": "file_output",
+                    "fileName": "component.coffee",
+                    "name": "component.coffee",
+                    "moduleName": "component",
+                    "fileType": "coffee",
+                    "filePath": "/imports/plugins/util/file_output/template/component.coffee",
                     "folderType": "plugins",
                     "type": "file"
                 }
@@ -571,6 +777,242 @@ module_bootstrap={
                             "moduleName": "index",
                             "fileType": "coffee",
                             "filePath": "/imports/components/api/index.coffee",
+                            "folderType": "components",
+                            "type": "file"
+                        }
+                    ]
+                },
+                {
+                    "path": "components",
+                    "parent": "imports",
+                    "fileName": "builder",
+                    "name": "builder",
+                    "moduleName": "builder",
+                    "fileType": "builder",
+                    "filePath": "/imports/components/builder",
+                    "folderType": "components",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "path": "builder",
+                            "parent": "components",
+                            "fileName": "README.md",
+                            "name": "README.md",
+                            "moduleName": "README",
+                            "fileType": "md",
+                            "filePath": "/imports/components/builder/README.md",
+                            "folderType": "components",
+                            "type": "file"
+                        },
+                        {
+                            "path": "builder",
+                            "parent": "components",
+                            "fileName": "api",
+                            "name": "api",
+                            "moduleName": "api",
+                            "fileType": "api",
+                            "filePath": "/imports/components/builder/api",
+                            "folderType": "components",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "path": "api",
+                                    "parent": "builder",
+                                    "fileName": "api.coffee",
+                                    "name": "api.coffee",
+                                    "moduleName": "api",
+                                    "fileType": "coffee",
+                                    "filePath": "/imports/components/builder/api/api.coffee",
+                                    "folderType": "components",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "path": "builder",
+                            "parent": "components",
+                            "fileName": "app",
+                            "name": "app",
+                            "moduleName": "app",
+                            "fileType": "app",
+                            "filePath": "/imports/components/builder/app",
+                            "folderType": "components",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "path": "app",
+                                    "parent": "builder",
+                                    "fileName": "addApp",
+                                    "name": "addApp",
+                                    "moduleName": "addApp",
+                                    "fileType": "addApp",
+                                    "filePath": "/imports/components/builder/app/addApp",
+                                    "folderType": "components",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "path": "addApp",
+                                            "parent": "app",
+                                            "fileName": "addApp.coffee",
+                                            "name": "addApp.coffee",
+                                            "moduleName": "addApp",
+                                            "fileType": "coffee",
+                                            "filePath": "/imports/components/builder/app/addApp/addApp.coffee",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "path": "app",
+                                    "parent": "builder",
+                                    "fileName": "app.coffee",
+                                    "name": "app.coffee",
+                                    "moduleName": "app",
+                                    "fileType": "coffee",
+                                    "filePath": "/imports/components/builder/app/app.coffee",
+                                    "folderType": "components",
+                                    "type": "file"
+                                },
+                                {
+                                    "path": "app",
+                                    "parent": "builder",
+                                    "fileName": "app.ng.jade",
+                                    "name": "app.ng.jade",
+                                    "moduleName": "app",
+                                    "fileType": "jade",
+                                    "filePath": "/imports/components/builder/app/app.ng.jade",
+                                    "folderType": "components",
+                                    "type": "file"
+                                },
+                                {
+                                    "path": "app",
+                                    "parent": "builder",
+                                    "fileName": "appList",
+                                    "name": "appList",
+                                    "moduleName": "appList",
+                                    "fileType": "appList",
+                                    "filePath": "/imports/components/builder/app/appList",
+                                    "folderType": "components",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "path": "appList",
+                                            "parent": "app",
+                                            "fileName": "appList.coffee",
+                                            "name": "appList.coffee",
+                                            "moduleName": "appList",
+                                            "fileType": "coffee",
+                                            "filePath": "/imports/components/builder/app/appList/appList.coffee",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "path": "app",
+                                    "parent": "builder",
+                                    "fileName": "component",
+                                    "name": "component",
+                                    "moduleName": "component",
+                                    "fileType": "component",
+                                    "filePath": "/imports/components/builder/app/component",
+                                    "folderType": "components",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "path": "component",
+                                            "parent": "app",
+                                            "fileName": "component.coffee",
+                                            "name": "component.coffee",
+                                            "moduleName": "component",
+                                            "fileType": "coffee",
+                                            "filePath": "/imports/components/builder/app/component/component.coffee",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "path": "builder",
+                            "parent": "components",
+                            "fileName": "config",
+                            "name": "config",
+                            "moduleName": "config",
+                            "fileType": "config",
+                            "filePath": "/imports/components/builder/config",
+                            "folderType": "components",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "path": "config",
+                                    "parent": "builder",
+                                    "fileName": "config.coffee",
+                                    "name": "config.coffee",
+                                    "moduleName": "config",
+                                    "fileType": "coffee",
+                                    "filePath": "/imports/components/builder/config/config.coffee",
+                                    "folderType": "components",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "path": "builder",
+                            "parent": "components",
+                            "fileName": "dashboard",
+                            "name": "dashboard",
+                            "moduleName": "dashboard",
+                            "fileType": "dashboard",
+                            "filePath": "/imports/components/builder/dashboard",
+                            "folderType": "components",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "path": "dashboard",
+                                    "parent": "builder",
+                                    "fileName": "dashboard.coffee",
+                                    "name": "dashboard.coffee",
+                                    "moduleName": "dashboard",
+                                    "fileType": "coffee",
+                                    "filePath": "/imports/components/builder/dashboard/dashboard.coffee",
+                                    "folderType": "components",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "path": "builder",
+                            "parent": "components",
+                            "fileName": "main.coffee",
+                            "name": "main.coffee",
+                            "moduleName": "main",
+                            "fileType": "coffee",
+                            "filePath": "/imports/components/builder/main.coffee",
+                            "folderType": "components",
+                            "type": "file"
+                        },
+                        {
+                            "path": "builder",
+                            "parent": "components",
+                            "fileName": "main.ng.jade",
+                            "name": "main.ng.jade",
+                            "moduleName": "main",
+                            "fileType": "jade",
+                            "filePath": "/imports/components/builder/main.ng.jade",
+                            "folderType": "components",
+                            "type": "file"
+                        },
+                        {
+                            "path": "builder",
+                            "parent": "components",
+                            "fileName": "main.styl",
+                            "name": "main.styl",
+                            "moduleName": "main",
+                            "fileType": "styl",
+                            "filePath": "/imports/components/builder/main.styl",
                             "folderType": "components",
                             "type": "file"
                         }
@@ -879,6 +1321,28 @@ module_bootstrap={
                             "type": "file"
                         }
                     ]
+                },
+                {
+                    "path": "configs",
+                    "parent": "imports",
+                    "fileName": "status.coffee",
+                    "name": "status.coffee",
+                    "moduleName": "status",
+                    "fileType": "coffee",
+                    "filePath": "/imports/configs/status.coffee",
+                    "folderType": "configs",
+                    "type": "file"
+                },
+                {
+                    "path": "configs",
+                    "parent": "imports",
+                    "fileName": "status.cson",
+                    "name": "status.cson",
+                    "moduleName": "status",
+                    "fileType": "cson",
+                    "filePath": "/imports/configs/status.cson",
+                    "folderType": "configs",
+                    "type": "file"
                 }
             ]
         },
@@ -1041,6 +1505,135 @@ module_bootstrap={
                             "filePath": "/imports/plugins/util/basicRequire.coffee",
                             "folderType": "plugins",
                             "type": "file"
+                        },
+                        {
+                            "path": "util",
+                            "parent": "plugins",
+                            "fileName": "file_output",
+                            "name": "file_output",
+                            "moduleName": "file_output",
+                            "fileType": "file_output",
+                            "filePath": "/imports/plugins/util/file_output",
+                            "folderType": "plugins",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "path": "file_output",
+                                    "parent": "util",
+                                    "fileName": "coffee.coffee",
+                                    "name": "coffee.coffee",
+                                    "moduleName": "coffee",
+                                    "fileType": "coffee",
+                                    "filePath": "/imports/plugins/util/file_output/coffee.coffee",
+                                    "folderType": "plugins",
+                                    "type": "file"
+                                },
+                                {
+                                    "path": "file_output",
+                                    "parent": "util",
+                                    "fileName": "cson.coffee",
+                                    "name": "cson.coffee",
+                                    "moduleName": "cson",
+                                    "fileType": "coffee",
+                                    "filePath": "/imports/plugins/util/file_output/cson.coffee",
+                                    "folderType": "plugins",
+                                    "type": "file"
+                                },
+                                {
+                                    "path": "file_output",
+                                    "parent": "util",
+                                    "fileName": "jade.coffee",
+                                    "name": "jade.coffee",
+                                    "moduleName": "jade",
+                                    "fileType": "coffee",
+                                    "filePath": "/imports/plugins/util/file_output/jade.coffee",
+                                    "folderType": "plugins",
+                                    "type": "file"
+                                },
+                                {
+                                    "path": "file_output",
+                                    "parent": "util",
+                                    "fileName": "js.coffee",
+                                    "name": "js.coffee",
+                                    "moduleName": "js",
+                                    "fileType": "coffee",
+                                    "filePath": "/imports/plugins/util/file_output/js.coffee",
+                                    "folderType": "plugins",
+                                    "type": "file"
+                                },
+                                {
+                                    "path": "file_output",
+                                    "parent": "util",
+                                    "fileName": "stylus.coffee",
+                                    "name": "stylus.coffee",
+                                    "moduleName": "stylus",
+                                    "fileType": "coffee",
+                                    "filePath": "/imports/plugins/util/file_output/stylus.coffee",
+                                    "folderType": "plugins",
+                                    "type": "file"
+                                },
+                                {
+                                    "path": "file_output",
+                                    "parent": "util",
+                                    "fileName": "template",
+                                    "name": "template",
+                                    "moduleName": "template",
+                                    "fileType": "template",
+                                    "filePath": "/imports/plugins/util/file_output/template",
+                                    "folderType": "plugins",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "path": "template",
+                                            "parent": "file_output",
+                                            "fileName": "coffee",
+                                            "name": "coffee",
+                                            "moduleName": "coffee",
+                                            "fileType": "coffee",
+                                            "filePath": "/imports/plugins/util/file_output/template/coffee",
+                                            "folderType": "plugins",
+                                            "type": "folder",
+                                            "children": [
+                                                {
+                                                    "path": "coffee",
+                                                    "parent": "template",
+                                                    "fileName": "component",
+                                                    "name": "component",
+                                                    "moduleName": "component",
+                                                    "fileType": "component",
+                                                    "filePath": "/imports/plugins/util/file_output/template/coffee/component",
+                                                    "folderType": "plugins",
+                                                    "type": "folder",
+                                                    "children": [
+                                                        {
+                                                            "path": "component",
+                                                            "parent": "coffee",
+                                                            "fileName": "header.coffee",
+                                                            "name": "header.coffee",
+                                                            "moduleName": "header",
+                                                            "fileType": "coffee",
+                                                            "filePath": "/imports/plugins/util/file_output/template/coffee/component/header.coffee",
+                                                            "folderType": "plugins",
+                                                            "type": "file"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "path": "template",
+                                            "parent": "file_output",
+                                            "fileName": "component.coffee",
+                                            "name": "component.coffee",
+                                            "moduleName": "component",
+                                            "fileType": "coffee",
+                                            "filePath": "/imports/plugins/util/file_output/template/component.coffee",
+                                            "folderType": "plugins",
+                                            "type": "file"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "path": "util",

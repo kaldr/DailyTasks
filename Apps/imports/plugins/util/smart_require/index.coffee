@@ -1,13 +1,16 @@
-import {Meteor} from 'meteor/meteor'
 _ = require 'lodash'
 import {module_bootstrap} from '/imports/configs/bootstrap.js'
 
+exportsOb = {}
+
 _.map module_bootstrap.modules, (folderInfo, folderName) ->
   moduleName = 'require_' + folderName
-  exports[moduleName] = (name) ->console.log folderInfo[name]
+  @[moduleName] = (arg1, arg2, arg3) ->console.log folderInfo[name]
 
+@angular = require 'angular'
+@angularMeteor = require 'angular-meteor'
+@Meteor = require 'meteor/meteor'
+@uiRouter = require 'angular-ui-router'
+@angularMaterial = require 'angular-material'
 
-
-exports['angular'] = require 'angular'
-exports.angularMeteor = require 'angular-meteor'
-exports.Meteor = require 'meteor/meteor'
+module.exports = exportsOb
