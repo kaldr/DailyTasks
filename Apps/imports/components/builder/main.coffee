@@ -1,7 +1,8 @@
-import dashboard from './dashboard/dashboard.coffee'
+import {BuilderDashboard} from './dashboard/dashboard.coffee'
 import {BuilderApp} from './app/app.coffee'
 import templateUrl from './main.ng.jade'
 import builderConfig from './config/config.coffee'
+import './main.styl'
 
 class builder
   constructor: ($reactive, $scope) ->
@@ -15,25 +16,29 @@ config = ($stateProvider) ->
   'ngInject'
   $stateProvider
     .state "builder_dashboard", {
-      url: "/builder/dashboard"
+      url: "/dashboard"
+      parent: "builder"
       views:
         builder:
-          template: "<builder-dashboard></builder-dashboard>"
+          template: "<builder-dashboard flex='100' layout='row' layout-align='center'></builder-dashboard>"
     }
     .state 'builder_app', {
-      url: "/builder/app"
+      url: "/app"
+      parent: "builder"
       views:
         builder:
           template: "<builder-app></builder-app>"
     }
     .state "builder_config", {
-      url: "/builder/config"
+      url: "/config"
+      parent: "builder"
       views:
         builder:
           template: "<builder-config></builder-config>"
     }
     .state 'builder_api', {
-      url: "/builder/api"
+      url: "/api"
+      parent: "builder"
       views:
         builder:
           template: "<builder-api></builder-api>"
@@ -44,6 +49,7 @@ component = angular.module name, [
   'ui.router'
   angularMaterial
   BuilderApp
+  BuilderDashboard
 ]
   .component name, {
     templateUrl: templateUrl

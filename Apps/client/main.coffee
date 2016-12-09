@@ -11,11 +11,15 @@ routeConfig = ($stateProvider, $locationProvider, $urlRouterProvider) ->
   $stateProvider
     .state "root", {
       url: "/"
-      template: "<tourism></tourism>"
+      views:
+        main:
+          template: "<tourism></tourism>"
     }
     .state 'builder', {
       url: "/builder"
-      template: "<builder></builder>"
+      views:
+        main:
+          template: "<builder></builder>"
     }
 
 angular.module 'app', [

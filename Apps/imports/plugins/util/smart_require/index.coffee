@@ -1,6 +1,6 @@
 _ = require 'lodash'
 import {module_bootstrap} from '/imports/configs/bootstrap.js'
-
+@module_bootstrap = module_bootstrap
 exportsOb = {}
 
 _.map module_bootstrap.modules, (folderInfo, folderName) ->

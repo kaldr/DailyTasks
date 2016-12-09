@@ -1,14 +1,18 @@
-#builder(ng-cloak)
-  md-toolbar
+#builder(ng-cloak layout='column')
+  md-toolbar(flex='none' )
     .md-toolbar-tools
       md-button.md-icon-button(aria-label="Settings")
-        md-icon.material-icons(md-font-library="material-icons") menu
+        md-icon important_devices
       h2
         a(ui-sref="builder") App Builder
+        span.version v1.0.1
       span(flex)
-        
+      md-button(ui-sref='builder_dashboard') Dashboard
+      md-button(ui-sref='builder_app') App
+      md-button(ui-sref='builder_api') API
+      md-button(ui-sref='builder_config') Config
       span(flex)
       md-button.md-icon-button
-        md-icon.material-icons more_vert
-  md-content
-    ui-view(name='builder')
+        md-icon more_vert
+        
+  md-content.builderView(ui-view='builder' flex='100' layout='row' layout-align='center')

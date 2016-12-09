@@ -575,17 +575,6 @@ module_bootstrap={
         {
             "path": "imports",
             "parent": "Apps",
-            "fileName": ".DS_Store",
-            "name": ".DS_Store",
-            "moduleName": "",
-            "fileType": "DS_Store",
-            "filePath": "/imports/.DS_Store",
-            "folderType": ".DS_Store",
-            "type": "file"
-        },
-        {
-            "path": "imports",
-            "parent": "Apps",
             "fileName": "api",
             "name": "api",
             "moduleName": "api",
@@ -978,6 +967,17 @@ module_bootstrap={
                                     "moduleName": "dashboard",
                                     "fileType": "coffee",
                                     "filePath": "/imports/components/builder/dashboard/dashboard.coffee",
+                                    "folderType": "components",
+                                    "type": "file"
+                                },
+                                {
+                                    "path": "dashboard",
+                                    "parent": "builder",
+                                    "fileName": "dashboard.ng.jade",
+                                    "name": "dashboard.ng.jade",
+                                    "moduleName": "dashboard",
+                                    "fileType": "jade",
+                                    "filePath": "/imports/components/builder/dashboard/dashboard.ng.jade",
                                     "folderType": "components",
                                     "type": "file"
                                 }
