@@ -1,5 +1,5 @@
-#builder(ng-cloak layout='column')
-  md-toolbar(flex='none' )
+#builder(ng-cloak layout-fill layout='column')
+  md-toolbar
     .md-toolbar-tools
       md-button.md-icon-button(aria-label="Settings")
         md-icon important_devices
@@ -15,4 +15,4 @@
       md-button.md-icon-button
         md-icon more_vert
         
-  md-content.builderView(ui-view='builder' flex='100' layout='row' layout-align='center')
+  md-content.builderView(ui-view='builder' flex layout='row' layout-align='center start')

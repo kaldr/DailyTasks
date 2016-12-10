@@ -20,7 +20,6 @@ insecure@1.0.7                # Allow all DB writes from clients (for prototypin
 angular-templates
 pbastowski:angular-babel
 tmeasday:publish-counts
-pagebakers:ionicons
 planettraining:material-design-icons
 jalik:ufs
 jalik:ufs-gridfs
