@@ -1,17 +1,17 @@
-md-toolbar.addButton()
-  md-button(md-colors="{background:'indigo-400'}")
+md-toolbar.addButton(md-colors="{background:'indigo-700'}")
+  md-button(md-colors="{background:'indigo-400'}" ui-sref='builder.app.add')
     md-icon add_to_queue
     | 新建APP
-md-toolbar.searchToolbar(md-colors="{background:'grey-100'}")  
+md-toolbar.searchToolbar(md-colors="{background:'indigo-100'}")  
   md-input-container.md-block(align='left')
     label 要检索的APP名称
-    md-icon search
+    md-icon(md-colors="{color:'indigo-600'}")  search
     input(ng-model='searchapp' type='text')
 md-content(flex align='left' layout='column')
   md-list(flex)
-    md-subheader(md-colors="{background:'grey-300'}")   
+    md-subheader(md-colors="{background:'indigo-300'}")   
       | 共{{builderAppList.apps.length}}个APP
-    md-list-item.md-2-line(ng-repeat='app in builderAppList.apps|filter:{name:searchapp}'  md-colors="{background:'indigo-500'}" ng-click='null')
+    md-list-item.md-2-line(ng-repeat='app in builderAppList.apps|filter:{name:searchapp}'  md-colors="{background:'indigo-400'}" ng-click='null')
       md-icon highlight
       .listItem.md-list-item-text
         h4 {{app.name}}

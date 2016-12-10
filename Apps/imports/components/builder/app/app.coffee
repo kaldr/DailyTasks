@@ -1,26 +1,38 @@
 import templateUrl from './app.ng.jade'
 import './app.styl'
 import {BuilderAppList} from "./appList/appList.coffee"
+import {BuilderAppIntro} from "./appIntro/appIntro.coffee"
 
 class BuilderApp
+  constructor: ($state) ->
+
 
   getAppComponents: () =>
   addApp: () =>
   addComponent: () =>
 
 name = 'builderApp'
+
 config = ($stateProvider) ->
   $stateProvider
     .state 'builder.app.add', {
       url: '/add'
-      parent: 'builder_app'
+      parent: 'builder.app'
       views:
         appcomponents:
           template: "<builder-app-add></builder-app-add>"
     }
+    .state "builder.app.intro", {
+      url: "/intro"
+      parent: 'builder.app'
+      views:
+        appcomponents:
+          template: "<builder-app-intro></builder-app-intro>"
+    }
 component = angular.module name, [
   'angular-meteor'
   BuilderAppList
+  BuilderAppIntro
 ]
   .component name, {
     templateUrl: templateUrl

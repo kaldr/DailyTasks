@@ -1,18 +1,18 @@
 #builder(ng-cloak layout-fill layout='column')
   md-toolbar
     .md-toolbar-tools
-      md-button.md-icon-button(aria-label="Settings")
+      md-button.md-icon-button(ui-sref='builder.dashboard' aria-label="Settings")
         md-icon important_devices
       h2
-        a(ui-sref="builder") App Builder
+        a(ui-sref="builder.dashboard") App Builder
         span.version v0.0.1
       span(flex)
-      md-button(ui-sref='builder_dashboard') Dashboard
-      md-button(ui-sref='builder_app') App
-      md-button(ui-sref='builder_api') API
-      md-button(ui-sref='builder_config') Config
+      md-button(ui-sref='builder.dashboard') Dashboard
+      md-button(ui-sref='builder.app.intro') App
+      md-button(ui-sref='builder.api') API
+      md-button(ui-sref='builder.config') Config
       span(flex)
       md-button.md-icon-button
         md-icon more_vert
-        
+  section.introduction(align='center' md-colors="{background:'grey-900'}") App Builder用于管理你本地的APP、API和配置，请不要将非正式的APP通过Pull Request提交merger请求
   md-content.builderView(ui-view='builder' flex layout='row' layout-align='center start')

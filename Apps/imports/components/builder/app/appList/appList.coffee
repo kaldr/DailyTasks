@@ -1,5 +1,6 @@
 import templateUrl from './appList.ng.jade'
 import './appList.styl'
+import {BuilderAppAdd} from '../addApp/addApp.coffee'
 
 class BuilderAppList
   constructor: () ->
@@ -9,12 +10,13 @@ class BuilderAppList
   getAppList: () =>
     @components = _.find @app_bootstrap.bootstrap, (item) ->return (item.fileName == 'components')
     @apps = _.filter @components.children, (item) ->return item.type == 'folder'
-    console.log @apps
+
 name = 'builderAppList'
 
 component = angular.module name, [
   'angular-meteor'
   'ui.router'
+  BuilderAppAdd
 ]
   .component name, {
     templateUrl: templateUrl

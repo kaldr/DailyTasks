@@ -1,0 +1,14 @@
+md-content.builderAppAdd(layout='column' flex='100' layout-fill height='100%')
+  md-toolbar(md-colors="{background:'grey-200'}")
+    h4
+      md-icon add_to_queue
+      | 新建一个APP
+  form.addAppForm.md-block(layout-fill flex name='addAppForm')
+    md-input-container(layout='row')
+      label 请输入APP的名称
+      md-icon highlight
+      input(flex ng-model="builderAppAdd.appName" required name='appName' ng-pattern='/^[a-zA-z].*/')
+      .hint 不要和已有的APP重名，不要以数字开头
+    .addAppConfirmButton(ng-show="!addAppForm.appName.$error.required && !addAppForm.appName.$error.pattern && addAppForm.appName.$touched")
+      md-button.md-raised.md-primary(ng-click='builderAppAdd.saveApp()') 确定
+    

@@ -17,33 +17,28 @@ name = 'builder'
 config = ($stateProvider) ->
   'ngInject'
   $stateProvider
-    .state "builder_dashboard", {
+    .state "builder.dashboard", {
       url: "/dashboard"
       parent: "builder"
       views:
         builder:
           template: "<builder-dashboard flex='100' layout='row' layout-align='center'></builder-dashboard>"
     }
-    .state 'builder_app', {
+    .state 'builder.app', {
       url: "/app"
       parent: "builder"
       views:
         builder:
           template: "<builder-app flex='100' layout='row' layout-align='center'></builder-app>"
-          children: [
-            views:
-              appcomponents:
-                template: "<h1>请从左侧选择APP开始编辑APP</h1>"
-          ]
     }
-    .state "builder_config", {
+    .state "builder.config", {
       url: "/config"
       parent: "builder"
       views:
         builder:
           template: "<builder-config></builder-config>"
     }
-    .state 'builder_api', {
+    .state 'builder.api', {
       url: "/api"
       parent: "builder"
       views:

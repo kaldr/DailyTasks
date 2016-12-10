@@ -199,6 +199,32 @@ module_bootstrap={
                     "type": "file"
                 }
             ],
+            "appComponentList": [
+                {
+                    "path": "appComponentList",
+                    "parent": "app",
+                    "fileName": "appComponentList.coffee",
+                    "name": "appComponentList.coffee",
+                    "moduleName": "appComponentList",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/builder/app/appComponentList/appComponentList.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                }
+            ],
+            "appIntro": [
+                {
+                    "path": "appIntro",
+                    "parent": "app",
+                    "fileName": "appIntro.coffee",
+                    "name": "appIntro.coffee",
+                    "moduleName": "appIntro",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/builder/app/appIntro/appIntro.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                }
+            ],
             "appList": [
                 {
                     "path": "appList",
@@ -627,17 +653,6 @@ module_bootstrap={
         {
             "path": "imports",
             "parent": "Apps",
-            "fileName": ".DS_Store",
-            "name": ".DS_Store",
-            "moduleName": "",
-            "fileType": "DS_Store",
-            "filePath": "/imports/.DS_Store",
-            "folderType": ".DS_Store",
-            "type": "file"
-        },
-        {
-            "path": "imports",
-            "parent": "Apps",
             "fileName": "api",
             "name": "api",
             "moduleName": "api",
@@ -945,6 +960,28 @@ module_bootstrap={
                                             "filePath": "/imports/components/builder/app/addApp/addApp.coffee",
                                             "folderType": "components",
                                             "type": "file"
+                                        },
+                                        {
+                                            "path": "addApp",
+                                            "parent": "app",
+                                            "fileName": "addApp.ng.jade",
+                                            "name": "addApp.ng.jade",
+                                            "moduleName": "addApp",
+                                            "fileType": "jade",
+                                            "filePath": "/imports/components/builder/app/addApp/addApp.ng.jade",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "path": "addApp",
+                                            "parent": "app",
+                                            "fileName": "addApp.styl",
+                                            "name": "addApp.styl",
+                                            "moduleName": "addApp",
+                                            "fileType": "styl",
+                                            "filePath": "/imports/components/builder/app/addApp/addApp.styl",
+                                            "folderType": "components",
+                                            "type": "file"
                                         }
                                     ]
                                 },
@@ -1004,6 +1041,98 @@ module_bootstrap={
                                     "filePath": "/imports/components/builder/app/app.styl",
                                     "folderType": "components",
                                     "type": "file"
+                                },
+                                {
+                                    "path": "app",
+                                    "parent": "builder",
+                                    "fileName": "appComponentList",
+                                    "name": "appComponentList",
+                                    "moduleName": "appComponentList",
+                                    "fileType": "appComponentList",
+                                    "filePath": "/imports/components/builder/app/appComponentList",
+                                    "folderType": "components",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "path": "appComponentList",
+                                            "parent": "app",
+                                            "fileName": "appComponentList.coffee",
+                                            "name": "appComponentList.coffee",
+                                            "moduleName": "appComponentList",
+                                            "fileType": "coffee",
+                                            "filePath": "/imports/components/builder/app/appComponentList/appComponentList.coffee",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "path": "appComponentList",
+                                            "parent": "app",
+                                            "fileName": "appComponentList.ng.jade",
+                                            "name": "appComponentList.ng.jade",
+                                            "moduleName": "appComponentList",
+                                            "fileType": "jade",
+                                            "filePath": "/imports/components/builder/app/appComponentList/appComponentList.ng.jade",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "path": "appComponentList",
+                                            "parent": "app",
+                                            "fileName": "appComponentList.styl",
+                                            "name": "appComponentList.styl",
+                                            "moduleName": "appComponentList",
+                                            "fileType": "styl",
+                                            "filePath": "/imports/components/builder/app/appComponentList/appComponentList.styl",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "path": "app",
+                                    "parent": "builder",
+                                    "fileName": "appIntro",
+                                    "name": "appIntro",
+                                    "moduleName": "appIntro",
+                                    "fileType": "appIntro",
+                                    "filePath": "/imports/components/builder/app/appIntro",
+                                    "folderType": "components",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "path": "appIntro",
+                                            "parent": "app",
+                                            "fileName": "appIntro.coffee",
+                                            "name": "appIntro.coffee",
+                                            "moduleName": "appIntro",
+                                            "fileType": "coffee",
+                                            "filePath": "/imports/components/builder/app/appIntro/appIntro.coffee",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "path": "appIntro",
+                                            "parent": "app",
+                                            "fileName": "appIntro.ng.jade",
+                                            "name": "appIntro.ng.jade",
+                                            "moduleName": "appIntro",
+                                            "fileType": "jade",
+                                            "filePath": "/imports/components/builder/app/appIntro/appIntro.ng.jade",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "path": "appIntro",
+                                            "parent": "app",
+                                            "fileName": "appIntro.styl",
+                                            "name": "appIntro.styl",
+                                            "moduleName": "appIntro",
+                                            "fileType": "styl",
+                                            "filePath": "/imports/components/builder/app/appIntro/appIntro.styl",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        }
+                                    ]
                                 },
                                 {
                                     "path": "app",

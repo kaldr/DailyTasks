@@ -6,7 +6,6 @@ class BuilderDashboard
   constructor: ($scope, $rootScope) ->
     'ngInject'
     @app_bootstrap = module_bootstrap
-    console.log @app_bootstrap
     @getApps()
     @getApis()
     @getConfigs()
@@ -30,7 +29,6 @@ class BuilderDashboard
       _.map currentModules, (moduleItem) =>
         folder = moduleItem.filePath.replace moduleItem.fileName, ''
         if @configFolders[folder] then @configFolders[folder].push moduleItem else @configFolders[folder] = [ moduleItem ]
-    console.log @configFolders
 
 name = 'builderDashboard'
 
