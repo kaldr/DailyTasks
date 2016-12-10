@@ -94,6 +94,8 @@ createComponent = (appname, componentName) ->
     output.folders = folders
     return output
 
+
+
 ###
   创建APP
   @method createApp

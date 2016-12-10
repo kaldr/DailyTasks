@@ -4,10 +4,12 @@ import templateUrl from './main.ng.jade'
 import builderConfig from './config/config.coffee'
 import './main.styl'
 
+
 class builder
   constructor: ($reactive, $scope) ->
     'ngInject'
-    console.log "OK"
+
+
 
 name = 'builder'
 
@@ -27,7 +29,12 @@ config = ($stateProvider) ->
       parent: "builder"
       views:
         builder:
-          template: "<builder-app></builder-app>"
+          template: "<builder-app flex='100' layout='row' layout-align='center'></builder-app>"
+          children: [
+            views:
+              appcomponents:
+                template: "<h1>请从左侧选择APP开始编辑APP</h1>"
+          ]
     }
     .state "builder_config", {
       url: "/config"

@@ -1,6 +1,45 @@
 module_bootstrap={
     "modules": {
         "api": {
+            "club": [
+                {
+                    "path": "account",
+                    "parent": "api",
+                    "fileName": "club.coffee",
+                    "name": "club.coffee",
+                    "moduleName": "club",
+                    "fileType": "coffee",
+                    "filePath": "/imports/api/account/club.coffee",
+                    "folderType": "api",
+                    "type": "file"
+                }
+            ],
+            "department": [
+                {
+                    "path": "account",
+                    "parent": "api",
+                    "fileName": "department.coffee",
+                    "name": "department.coffee",
+                    "moduleName": "department",
+                    "fileType": "coffee",
+                    "filePath": "/imports/api/account/department.coffee",
+                    "folderType": "api",
+                    "type": "file"
+                }
+            ],
+            "staff": [
+                {
+                    "path": "account",
+                    "parent": "api",
+                    "fileName": "staff.coffee",
+                    "name": "staff.coffee",
+                    "moduleName": "staff",
+                    "fileType": "coffee",
+                    "filePath": "/imports/api/account/staff.coffee",
+                    "folderType": "api",
+                    "type": "file"
+                }
+            ],
             "user": [
                 {
                     "path": "account",
@@ -130,6 +169,19 @@ module_bootstrap={
                     "moduleName": "addApp",
                     "fileType": "coffee",
                     "filePath": "/imports/components/builder/app/addApp/addApp.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                }
+            ],
+            "addComponent": [
+                {
+                    "path": "addComponent",
+                    "parent": "app",
+                    "fileName": "addComponent.coffee",
+                    "name": "addComponent.coffee",
+                    "moduleName": "addComponent",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/builder/app/addComponent/addComponent.coffee",
                     "folderType": "components",
                     "type": "file"
                 }
@@ -575,6 +627,17 @@ module_bootstrap={
         {
             "path": "imports",
             "parent": "Apps",
+            "fileName": ".DS_Store",
+            "name": ".DS_Store",
+            "moduleName": "",
+            "fileType": "DS_Store",
+            "filePath": "/imports/.DS_Store",
+            "folderType": ".DS_Store",
+            "type": "file"
+        },
+        {
+            "path": "imports",
+            "parent": "Apps",
             "fileName": "api",
             "name": "api",
             "moduleName": "api",
@@ -605,6 +668,39 @@ module_bootstrap={
                     "folderType": "api",
                     "type": "folder",
                     "children": [
+                        {
+                            "path": "account",
+                            "parent": "api",
+                            "fileName": "club.coffee",
+                            "name": "club.coffee",
+                            "moduleName": "club",
+                            "fileType": "coffee",
+                            "filePath": "/imports/api/account/club.coffee",
+                            "folderType": "api",
+                            "type": "file"
+                        },
+                        {
+                            "path": "account",
+                            "parent": "api",
+                            "fileName": "department.coffee",
+                            "name": "department.coffee",
+                            "moduleName": "department",
+                            "fileType": "coffee",
+                            "filePath": "/imports/api/account/department.coffee",
+                            "folderType": "api",
+                            "type": "file"
+                        },
+                        {
+                            "path": "account",
+                            "parent": "api",
+                            "fileName": "staff.coffee",
+                            "name": "staff.coffee",
+                            "moduleName": "staff",
+                            "fileType": "coffee",
+                            "filePath": "/imports/api/account/staff.coffee",
+                            "folderType": "api",
+                            "type": "file"
+                        },
                         {
                             "path": "account",
                             "parent": "api",
@@ -855,6 +951,30 @@ module_bootstrap={
                                 {
                                     "path": "app",
                                     "parent": "builder",
+                                    "fileName": "addComponent",
+                                    "name": "addComponent",
+                                    "moduleName": "addComponent",
+                                    "fileType": "addComponent",
+                                    "filePath": "/imports/components/builder/app/addComponent",
+                                    "folderType": "components",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "path": "addComponent",
+                                            "parent": "app",
+                                            "fileName": "addComponent.coffee",
+                                            "name": "addComponent.coffee",
+                                            "moduleName": "addComponent",
+                                            "fileType": "coffee",
+                                            "filePath": "/imports/components/builder/app/addComponent/addComponent.coffee",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "path": "app",
+                                    "parent": "builder",
                                     "fileName": "app.coffee",
                                     "name": "app.coffee",
                                     "moduleName": "app",
@@ -877,6 +997,17 @@ module_bootstrap={
                                 {
                                     "path": "app",
                                     "parent": "builder",
+                                    "fileName": "app.styl",
+                                    "name": "app.styl",
+                                    "moduleName": "app",
+                                    "fileType": "styl",
+                                    "filePath": "/imports/components/builder/app/app.styl",
+                                    "folderType": "components",
+                                    "type": "file"
+                                },
+                                {
+                                    "path": "app",
+                                    "parent": "builder",
                                     "fileName": "appList",
                                     "name": "appList",
                                     "moduleName": "appList",
@@ -893,6 +1024,28 @@ module_bootstrap={
                                             "moduleName": "appList",
                                             "fileType": "coffee",
                                             "filePath": "/imports/components/builder/app/appList/appList.coffee",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "path": "appList",
+                                            "parent": "app",
+                                            "fileName": "appList.ng.jade",
+                                            "name": "appList.ng.jade",
+                                            "moduleName": "appList",
+                                            "fileType": "jade",
+                                            "filePath": "/imports/components/builder/app/appList/appList.ng.jade",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "path": "appList",
+                                            "parent": "app",
+                                            "fileName": "appList.styl",
+                                            "name": "appList.styl",
+                                            "moduleName": "appList",
+                                            "fileType": "styl",
+                                            "filePath": "/imports/components/builder/app/appList/appList.styl",
                                             "folderType": "components",
                                             "type": "file"
                                         }
@@ -978,6 +1131,17 @@ module_bootstrap={
                                     "moduleName": "dashboard",
                                     "fileType": "jade",
                                     "filePath": "/imports/components/builder/dashboard/dashboard.ng.jade",
+                                    "folderType": "components",
+                                    "type": "file"
+                                },
+                                {
+                                    "path": "dashboard",
+                                    "parent": "builder",
+                                    "fileName": "dashboard.styl",
+                                    "name": "dashboard.styl",
+                                    "moduleName": "dashboard",
+                                    "fileType": "styl",
+                                    "filePath": "/imports/components/builder/dashboard/dashboard.styl",
                                     "folderType": "components",
                                     "type": "file"
                                 }
