@@ -1,5 +1,6 @@
 import {BuilderDashboard} from './dashboard/dashboard.coffee'
 import {BuilderApp} from './app/app.coffee'
+import {Building} from './common/building.coffee'
 import templateUrl from './main.ng.jade'
 import builderConfig from './config/config.coffee'
 import './main.styl'
@@ -36,14 +37,14 @@ config = ($stateProvider) ->
       parent: "builder"
       views:
         builder:
-          template: "<builder-config></builder-config>"
+          template: "<building></building>"
     }
     .state 'builder.api', {
       url: "/api"
       parent: "builder"
       views:
         builder:
-          template: "<builder-api></builder-api>"
+          template: "<building></building>"
     }
 
 component = angular.module name, [
@@ -52,6 +53,7 @@ component = angular.module name, [
   angularMaterial
   BuilderApp
   BuilderDashboard
+  Building
 ]
   .component name, {
     templateUrl: templateUrl

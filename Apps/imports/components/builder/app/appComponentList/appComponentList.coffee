@@ -17,13 +17,16 @@ class appComponentList extends Controller
     @mdDialog = $mdDialog
 
   createComponent: (app, name, path) =>
-
-  addComponentAction: (event) =>
-    DialogueController = ($scope, $mdDialog) ->
-      console.log 'in this'
+    Meteor.call 'createComponent', app, name, path, (err, data) =>
+      console.log data
+  addComponentAction: (event, item) =>
+    DialogueController = ($scope, $mdDialog) =>
       $scope.createComponent = @createComponent
       $scope.appName = @appName
-      $scope.pathName = @pathName
+      if item
+        $scope.pathName = item.filePath
+      else
+        $scope.pathName = '/imports/components/' + @appName
       $scope.hide = () ->$mdDialog.hide()
       $scope.cancel = () ->$mdDialog.cancel()
 
@@ -59,7 +62,7 @@ class appComponentList extends Controller
 
     if app
       @bootstrap = app.children
-      console.log @bootstrap
+
 name = 'appComponentList'
 
 component = angular.module name, [
