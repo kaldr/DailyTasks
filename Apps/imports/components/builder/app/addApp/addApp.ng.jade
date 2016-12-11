@@ -7,8 +7,18 @@ md-content.builderAppAdd(layout='column' flex='100' layout-fill height='100%')
     md-input-container(layout='row')
       label 请输入APP的名称
       md-icon highlight
-      input(flex ng-model="builderAppAdd.appName" required name='appName' ng-pattern='/^[a-zA-z].*/')
-      .hint 不要和已有的APP重名，不要以数字开头
-    .addAppConfirmButton(ng-show="!addAppForm.appName.$error.required && !addAppForm.appName.$error.pattern && addAppForm.appName.$touched")
-      md-button.md-raised.md-primary(ng-click='builderAppAdd.saveApp()') 确定
+      input(ui-keypress="{13:'builderAppAdd.saveApp($event)'}" flex ng-model="builderAppAdd.appName" required name='appName' ng-pattern='/^[a-zA-z].*/')
+      .inputErrorMessages(ng-messages='appAppForm.appName.$error')
+        .inputErrorMessage(ng-message='required' ng-show='addAppForm.appName.$error.required') 必须填写APP名称
+        .inputErrorMessage(ng-message='pattern' ng-show='addAppForm.appName.$error.pattern') 必须以英文字母开头
+      
+    .addAppConfirmButton()
+      md-button.md-raised.md-primary(type='submit' ng-click='builderAppAdd.saveApp($event)' ng-disabled='addAppForm.appName.$error.required || addAppForm.appName.$error.pattern || !addAppForm.appName.$touched || builderAppAdd.createStatus=="loading"') 
+        span(ng-hide="builderAppAdd.createStatus=='loading'") 确定
+        span(ng-show="builderAppAdd.createStatus=='loading'") 创建中...
+  
+    
+      
+    
+    
     

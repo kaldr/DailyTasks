@@ -1,0 +1,28 @@
+md-dialog.addSuccess(aria-label='errorMessage')
+  md-toolbar
+    .md-toolbar-tools
+      h2 {{info.msg}}
+      span(flex)
+      md-button.md-icon-button(ng-click='cancel()')
+        md-icon close
+        
+  md-dialog-content(align="center" layout='column')
+    .md-dialog-content
+      h2
+        md-icon(md-colors="{color:'indigo-500'}") assignment_turned_in
+      p {{info.info}}，即将重新加载meteor
+      
+    md-list.folder(flex)
+      md-subheader(md-colors="{background:'grey-600'}") 创建了如下文件夹
+      md-list-item(ng-click='null' ng-repeat="folder in info.folders" md-colors="{background:'grey-50'}")
+        p {{folder}}
+        md-divider
+    md-list.files(flex)
+      md-subheader(md-colors="{background:'grey-600'}") 创建了如下文件
+      md-list-item(ng-click='null' ng-repeat="file in info.files" md-colors="{background:'grey-50'}")
+        p {{file}}
+        md-divider
+        
+  md-dialog-actions(layout='row')
+    md-button.md-raised.md-primary(md-autofocus ng-click='cancel()') 我知道了
+    

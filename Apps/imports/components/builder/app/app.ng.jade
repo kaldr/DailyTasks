@@ -1,3 +1,4 @@
 md-content.appContent(flex layout-fill layout='row')
-  builder-app-list.appList(md-content flex='25' layout='column')
-  .appComponents(flex='75' ui-view='appcomponents' layout='column')
+  md-content(flex='30' layout='column' layout-fill)
+    builder-app-list.appList
+  md-content.appComponents(flex='70' layout-fill ui-view='appcomponents' layout='column')

@@ -1,6 +1,7 @@
 md-content.builderAppAdd
   vertical-align: center
   md-toolbar
+    margin-bottom 20px
     h4
       color #888
       font-size:16px
@@ -9,8 +10,9 @@ md-content.builderAppAdd
         margin-right 10px
         color #888
   form.addAppForm
+      magin-top 20px
       padding 0 24px
-      .hint
+      .inputErrorMessages
         position: absolute;
         left: 36px
         right: auto;
@@ -19,4 +21,25 @@ md-content.builderAppAdd
         font-size 14px
         line-height: 14px;
       .addAppConfirmButton
+        margin-top 30px
         margin-left 30px
+  .statusPanel
+    magin-top 20px
+    padding 0 24px
+    md-icon
+      margin-right 10px
+md-dialog.addError
+md-dialog.addSuccess
+    md-dialog-content
+      h2
+        margin-bottom 20px
+        line-height: 50px
+      md-icon
+        font-size:50px
+        height 50px
+        width 50px
+      md-list
+        md-list-item
+          p
+            font-size: 14px
+            color #888

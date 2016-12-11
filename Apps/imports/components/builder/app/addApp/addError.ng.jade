@@ -1,0 +1,16 @@
+md-dialog.addError(aria-label='errorMessage')
+  md-toolbar(md-colors="{background:'red-500'}")
+    .md-toolbar-tools
+      h2 {{info.msg}}
+      span(flex)
+      md-button.md-icon-button(ng-click='cancel()')
+        md-icon close
+        
+  md-dialog-content(align="center")
+    .md-dialog-content
+      h2
+        md-icon(md-colors="{color:'red-500'}") error
+      p {{info.info}}
+  
+  md-dialog-actions(layout='row')
+    md-button.md-raised(md-autofocus ng-click='cancel()' md-colors="{background:'red-500'}") 我知道了

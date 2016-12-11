@@ -7,11 +7,12 @@ md-toolbar.searchToolbar(md-colors="{background:'indigo-100'}")
     label 要检索的APP名称
     md-icon(md-colors="{color:'indigo-600'}")  search
     input(ng-model='searchapp' type='text')
+
 md-content(flex align='left' layout='column')
-  md-list(flex)
+  md-list
     md-subheader(md-colors="{background:'indigo-300'}")   
       | 共{{builderAppList.apps.length}}个APP
-    md-list-item.md-2-line(ng-repeat='app in builderAppList.apps|filter:{name:searchapp}'  md-colors="{background:'indigo-400'}" ng-click='null')
+    md-list-item.md-2-line(ui-sref="builder.app.detail({appName:app.name})" ng-repeat='app in builderAppList.apps|filter:{name:searchapp}'  md-colors="{background:'indigo-400'}" ng-click='null')
       md-icon highlight
       .listItem.md-list-item-text
         h4 {{app.name}}

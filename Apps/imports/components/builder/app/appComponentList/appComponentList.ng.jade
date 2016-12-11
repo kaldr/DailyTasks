@@ -1,0 +1,81 @@
+md-toolbar.componentTreeToolbar(align='left' layout-align='left' md-colors="{background:'grey-300'}")
+  .md-toolbar-tools
+    h2
+      md-icon  view_day
+      | {{appComponentList.appName}}的组件架构
+    span(flex)
+    md-input-container(align='left')
+      label 要检索的组件名称
+      md-icon(md-colors="{color:'indigo-600'}")  search
+      input(ng-model='appComponentList.searchComponent' type='text')
+
+md-content.componentTree(ui-tree='' data-nodrop-enabled='true' data-drag-enabled='false' )
+  
+  ol(ui-tree-nodes='',data-drag-enabled='false' ng-model='appComponentList.bootstrap')
+    li(ng-click='appComponentList.addComponentAction($event)')
+      div.treeItem.addtreeItem(md-colors="{background:'teal-500'}")
+        md-icon add_to_queue
+        | 在APP根目录添加新模块
+    li( ng-repeat='item in appComponentList.bootstrap',ng-show='appComponentList.view(item)' data-drag-enabled='false' ui-tree-node='')
+      div.treeItem(ng-class="{'folderItem':item.type=='folder'}" ui-tree-handle='' layout='row' layout-align='center center')
+        span
+          md-icon(ng-show="item.type=='folder'") folder
+          md-icon(ng-show="item.fileType=='md'") description
+          md-icon(ng-show="item.fileType=='coffee'") extension
+          md-icon(ng-show="item.fileType=='jade'") line_style
+          md-icon(ng-show="item.fileType=='styl'") color_lens
+          | {{item.fileName}}
+        span(flex)
+        md-button(md-colors="{background:'indigo-500'}" ng-show="item.type=='folder'").md-icon-button
+          md-icon add
+      ol(ui-tree-nodes='', data-drag-enabled='false' ng-model='item.children')
+        li(ng-repeat='subItem in item.children', ng-show='appComponentList.view(subItem)' ui-tree-node='')
+          div.treeItem(ng-class="{'folderItem':subItem.type=='folder'}" ui-tree-handle='' layout='row' layout-align='center center')
+            span
+              md-icon(ng-show="subItem.type=='folder'") folder
+              md-icon(ng-show="subItem.fileType=='md'") description
+              md-icon(ng-show="subItem.fileType=='coffee'") extension
+              md-icon(ng-show="subItem.fileType=='jade'") line_style
+              md-icon(ng-show="subItem.fileType=='styl'") color_lens
+              | {{subItem.fileName}}
+            span(flex)
+            md-button(md-colors="{background:'indigo-500'}" ng-show="subItem.type=='folder'").md-icon-button
+              md-icon add
+          ol(ui-tree-nodes='' data-drag-enabled='false', ng-model='subItem.children')
+            li(ng-repeat='thirdDegreeItem in subItem.children', ng-show='appComponentList.view(thirdDegreeItem)' ui-tree-node='')
+              div.treeItem(ng-class="{'folderItem':thirdDegreeItem.type=='folder'}" ui-tree-handle='' layout='row' layout-align='center center')
+                span
+                  md-icon(ng-show="thirdDegreeItem.type=='folder'") folder
+                  md-icon(ng-show="thirdDegreeItem.fileType=='md'") description
+                  md-icon(ng-show="thirdDegreeItem.fileType=='coffee'") extension
+                  md-icon(ng-show="thirdDegreeItem.fileType=='jade'") line_style
+                  md-icon(ng-show="thirdDegreeItem.fileType=='styl'") color_lens
+                  | {{thirdDegreeItem.fileName}}
+                span(flex)
+                md-button(md-colors="{background:'indigo-500'}" ng-show="thirdDegreeItem.type=='folder'").md-icon-button
+                  md-icon add
+                
+              ol(ui-tree-nodes='', data-drag-enabled='false' ng-model='thirdDegreeItem.children')
+                li(ng-repeat='fourthDegreeItem in thirdDegreeItem.children',ng-show='appComponentList.view(fourthDegreeItem)'  ui-tree-node='')
+                  div.treeItem(ng-class="{'folderItem':fourthDegreeItem.type=='folder'}" ui-tree-handle='' layout='row' layout-align='center center')
+                    span
+                      md-icon(ng-show="fourthDegreeItem.type=='folder'") folder
+                      md-icon(ng-show="fourthDegreeItem.fileType=='md'") description
+                      md-icon(ng-show="fourthDegreeItem.fileType=='coffee'") extension
+                      md-icon(ng-show="fourthDegreeItem.fileType=='jade'") line_style
+                      md-icon(ng-show="fourthDegreeItem.fileType=='styl'") color_lens
+                      | {{fourthDegreeItem.fileName}}
+                    span(flex)
+                    md-button(md-colors="{background:'indigo-500'}" ng-show="fourthDegreeItem.type=='folder'").md-icon-button
+                      md-icon add
+                  ol(ui-tree-nodes='',data-drag-enabled='false'  ng-model='fourthDegreeItem.children')
+                    li(ng-repeat='fifthDegreeItem in fourthDegreeItem.children',ng-show='appComponentList.view(fifthDegreeItem)'  ui-tree-node='')
+                      div.treeItem(ng-class="{'folderItem':fifthDegreeItem.type=='folder'}" ui-tree-handle='' layout='row' layout-align='center center')
+                        span
+                          md-icon(ng-show="fifthDegreeItem.type=='folder'") folder
+                          md-icon(ng-show="fifthDegreeItem.fileType=='md'") description
+                          md-icon(ng-show="fifthDegreeItem.fileType=='coffee'") extension
+                          md-icon(ng-show="fifthDegreeItem.fileType=='jade'") line_style
+                          md-icon(ng-show="fifthDegreeItem.fileType=='styl'") color_lens
+                          | {{fifthDegreeItem.fileName}}
+                        span(flex)

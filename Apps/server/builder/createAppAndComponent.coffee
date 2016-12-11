@@ -103,7 +103,8 @@ createComponent = (appname, componentName) ->
   @return {object} 创建结果
 ###
 createApp = (appname) ->
-  console.log appname
+  if not appname
+    return status.return_status 'createApp', 3
   coffeeFileStr = coffeeFileContent appname
   jadeFileStr = jadeFileContent appname
   stylusFileStr = stylFileContent appname

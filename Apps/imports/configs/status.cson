@@ -13,6 +13,13 @@ createApp:[
     msg:"创建失败"
     info:"已经存在这个APP，请更换APP名称"
   }
+  {
+    id:6
+    status:3
+    type:"error"
+    msg:"创建失败"
+    info:"必须输入APP名称"
+  }
 ]
 createComponent:[
   {

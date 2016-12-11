@@ -1,0 +1,18 @@
+md-dialog.addComponent(aria-label='addComponent')
+  md-toolbar(md-colors="{background:'teal-500'}")
+    .md-toolbar-tools
+      h2 在{{pathName}}下创建一个模块
+      span(flex)
+      md-button.md-icon-button(ng-click='cancel()')
+        md-icon close
+        
+  md-dialog-content(align="center")
+    .md-dialog-content
+      md-input-container
+        label 要添加组件的名称
+        md-icon(md-colors="{color:'indigo-600'}")  add_to_queue
+        input(ng-model='componentName' type='text')
+
+  md-dialog-actions(layout='row')
+    md-button.md-raised(md-autofocus ng-click='cancel()' md-colors="{background:'teal-500'}") 创建模块
+    md-button.md-raised(ng-click='cancel()') 取消

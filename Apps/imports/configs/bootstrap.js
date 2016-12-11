@@ -68,31 +68,31 @@ module_bootstrap={
             ]
         },
         "components": {
-            "api": [
+            "abc": [
                 {
-                    "path": "api",
+                    "path": "abc",
                     "parent": "components",
-                    "fileName": "api.coffee",
-                    "name": "api.coffee",
-                    "moduleName": "api",
+                    "fileName": "abc.coffee",
+                    "name": "abc.coffee",
+                    "moduleName": "abc",
                     "fileType": "coffee",
-                    "filePath": "/imports/components/api/api.coffee",
-                    "folderType": "components",
-                    "type": "file"
-                },
-                {
-                    "path": "api",
-                    "parent": "builder",
-                    "fileName": "api.coffee",
-                    "name": "api.coffee",
-                    "moduleName": "api",
-                    "fileType": "coffee",
-                    "filePath": "/imports/components/builder/api/api.coffee",
+                    "filePath": "/imports/components/abc/abc.coffee",
                     "folderType": "components",
                     "type": "file"
                 }
             ],
             "index": [
+                {
+                    "path": "abc",
+                    "parent": "components",
+                    "fileName": "index.coffee",
+                    "name": "index.coffee",
+                    "moduleName": "index",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/abc/index.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                },
                 {
                     "path": "api",
                     "parent": "components",
@@ -160,6 +160,30 @@ module_bootstrap={
                     "type": "file"
                 }
             ],
+            "api": [
+                {
+                    "path": "api",
+                    "parent": "components",
+                    "fileName": "api.coffee",
+                    "name": "api.coffee",
+                    "moduleName": "api",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/api/api.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                },
+                {
+                    "path": "api",
+                    "parent": "builder",
+                    "fileName": "api.coffee",
+                    "name": "api.coffee",
+                    "moduleName": "api",
+                    "fileType": "coffee",
+                    "filePath": "/imports/components/builder/api/api.coffee",
+                    "folderType": "components",
+                    "type": "file"
+                }
+            ],
             "addApp": [
                 {
                     "path": "addApp",
@@ -169,19 +193,6 @@ module_bootstrap={
                     "moduleName": "addApp",
                     "fileType": "coffee",
                     "filePath": "/imports/components/builder/app/addApp/addApp.coffee",
-                    "folderType": "components",
-                    "type": "file"
-                }
-            ],
-            "addComponent": [
-                {
-                    "path": "addComponent",
-                    "parent": "app",
-                    "fileName": "addComponent.coffee",
-                    "name": "addComponent.coffee",
-                    "moduleName": "addComponent",
-                    "fileType": "coffee",
-                    "filePath": "/imports/components/builder/app/addComponent/addComponent.coffee",
                     "folderType": "components",
                     "type": "file"
                 }
@@ -653,6 +664,17 @@ module_bootstrap={
         {
             "path": "imports",
             "parent": "Apps",
+            "fileName": ".DS_Store",
+            "name": ".DS_Store",
+            "moduleName": "",
+            "fileType": "DS_Store",
+            "filePath": "/imports/.DS_Store",
+            "folderType": ".DS_Store",
+            "type": "file"
+        },
+        {
+            "path": "imports",
+            "parent": "Apps",
             "fileName": "api",
             "name": "api",
             "moduleName": "api",
@@ -811,6 +833,63 @@ module_bootstrap={
                     "filePath": "/imports/components/README.md",
                     "folderType": "components",
                     "type": "file"
+                },
+                {
+                    "path": "components",
+                    "parent": "imports",
+                    "fileName": "abc",
+                    "name": "abc",
+                    "moduleName": "abc",
+                    "fileType": "abc",
+                    "filePath": "/imports/components/abc",
+                    "folderType": "components",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "path": "abc",
+                            "parent": "components",
+                            "fileName": "abc.coffee",
+                            "name": "abc.coffee",
+                            "moduleName": "abc",
+                            "fileType": "coffee",
+                            "filePath": "/imports/components/abc/abc.coffee",
+                            "folderType": "components",
+                            "type": "file"
+                        },
+                        {
+                            "path": "abc",
+                            "parent": "components",
+                            "fileName": "abc.ng.jade",
+                            "name": "abc.ng.jade",
+                            "moduleName": "abc",
+                            "fileType": "jade",
+                            "filePath": "/imports/components/abc/abc.ng.jade",
+                            "folderType": "components",
+                            "type": "file"
+                        },
+                        {
+                            "path": "abc",
+                            "parent": "components",
+                            "fileName": "abc.styl",
+                            "name": "abc.styl",
+                            "moduleName": "abc",
+                            "fileType": "styl",
+                            "filePath": "/imports/components/abc/abc.styl",
+                            "folderType": "components",
+                            "type": "file"
+                        },
+                        {
+                            "path": "abc",
+                            "parent": "components",
+                            "fileName": "index.coffee",
+                            "name": "index.coffee",
+                            "moduleName": "index",
+                            "fileType": "coffee",
+                            "filePath": "/imports/components/abc/index.coffee",
+                            "folderType": "components",
+                            "type": "file"
+                        }
+                    ]
                 },
                 {
                     "path": "components",
@@ -982,28 +1061,26 @@ module_bootstrap={
                                             "filePath": "/imports/components/builder/app/addApp/addApp.styl",
                                             "folderType": "components",
                                             "type": "file"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "path": "app",
-                                    "parent": "builder",
-                                    "fileName": "addComponent",
-                                    "name": "addComponent",
-                                    "moduleName": "addComponent",
-                                    "fileType": "addComponent",
-                                    "filePath": "/imports/components/builder/app/addComponent",
-                                    "folderType": "components",
-                                    "type": "folder",
-                                    "children": [
+                                        },
                                         {
-                                            "path": "addComponent",
+                                            "path": "addApp",
                                             "parent": "app",
-                                            "fileName": "addComponent.coffee",
-                                            "name": "addComponent.coffee",
-                                            "moduleName": "addComponent",
-                                            "fileType": "coffee",
-                                            "filePath": "/imports/components/builder/app/addComponent/addComponent.coffee",
+                                            "fileName": "addError.ng.jade",
+                                            "name": "addError.ng.jade",
+                                            "moduleName": "addError",
+                                            "fileType": "jade",
+                                            "filePath": "/imports/components/builder/app/addApp/addError.ng.jade",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "path": "addApp",
+                                            "parent": "app",
+                                            "fileName": "addSuccess.ng.jade",
+                                            "name": "addSuccess.ng.jade",
+                                            "moduleName": "addSuccess",
+                                            "fileType": "jade",
+                                            "filePath": "/imports/components/builder/app/addApp/addSuccess.ng.jade",
                                             "folderType": "components",
                                             "type": "file"
                                         }
@@ -1053,6 +1130,17 @@ module_bootstrap={
                                     "folderType": "components",
                                     "type": "folder",
                                     "children": [
+                                        {
+                                            "path": "appComponentList",
+                                            "parent": "app",
+                                            "fileName": "addComponent.ng.jade",
+                                            "name": "addComponent.ng.jade",
+                                            "moduleName": "addComponent",
+                                            "fileType": "jade",
+                                            "filePath": "/imports/components/builder/app/appComponentList/addComponent.ng.jade",
+                                            "folderType": "components",
+                                            "type": "file"
+                                        },
                                         {
                                             "path": "appComponentList",
                                             "parent": "app",

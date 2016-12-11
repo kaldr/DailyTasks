@@ -11,7 +11,7 @@ md-content.dashboardContent.app(flex layout-fill)
   md-content(flex align='left' layout-fill)
     md-list(flex)
       md-subheader(align='center' md-colors="{background:'indigo-50'}") 共{{builderDashboard.apps.length}}个APP
-      md-list-item.md-2-line(ng-repeat='app in builderDashboard.apps|filter:{name:searchapp}' ng-click='null')
+      md-list-item.md-2-line(ui-sref="builder.app.detail({appName:app.name})" ng-repeat='app in builderDashboard.apps|filter:{name:searchapp}' ng-click='null')
         md-icon highlight
         .listItem.md-list-item-text
           h4 {{app.name}}
