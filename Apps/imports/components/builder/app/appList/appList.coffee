@@ -4,7 +4,7 @@ import {BuilderAppAdd} from '../addApp/addApp.coffee'
 
 class BuilderAppList
   constructor: () ->
-    @app_bootstrap = module_bootstrap
+    @app_bootstrap = module_bootstraps
     @getAppList()
 
   getAppList: () =>

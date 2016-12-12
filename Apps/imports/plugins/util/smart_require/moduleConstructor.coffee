@@ -15,23 +15,26 @@ framework = fs.readdirSync(importsPath)
 
 _framework_modules = {}
 
+simpleModule = (info) ->
+  info.filePath
+
+
 build_framework_modules = (fileInfo) ->
-  if fileInfo.fileType == 'coffee'
+   if fileInfo.folderType == '.DS_Store' or fileInfo.moduleName == ''
+   else
     _framework_modules[fileInfo.folderType] = {} if not _framework_modules[fileInfo.folderType]
     if _framework_modules[fileInfo.folderType][fileInfo.moduleName]
-      _framework_modules[fileInfo.folderType][fileInfo.moduleName].push fileInfo
+      _framework_modules[fileInfo.folderType][fileInfo.moduleName].push simpleModule fileInfo
     else
-      _framework_modules[fileInfo.folderType][fileInfo.moduleName] = [fileInfo]
+      _framework_modules[fileInfo.folderType][fileInfo.moduleName] = [simpleModule fileInfo]
 
 _framework_bootstrap = framework.map (item) -> dirTree(importsPath + item , item, build_framework_modules)
 
-object = {
-  modules: _framework_modules
-  bootstrap: _framework_bootstrap
-}
+
+object = _framework_modules
 ostr = season.stringify object
 
-ojsonstr = JSON.stringify object, null, 4
+ojsonstr = JSON.stringify object
 str = "module_bootstrap=" + ojsonstr+";export {module_bootstrap};"
 fs.truncateSync configsPath + "/bootstrap.js"
 fs.writeFileSync configsPath + "/bootstrap.js", str, {flag: 'w'}

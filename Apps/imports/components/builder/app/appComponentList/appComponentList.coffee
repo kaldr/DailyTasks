@@ -19,6 +19,7 @@ class appComponentList extends Controller
   createComponent: (app, name, path) =>
     Meteor.call 'createComponent', app, name, path, (err, data) =>
       console.log data
+
   addComponentAction: (event, item) =>
     DialogueController = ($scope, $mdDialog) =>
       $scope.createComponent = @createComponent
@@ -44,20 +45,19 @@ class appComponentList extends Controller
     if not @searchComponent
       return true
     else
-      @searchComponent = @searchComponent.toLowerCase()
       f = node.fileName.toLowerCase()
-    if f.indexOf(@searchComponent) >-1
+    if f.indexOf(@searchComponent.toLowerCase()) >-1
       return true
     else
       chldr = _.find node.children, (item) =>
         fn = item.fileName.toLowerCase()
-        return fn.indexOf(@searchComponent) >-1
+        return fn.indexOf(@searchComponent.toLowerCase()) >-1
       if chldr
         return true
     false
 
   getComponentList: () =>
-    b = _.find module_bootstrap.bootstrap, (item) ->return item.fileName == 'components'
+    b = _.find module_bootstraps.bootstrap, (item) ->return item.fileName == 'components'
     app = _.find b.children, (item) =>return item.fileName == @appName
 
     if app

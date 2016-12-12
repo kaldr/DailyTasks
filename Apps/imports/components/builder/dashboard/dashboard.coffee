@@ -5,7 +5,7 @@ import _ from 'lodash'
 class BuilderDashboard
   constructor: ($scope, $rootScope) ->
     'ngInject'
-    @app_bootstrap = module_bootstrap
+    @app_bootstrap = module_bootstraps
     @getApps()
     @getApis()
     @getConfigs()

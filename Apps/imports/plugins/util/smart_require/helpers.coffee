@@ -1,6 +1,7 @@
-import fs from 'fs'
-import path from 'path'
-import _ from 'lodash'
+if Meteor.isServer
+  fs = require 'fs'
+  path = require 'path'
+  _ = require 'lodash'
 ###
   获取一个文件的相对路径
   @method relativePath
@@ -56,4 +57,4 @@ dirTree = (filename, folderType, fileCallback, folderCallback) ->
     fileCallback? info
   info
 
-export {dirTree, relativePath}
+export {dirTree, relativePath, fileFolder}
