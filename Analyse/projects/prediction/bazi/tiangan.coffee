@@ -14,6 +14,13 @@ class Tiangan
     @shiShenList = ['比肩','劫财','食神','伤官','偏财','正财','偏官','正官','偏印','正印']
     @shiShens = @shiShen()
 
+  tianganHe: () =>
+    @yangHe = {
+
+    }
+    @yinHe = {
+
+    }
   configTianganList: () =>
     @tianganList = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸']
     @tianganYinList = ['乙','甲','丁','丙','己','戊','辛','庚','癸','壬']
@@ -60,6 +67,4 @@ class Tiangan
       index = @mapIndex(tiangan)
       @shiShenList[index ]
 
-a = new Tiangan('癸')
-
-console.log a.shiShen()
+exports.Tiangan = Tiangan

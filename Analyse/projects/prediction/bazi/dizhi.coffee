@@ -1,4 +1,5 @@
 _ = require 'lodash'
+
 class Dizhi
   constructor: (@name) ->
 
@@ -17,3 +18,5 @@ class Dizhi
       '戌': ['戊','辛','丁']
       '亥': ['壬','甲']
     if dizhi then return canggan[dizhi] else return cangan
+
+exports.Dizhi = Dizhi

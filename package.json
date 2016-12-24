@@ -16,6 +16,7 @@
     "cheerio": "^0.22.0",
     "coffee-script": "^1.11.1",
     "cson": "^4.0.0",
+    "iconv-lite": "^0.4.15",
     "jsmediatags": "^3.3.0",
     "lda": "^0.1.9",
     "local-itunes": "^0.3.0",
