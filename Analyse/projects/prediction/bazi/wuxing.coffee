@@ -8,6 +8,12 @@ class Wuxing
     @wuxing = @getWuxing @name
     @wuxingIndex = _.indexOf @elementList, @wuxing
 
+  setName: (name) =>
+    @name = name
+    @wuxing = @getWuxing @name
+    @wuxingIndex = _.indexOf @elementList, @wuxing
+    @
+
   getRelation: (list) =>
     if typeof list == 'string'
       list = list.replace(/\s/g, '')

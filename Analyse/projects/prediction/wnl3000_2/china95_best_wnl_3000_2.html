@@ -1,0 +1,1072 @@
+
+<!-- saved from url=(0054)http://www.china95.net/wnl/china95_best_wnl_3000_2.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Language" content="zh-cn">
+
+<title>公元前850年至公元2100年超强近三千年全息在线万年历（老黄历-日历）元亨利贞网在线万年历,阴历阳历,天干地支,在线取名免费算命,在线电脑免费算命,算命占卜,算命论坛</title>
+<style>
+a {color: rgb(0,0,150) ; Text-decoration:none  ; font-weight : none}
+a:hover {color: rgb(250,40,40);text-decoration:underline; font-weight : none}
+a:visited {color: rgb(80,0,80)}
+.style1 {
+	font-size: 12px;
+	font-family: "宋体";
+}
+</style>
+<script src="./ccc.js"></script><script src="./math.js"></script><script src="./solar.js"></script><script src="./sterm.js"></script><script src="./ganzhi.js"></script><script src="./lunar.js"></script><script src="./string.js"></script><script src="./ftvl.js"></script><script src="./era.js"></script><script src="./timezone.js"></script><script>
+
+
+function css(border_left,border_top,border_right,border_bottom,backgroundColor){
+
+  this.borderLeft=border_left;
+  this.borderTop=border_top;
+  this.borderRight=border_right;
+  this.borderBottom=border_bottom;
+  this.backgroundColor=backgroundColor;
+
+  this.style='border-left:'+this.borderLeft
+            +';border-top:'+this.borderTop
+            +';border-right:'+this.borderRight
+            +';border-bottom:'+this.borderBottom
+            +';background-color:'+this.backgroundColor;
+}
+
+//风格
+
+var releasedGridStyle=new css(
+                               'outset 1px #ECE9D8',                    //border_left
+                               'outset 1px #ECE9D8',                    //border_top
+                               'solid 1px #ECE9D8',                    //border_right
+                               'solid 1px #ECE9D8',                    //border_bottom
+                               '#ECE9D8'                                //background-color
+                              );
+var pressedGridStyle=new css(
+                               'inset 1px #000000',                     //border_left
+                               'inset 1px #000000',                     //border_top
+                               'solid 1px #ECE9D8',                     //border_right
+                               'solid 1px #ECE9D8',                     //border_bottom
+                               '#ACA899'                                //background-color
+                              );
+
+
+var overGridStyle=new css(
+                               'double 1px #316AC5',                     //border_left
+                               'double 1px #316AC5',                     //border_top
+                               'double 1px #316AC5',                     //border_right
+                               'double 1px #316AC5',                     //border_bottom
+                               '#C1D2EE'                                 //background-color
+                              );
+
+var outGridStyle=releasedGridStyle;
+
+var backArrowStyle=new css(
+                               'solid 1px #ECE9D8',                    //border_left
+                               'outset 1px #ECE9D8',                    //border_top
+                               'solid 1px #ECE9D8',                    //border_right
+                               'solid 1px #ECE9D8',                    //border_bottom
+                               '#ECE9D8'                                //background-color
+                              );
+
+var forwardArrowStyle=backArrowStyle;
+
+var yearBarStyle=new css(
+                               'solid 1px #ECE9D8',                    //border_left
+                               'outset 1px #ECE9D8',                    //border_top
+                               'solid 1px #ECE9D8',                    //border_right
+                               'solid 1px #ECE9D8',                    //border_bottom
+                               '#ECE9D8'                                //background-color
+                              );
+
+var monthBarStyle=yearBarStyle;
+var calTypeBarStyle=yearBarStyle;
+var timeZoneBarStyle=yearBarStyle;
+
+var dayBarStyle=new css(
+                               'outset 0px #A2AEB1',                    //border_left
+                               'outset 0px #A2AEB1',                    //border_top
+                               'outset 1px #A2AEB1',                    //border_right
+                               'outset 0px #ffffff',                    //border_bottom
+                               '#ECE9D8'                                //background-color
+                              );
+
+var infoBarStyle=new css(
+                               'outset 1px #000000',                    //border_left
+                               'outset 1px #ffffff',                    //border_top
+                               'outset 1px #000000',                    //border_right
+                               'outset 1px #000000',                    //border_bottom
+                               '#ECE9D8'                                //background-color
+                              );
+
+
+</script><script>
+//全局变量
+
+var gTime=new Date();  //global time
+var gYear=gTime.getYear();
+var gMonth=gTime.getMonth()+1;
+var gDate=gTime.getDate();
+var gHour=gTime.getHours();
+var gMinute=gTime.getMinutes();
+var gSecond=gTime.getSeconds();
+var gCalType=1;
+var gZone=-gTime.getTimezoneOffset()/60;
+var gZone0=gZone;
+
+var pressedCal=new CCC(gYear,gMonth,gDate,gHour+':'+gMinute+':'+gSecond,gZone,gCalType);
+
+var pressedGridID;
+var overedGridID;
+function calendarGrid(){
+  this.gridIndex;
+  this.year;
+  this.month;
+  this.date;
+  this.calType;
+  this.lunarDate;
+}
+
+//日历格子对象
+var calGrid=new Array();
+for(i=0;i<42;i++){
+  calGrid[i]=new calendarGrid();
+}
+
+
+//建造工具栏
+function buildToolBar(gridWidth,gridHeight,year,month,date,calType){
+  var fontStyle;
+  var fontStyle='color:#000000;font-size:9pt;';
+
+  var toolBarHTML='<table width='+((gridWidth+2)*7+2)+' height=30 cellpadding=0 cellspacing=0 style="border:solid 1px #000000;border-bottom:0px;"><tr>';
+
+  var overArrowAction='this.style.backgroundColor="#C1D2EE";this.style.borderColor="#316AC5";';
+  var outArrowAction='this.style.backgroundColor="#ECE9D8";this.style.borderColor="#ECE9D8";';
+  var overTextBarAction=overArrowAction;
+  var outTextBarAction=outArrowAction;
+
+  var changeYearOptionAction='this.blur();updateCalTable('+gridWidth+','+gridHeight+',this.value'+','+month+',calGrid[parseInt(pressedGridID.id.substring(7,10))].date,'+calType+');';
+  var changeMonthOptionAction='this.blur();updateCalTable('+gridWidth+','+gridHeight+','+year+',parseInt(this.value),calGrid[parseInt(pressedGridID.id.substring(7,10))].date,'+calType+');';
+  var changecalTypeOptionAction='this.blur();changecalType(this.value,'+gridWidth+','+gridHeight+','+year+','+month+',calGrid[parseInt(pressedGridID.id.substring(7,10))].date,'+calType+');';
+  var changetimeZoneOptionAction='this.blur();if(this.value==13){setTimeNow(true);}else{gZone=this.value;gTime.setTime(gTime.getTime()+(gZone-gZone0)*60*60*1000);gZone0=gZone;updateCalTable('+gridWidth+','+gridHeight+','+year+','+month+',calGrid[parseInt(pressedGridID.id.substring(7,10))].date,'+calType+');};';
+
+  ////////////////////////  选择年份  //////////////////////////////////////////////
+  toolBarHTML+='<td onclick="lastYearAction('+gridWidth+','+gridHeight+','+year+','+month+',calGrid[parseInt(pressedGridID.id.substring(7,10))].date,'+calType+')" style="'
+     +backArrowStyle.style
+     +'" '
+     +' title=上一年 '
+     +' onmouseover='+overArrowAction
+     +' onmouseout='+outArrowAction+'>'
+     +'<center style="'+fontStyle+';font-family:Webdings;">'
+     +'3'
+     +'</center>'
+     +'</td>';
+
+  toolBarHTML+='<td id=yearTextBar width=60 style="display:;'
+     +yearBarStyle.style
+     +'" '
+     +' onmouseover='+overTextBarAction
+     +' onmouseout='+outTextBarAction+'>'
+     +'<center style="'+fontStyle
+     +'" onclick=yearTextBar.style.display="none";yearOptionBar.style.display="";yearSelect.value='+year+';yearSelect.select();'
+     +' title='+pressedCal.chineseEra()
+     +'>'
+     +yearStr(year)+'年'
+     +'</center>'
+     +'</td>';
+
+  var yearOptionHTML='<input type=text size=6 id=yearSelect'
+     +' onblur=yearOptionBar.style.display="none";yearTextBar.style.display="";'
+     +' onchange='+changeYearOptionAction
+     +'>';
+
+
+  toolBarHTML+='<td id=yearOptionBar width=60 style="display:none;'
+     +yearBarStyle.style
+     +'">'
+     +'<center style="'+fontStyle
+     +'">'
+     +yearOptionHTML
+     +'</center>'
+     +'</td>';
+
+  toolBarHTML+='<td onclick="nextYearAction('+gridWidth+','+gridHeight+','+year+','+month+',calGrid[parseInt(pressedGridID.id.substring(7,10))].date,'+calType+')" style="'
+     +forwardArrowStyle.style
+     +'" '
+     +' title=下一年 '
+     +' onmouseover='+overArrowAction
+     +' onmouseout='+outArrowAction+'>'
+     +'<center style="'+fontStyle+';font-family:Webdings;">'
+     +'4'
+     +'</center>'
+     +'</td>';
+  //////////////////////////////////////////////////////////////////////////////////
+
+  ///////////////////////////  选择历种  //////////////////////////////////////////
+
+  toolBarHTML+='<td id=calTypeTextBar width=60 style="display:;'
+     +calTypeBarStyle.style
+     +'" '
+     +' onmouseover='+overTextBarAction+';refreshPressedCal();calTypeTextBarFont.title="儒略日："+pressedCal.JulianDay();'
+     +' onmouseout='+outTextBarAction+'>'
+     +'<center id=calTypeTextBarFont style="'+fontStyle
+     +';"'
+     +' onclick=calTypeTextBar.style.display="none";calTypeOptionBar.style.display="";'
+     +' title='+'儒略日：'+pressedCal.JulianDay()
+     +'>['
+     +calTypeStr(calType)
+     +']</center>'
+     +'</td>';
+
+  var calTypeOptionHTML='<select id=calTypeSelect'
+     +' onblur=calTypeOptionBar.style.display="none";calTypeTextBar.style.display="";'
+     +' onchange='+changecalTypeOptionAction
+     +'>';
+  calTypeOptionHTML+='<option value=0>选择</option>';
+  for(var k=1;k<=3;k++){
+    calTypeOptionHTML+='<option value='+k+'>';
+    calTypeOptionHTML+=calTypeStr(k);
+    calTypeOptionHTML+='</option>';
+  }
+
+  calTypeOptionHTML+='</select>';
+
+  toolBarHTML+='<td id=calTypeOptionBar width=60 style="display:none;'
+     +calTypeBarStyle.style
+     +'">'
+     +'<center style="'+fontStyle
+     +'">'
+     +calTypeOptionHTML
+     +'</center>'
+     +'</td>';
+
+  //////////////////////////////////////////////////////////////////////////////////
+
+  ////////////////////////////    选择时间    //////////////////////////////////////
+
+  toolBarHTML+='<td onclick="lastHourAction('+gridWidth+','+gridHeight+','+year+','+month+',calGrid[parseInt(pressedGridID.id.substring(7,10))].date,'+calType+')" style="'
+     +backArrowStyle.style
+     +'" '
+     +' title=前一小时 '
+     +' onmouseover='+overArrowAction
+     +' onmouseout='+outArrowAction+'>'
+     +'<center style="'+fontStyle+';font-family:Webdings;">'
+     +'3'
+     +'</center>'
+     +'</td>';
+
+  toolBarHTML+='<td style="'
+     +monthBarStyle.style
+     +'" '
+     +' onmouseover='+overTextBarAction
+     +' onmouseout='+outTextBarAction+'>'
+     +'<center id=timeTextBar style="'+fontStyle
+     +'" '
+     +' onclick=timeTextBar.style.display="none";timeZoneOptionBar.style.display="";'
+     +' title= '
+     +' onclick=setTimeNow(true);'
+     +'>'
+     +((gHour>=10)?gHour:'0'+gHour)+':'+((gMinute>=10)?gMinute:'0'+gMinute)+':'+((gSecond>=10)?gSecond:'0'+gSecond)
+     +'</center>'
+     +'</td>';  
+
+  var timeZoneOptionHTML='<select id=timeZoneSelect'
+     +' style="position:relative;z-index:10;width:260;"'
+     +' onblur=timeZoneOptionBar.style.display="none";timeTextBar.style.display="";'
+     +' onchange='+changetimeZoneOptionAction
+     +'>';
+  timeZoneOptionHTML+='<option value=-13>选择时区</option>';
+  for(var k=-12;k<=12;k++){
+    timeZoneOptionHTML+='<option value='+k+'>';
+    timeZoneOptionHTML+=timeZoneName(k);
+    timeZoneOptionHTML+='</option>';
+  }
+  timeZoneOptionHTML+='<option value=13>恢复当前时间</option>';
+
+  timeZoneOptionHTML+='</select>';
+
+  toolBarHTML+='<td id=timeZoneOptionBar width=60 style="display:none;'
+     +timeZoneBarStyle.style
+     +'">'
+     +'<center style="'+fontStyle
+     +'">'
+     +timeZoneOptionHTML
+     +'</center>'
+     +'</td>';
+
+
+
+  toolBarHTML+='<td onclick="nextHourAction('+gridWidth+','+gridHeight+','+year+','+month+',calGrid[parseInt(pressedGridID.id.substring(7,10))].date,'+calType+')" style="'
+     +forwardArrowStyle.style
+     +'" '
+     +' title=后一小时 '
+     +' onmouseover='+overArrowAction
+     +' onmouseout='+outArrowAction+'>'
+     +'<center style="'+fontStyle+';font-family:Webdings;">'
+     +'4'
+     +'</center>'
+     +'</td>';
+
+  //////////////////////////////////////////////////////////////////////////////////
+
+
+
+  ////////////////////////  选择月份  //////////////////////////////////////////////
+  toolBarHTML+='<td onclick="lastMonthAction('+gridWidth+','+gridHeight+','+year+','+month+',calGrid[parseInt(pressedGridID.id.substring(7,10))].date,'+calType+')" style="'
+     +backArrowStyle.style
+     +'" '
+     +' title=上个月 '
+     +' onmouseover='+overArrowAction
+     +' onmouseout='+outArrowAction+'>'
+     +'<center style="'+fontStyle+';font-family:Webdings;">'
+     +'3'
+     +'</center>'
+     +'</td>';
+
+  toolBarHTML+='<td id=monthTextBar width=60 style="display:;'
+     +monthBarStyle.style
+     +'" '
+     +' onmouseover='+overTextBarAction
+     +' onmouseout='+outTextBarAction+'>'
+     +'<center style="'+fontStyle
+     +'" onclick=monthTextBar.style.display="none";monthOptionBar.style.display="";'
+     +'>'
+     +month+'月'
+     +'</center>'
+     +'</td>';
+
+  var monthOptionHTML='<select id=monthSelect'
+     +' onblur=monthOptionBar.style.display="none";monthTextBar.style.display="";'
+     +' onchange='+changeMonthOptionAction
+     +'>';
+  monthOptionHTML+='<option value=0>选择</option>';
+  for(var k=1;k<=12;k++){
+    monthOptionHTML+='<option value='+k+'>';
+    monthOptionHTML+=k+'月';
+    monthOptionHTML+='</option>';
+  }
+
+  monthOptionHTML+='</select>'
+
+  toolBarHTML+='<td id=monthOptionBar width=60 style="display:none;'
+     +monthBarStyle.style
+     +'">'
+     +'<center style="'+fontStyle
+     +'">'
+     +monthOptionHTML
+     +'</center>'
+     +'</td>';
+
+  toolBarHTML+='<td onclick="nextMonthAction('+gridWidth+','+gridHeight+','+year+','+month+',calGrid[parseInt(pressedGridID.id.substring(7,10))].date,'+calType+')" style="'
+     +forwardArrowStyle.style
+     +'" '
+     +' title=下个月 '
+     +' onmouseover='+overArrowAction
+     +' onmouseout='+outArrowAction+'>'
+     +'<center style="'+fontStyle+';font-family:Webdings;">'
+     +'4'
+     +'</center>'
+     +'</td>';
+
+  //////////////////////////////////////////////////////////////////////////////////
+
+
+  toolBarHTML+='</tr></table>';
+
+  return toolBarHTML;
+}
+
+</script><script>
+//建造星期栏
+function buildDayBar(gridWidth,gridHeight,year,month,date,calType){
+  var i;
+  var fontStyle;
+  var value;
+  var width=gridWidth;
+  var height=gridHeight;
+
+  var dayBarHTML='<table width='+((gridWidth+2)*7+2)+' cellpadding=0 cellspacing=0 style="border:solid 1px #000000;border-top:solid 1px #A2AEB1;border-bottom:0px">';
+
+  dayBarHTML+='<tr>';
+  for(i=0;i<7;i++){
+
+    if(i==0||i==6){
+      fontStyle='color:#ff0000;font-size:9pt;';
+    }
+    else{
+      fontStyle='color:#000000;font-size:9pt;';
+    }
+
+    if(i==6){
+      dayBarStyle.style+=';border-right:0px;';
+    }
+    else{
+      dayBarStyle=new css(
+                               'outset 0px #A2AEB1',                    //border_left
+                               'outset 0px #A2AEB1',                    //border_top
+                               'outset 1px #A2AEB1',                    //border_right
+                               'outset 0px #ffffff',                    //border_bottom
+                               '#ECE9D8'                                //background-color
+                              );
+    }
+
+    value=dayStr(i);
+
+    dayBarHTML+='<td style="'
+       +dayBarStyle.style
+       +'" width='+width
+       +'" height='+height
+       +'">'
+       +'<center style="'+fontStyle+'">'
+       +value
+       +'</center>'
+       +'</td>';
+
+  }
+  dayBarHTML+='</tr>';
+
+  dayBarHTML+='</table>';
+
+  return dayBarHTML;
+}
+
+</script><script>
+
+//建造日期格子
+function buildDateGrid(gridWidth,gridHeight,year,month,date,calType){
+  var i,j;
+  var id;
+  var value;
+  var width=gridWidth;
+  var height=gridHeight;
+  var gridStyle=releasedGridStyle.style;
+  var onClickAction='clickGrid(this)';
+  var onOverAction='overGrid(this)';
+  var fontStyle;
+  var lunarTxtStyle;
+  var disabledHTML='';
+
+  var firstDateDay=Day(year,month,1,calType);  //本月1日的星期
+  var lastMonthLength;
+  if(month==1){
+    lastMonthLength=D0(year-1,12,31,calType)-D0(year-1,12,0,calType);
+  }
+  else{
+    lastMonthLength=D0(year,month,1,calType)-D0(year,month-1,1,calType);
+  }
+
+  var currentMonthLength=D0(year,month+1,1,calType)-D0(year,month,1,calType);
+  var grid0DateNum=lastMonthLength-firstDateDay+1;
+  var gridDateNum=new Array();
+  gridDateNum[0]=grid0DateNum;
+  var todayGridID;
+
+  var whichMonth=new Array();
+  whichMonth[0]=(gridDateNum[0]!=1)?'last':'current';
+
+  var gridMonthNum=new Array();
+
+  var gridYearNum=new Array();
+
+  for(i=0;i<42;i++){
+      if(i>0){
+        gridDateNum[i]=gridDateNum[i-1]+1;
+        whichMonth[i]=whichMonth[i-1];
+      }
+
+      if(whichMonth[i]=='last'&&gridDateNum[i]>lastMonthLength){
+        gridDateNum[i]-=lastMonthLength;
+        whichMonth[i]='current';
+      }
+
+      if(whichMonth[i]=='current'&&gridDateNum[i]>currentMonthLength){
+        gridDateNum[i]-=currentMonthLength;
+        whichMonth[i]='next';
+      }
+
+      gridMonthNum[i]=month;
+
+      if(whichMonth[i]=='last'){
+        gridMonthNum[i]--;
+      }
+
+      if(whichMonth[i]=='next'){
+        gridMonthNum[i]++;
+      }
+
+      gridYearNum[i]=year;
+      if(gridMonthNum[i]>12){
+        gridYearNum[i]++;
+        gridMonthNum[i]-=12;
+      }
+
+      if(gridMonthNum[i]<1){
+        gridYearNum[i]--;
+        gridMonthNum[i]+=12;
+      }
+  }
+
+
+  var grid0Lunar=new lunarCal(gridYearNum[0],gridMonthNum[0],gridDateNum[0],calType);
+  var grid0LunarDate=grid0Lunar.date;
+  var grid0LunarMonth=grid0Lunar.month;
+
+  var lunD=new Array();
+  lunD[0]=grid0Lunar.date;
+
+  var lunMon=new Array();
+  lunMon[0]=grid0Lunar.month;
+
+  var lunar2ndHead=30-lunD[0];
+
+  var grid2ndLunar=new lunarCal(gridYearNum[lunar2ndHead],gridMonthNum[lunar2ndHead],gridDateNum[lunar2ndHead],calType);
+  var grid2ndLunarDate=grid2ndLunar.date;
+  var grid2ndLunarMonth=grid2ndLunar.month;
+  lunD[lunar2ndHead]=grid2ndLunar.date;
+  lunMon[lunar2ndHead]=grid2ndLunar.month;
+
+  var lunar1stTail;
+
+  if(lunD[lunar2ndHead]==30){
+    lunar1stTail=lunar2ndHead;
+  }
+  else{
+    lunar1stTail=lunar2ndHead-1;
+  }
+
+  lunar2ndHead=lunar1stTail+1;
+
+  for(i=1;i<=lunar1stTail;i++){
+    lunD[i]=lunD[i-1]+1;
+    lunMon[i]=lunMon[i-1]; 
+  }
+
+  lunD[lunar2ndHead]=1;
+
+  if(lunMon[lunar1stTail]>0){
+    lunMon[lunar2ndHead]=((lunMon[lunar1stTail]+1)-1)%12+1; 
+  }
+  else{
+    lunMon[lunar2ndHead]=((-lunMon[lunar1stTail]+1)-1)%12+1; 
+  }
+
+
+  var grid41Lunar=new lunarCal(gridYearNum[41],gridMonthNum[41],gridDateNum[41],calType);
+  var grid41LunarDate=grid41Lunar.date;
+  var grid41LunarMonth=grid41Lunar.month;
+  lunD[41]=grid41Lunar.date;
+  lunMon[41]=grid41Lunar.month;
+
+  //////特别处理1582年9月///////////////
+
+  if(year==1582&&month==9&&calType==1){
+    lunD[41]=20;;
+    lunMon[41]=9;   
+
+    gridDateNum[40]=15;
+    gridDateNum[41]=16;
+  }
+
+  ///////////////////////////////////////
+
+  for(i=40;i>=lunar2ndHead;i--){
+    if(lunD[i+1]==1){
+      for(j=lunar2ndHead+1;j<i+1;j++){
+        lunD[j]=lunD[j-1]+1;
+        lunMon[j]=lunMon[j-1]; 
+      }
+
+      break;
+    }
+    lunD[i]=lunD[i+1]-1;
+    lunMon[i]=lunMon[i+1];
+  }
+
+
+  //////特别处理1582年10月///////////////
+
+  if(year==1582&&month==10&&calType==1){
+    lunD[25]=29;
+    lunMon[25]=9;
+    for(i=24;i>=15;i--){
+      lunD[i]=lunD[i+1]-1;
+      lunMon[i]=lunMon[i+1];
+    }
+    for(i=42;i<149;i++){
+      lunD[i]=lunD[i-1]+1;
+      lunMon[i]=lunMon[i-1];
+      whichMonth[i]=whichMonth[i-1];
+      gridDateNum[i]=gridDateNum[i-1]+1;
+      calGrid[i]=calGrid[i-1]+1;
+    }
+  }
+
+  ///////////////////////////////////////
+
+  var ifChuyiAndJq=0;  //是否有初一与节气相重合的一天
+
+  var dateGridHTML='<table cellpadding=0 cellspacing=0 style="border:solid 1px #000000;border-top:0px;border-bottom:0px;">';
+
+  var iMax=(year==1582&&month==10&&calType==1)?8:6;
+
+  for(i=0;i<iMax;i++){
+
+    if(!(year==1582&&month==10&&calType==1&&i!=0)){
+      dateGridHTML+='<tr>';
+    }
+
+    for(j=0;j<7;j++){
+
+
+      if(whichMonth[7*i+j]=='last'||whichMonth[7*i+j]=='next'){
+        disabledHTML=' disabled ';
+      }
+      else{
+        disabledHTML='';
+      }
+      if(date==gridDateNum[7*i+j]){
+        todayGridID=id;
+      }
+
+
+      if((7*i+j)%7==0||(7*i+j)%7==6){
+        fontStyle='color:#ff0000;font-size:9pt;';
+      }
+      else{
+        fontStyle='color:#000000;font-size:9pt;';
+      }
+
+      lunarTxtStyle='color:#000000;font-size:8pt;';
+
+
+      lunarTxt=lunDStr(lunD[7*i+j]);
+      if(lunarTxt=='初一'){
+        lunarTxt=lunMStr(lunMon[7*i+j])+'月';
+      }
+
+      var newSTerm=pressedCal.solarTerm();
+
+      var s1=newSTerm.sTermInMonth[0];
+      var s2=newSTerm.sTermInMonth[1];
+      if(parseInt(s1.substring(s1.indexOf('月')+1,s1.indexOf('日')))==gridDateNum[7*i+j]){
+          if(lunarTxt.indexOf('月')!=-1){
+            ifChuyiAndJq=1;
+          }
+          lunarTxt=s1.substring(0,2);
+      }
+      if(parseInt(s2.substring(s2.indexOf('月')+1,s2.indexOf('日')))==gridDateNum[7*i+j]){
+          if(lunarTxt.indexOf('月')!=-1){
+            ifChuyiAndJq=1;
+          }
+          lunarTxt=s2.substring(0,2);
+      }
+
+      if(ifChuyiAndJq==1&&lunarTxt=='初二'){
+        lunarTxt=lunMStr(lunMon[7*i+j])+'月';
+        ifChuyiAndJq=0;
+      }
+
+
+      id='calGrid'+(7*i+j);
+      value=gridDateNum[7*i+j]+'<br>'+'<span style="'+lunarTxtStyle+'">'+lunarTxt+'</span>';
+
+
+      //////特别处理1582年10月///////////////
+
+      if(year==1582&&month==10&&calType==1&&((7*i+j)>=5&&(7*i+j)<15)){
+        continue;
+      }
+      else if(year==1582&&month==10&&calType==1&&((7*i+j)==17||(7*i+j)==24||(7*i+j)==31||(7*i+j)==38)){
+        dateGridHTML+='</tr><tr>';
+      }
+      else if(year==1582&&month==10&&calType==1&&((7*i+j)==45)){
+        dateGridHTML+='</tr>';
+        break;
+      }
+
+      ///////////////////////////////////////
+
+      dateGridHTML+='<td id="'+id
+        +'" width='+width
+        +'" height='+height
+        +disabledHTML
+        +' style="'+gridStyle
+        +'" onclick="'+onClickAction
+        +'" onmouseover='+onOverAction
+
+        +' title= '
+
+        +'>'
+        +'<center style="'+fontStyle+'">'
+        +value
+        +'</center>'
+        +'</td>';
+
+     calGrid[(7*i+j)].gridIndex=(7*i+j);
+     calGrid[(7*i+j)].date=gridDateNum[7*i+j];
+     calGrid[(7*i+j)].year=year;
+     calGrid[(7*i+j)].month=month;
+     calGrid[(7*i+j)].calType=calType;
+
+    }
+
+    if(!(year==1582&&month==10&&calType==1&&i!=7)){
+      dateGridHTML+='</tr>';
+    }
+  }
+
+  dateGridHTML+='</table>';
+
+  return dateGridHTML;
+}
+
+
+</script><script>
+//建造其他信息栏
+function buildInfoBar(gridWidth,gridHeight,year,month,date,calType){
+  var i;
+  var fontStyle='color:#000000;font-size:9pt;';
+  var width=(gridWidth+2)*7+2;
+
+
+  var infoBarHTML='<table cellpadding=0 cellspacing=0 width='+width+'>';
+
+  infoBarHTML+='<tr>';
+
+  var newSTerm=pressedCal.solarTerm();
+
+  //显示节气时刻
+  infoBarHTML+='<td style="'
+             +infoBarStyle.style
+              +'">'
+              +'<center id=sTermBar style="'+fontStyle+'">'
+
+              +newSTerm.sTermInMonth[0]+'　'
+              +'<span id=solarZodiacBar>'+pressedCal.solarZodiac_Str+'</span>'+'　'
+              +newSTerm.sTermInMonth[1]
+
+              +'</center>'
+              +'</td>';
+
+  infoBarHTML+='</tr>';
+
+  infoBarHTML+='</table>';
+
+  return infoBarHTML;
+}
+
+</script><script>
+
+function buildCalTable(gridWidth,gridHeight,year,month,date,calType){
+
+  document.write('<div id=calTable style="cursor:default;" onmouseout=outCalTableAction()>元亨利贞网</div>');
+
+  updateCalTable(gridWidth,gridHeight,year,month,date,calType);
+
+  setTimeNow(false);
+
+}
+
+function updateCalTable(gridWidth,gridHeight,year,month,date,calType){
+
+  ////////////  检查年份范围  ////////////////////////
+  if(isNaN(year)||year<-849||year>2100){
+    alert("年份必须在-849（公元前850年）到2100之间");
+    return -1;
+  }
+  //////////////////////////////////////////////////////
+
+  gYear=year;
+  gMonth=month;
+  gDate=date;
+  gCalType=calType;
+  refreshPressedCal();
+
+  toolBarHTML=buildToolBar(gridWidth,gridHeight,year,month,date,calType);
+
+  dayBarHTML=buildDayBar(gridWidth,gridHeight*0.5,year,month,date,calType);
+
+  dateGridHTML=buildDateGrid(gridWidth,gridHeight,year,month,date,calType);
+
+  infoBarHTML=buildInfoBar(gridWidth,gridHeight,year,month,date,calType);
+
+  calTable.innerHTML=(toolBarHTML+dayBarHTML+dateGridHTML+infoBarHTML);
+  todayGridID='calGrid'+(date-1+Day(year,month,1,calType));
+  pressedGridID=document.all[todayGridID];
+  overedGridID=document.all[todayGridID];
+  clickGrid(document.all[todayGridID]);
+
+}
+
+////////////////////////////////////////////////////////////////////////
+function releasedGridAction(obj){
+  obj.style.borderLeft=releasedGridStyle.borderLeft;
+  obj.style.borderTop=releasedGridStyle.borderTop;
+  obj.style.borderRight=releasedGridStyle.borderRight;
+  obj.style.borderBottom=releasedGridStyle.borderBottom;
+  obj.style.backgroundColor=releasedGridStyle.backgroundColor;
+}
+
+function pressedGridAction(obj){
+  obj.style.borderLeft=pressedGridStyle.borderLeft;
+  obj.style.borderTop=pressedGridStyle.borderTop;
+  obj.style.borderRight=pressedGridStyle.borderRight;
+  obj.style.borderBottom=pressedGridStyle.borderBottom;
+  obj.style.backgroundColor=pressedGridStyle.backgroundColor;
+}
+
+
+function clickGrid(obj){
+  releasedGridAction(pressedGridID);
+  pressedGridAction(obj);
+  pressedGridID=obj;
+
+  var gridNo=obj.id.substring(7,10);
+
+  gYear=calGrid[gridNo].year;
+  gMonth=calGrid[gridNo].month;
+  gDate=calGrid[gridNo].date;
+  gCalType=calGrid[gridNo].calType;
+
+  refreshPressedCal();
+
+  //显示相关日历信息
+
+  timeTextBar.title=timeZoneName(parseInt(gZone0))+'\n'
+                   +'['+pressedCal.yGz_Str()+'年　'+pressedCal.mGz_Str()+'月　'+pressedCal.dGz_Str()+'日　'+pressedCal.hGz_Str()+'时'+']'+'\n'
+                   +'['+GZNY(pressedCal.yGz())+'　'+GZNY(pressedCal.mGz())+'　'+GZNY(pressedCal.dGz())+'　'+GZNY(pressedCal.hGz())+']'+'\n'
+                   +'二十八宿：'+pressedCal.stars28_Str();
+
+  solarZodiacBar.innerHTML=pressedCal.solarZodiac_Str();
+
+  var pressedCalLunar=pressedCal.lunar();
+  window.status=pressedCal.year()+'-'+pressedCal.month()+'-'+pressedCal.date()+'　'
+            +pressedCal.chineseZodiacName()+'年　'
+            +pressedCalLunar.lunarMonth_Str+'月'+pressedCalLunar.lunarDate_Str+'　'
+            +pressedCalLunar.syzygyTime_Str+pressedCalLunar.syzygyName
+            +pressedCalLunar.ecliType_Str
+            +((pressedCal.sFtvl()!='')?'\n'+pressedCal.sFtvl():'')
+            +((pressedCalLunar.lunFtvl()!='')?'\n'+pressedCalLunar.lunFtvl():'')
+            +((pressedCal.jqFtvl()!='')?'\n'+pressedCal.jqFtvl():'')+'　'
+            +'['+pressedCal.yGz_Str()+'年　'+pressedCal.mGz_Str()+'月　'+pressedCal.dGz_Str()+'日　'+pressedCal.hGz_Str()+'时'+']'
+            +'　—'+pressedCal.chineseEra()
+            ;
+}
+
+////////////////////////////////////////////////////////////////////////
+function outGridAction(obj){
+  obj.style.borderLeft=outGridStyle.borderLeft;
+  obj.style.borderTop=outGridStyle.borderTop;
+  obj.style.borderRight=outGridStyle.borderRight;
+  obj.style.borderBottom=outGridStyle.borderBottom;
+  obj.style.backgroundColor=outGridStyle.backgroundColor;
+}
+
+function overGridAction(obj){
+  obj.style.borderLeft=overGridStyle.borderLeft;
+  obj.style.borderTop=overGridStyle.borderTop;
+  obj.style.borderRight=overGridStyle.borderRight;
+  obj.style.borderBottom=overGridStyle.borderBottom;
+  obj.style.backgroundColor=overGridStyle.backgroundColor;
+
+  //其他日历信息//
+  var gridNo=obj.id.substring(7,10);
+  var calInfo=new CCC(calGrid[gridNo].year,calGrid[gridNo].month,calGrid[gridNo].date,gHour+':'+gMinute+':'+gSecond,gZone,calGrid[gridNo].calType);
+  var calInfoLunar=calInfo.lunar();
+  obj.title=calInfo.year()+'-'+calInfo.month()+'-'+calInfo.date()+'　'
+            +calInfo.chineseZodiacName()+'年　'
+            +calInfoLunar.lunarMonth_Str+'月'+calInfoLunar.lunarDate_Str+'　'
+            +calInfoLunar.syzygyTime_Str+calInfoLunar.syzygyName
+            +calInfoLunar.ecliType_Str
+            +((calInfo.sFtvl()!='')?'\n'+calInfo.sFtvl():'')
+            +((calInfoLunar.lunFtvl()!='')?'\n'+calInfoLunar.lunFtvl():'')
+            +((calInfo.jqFtvl()!='')?'\n'+calInfo.jqFtvl():'');
+  ///////////////
+}
+
+
+function overGrid(obj){
+  outGridAction(overedGridID);
+  overGridAction(obj);
+
+  pressedGridAction(pressedGridID);
+
+  overedGridID=obj;
+}
+
+
+function outCalTableAction(){
+  outGridAction(overedGridID);
+  pressedGridAction(pressedGridID);
+}
+</script><script>
+function lastYearAction(gridWidth,gridHeight,year,month,pressedDate,calType){
+  year--;
+
+  updateCalTable(gridWidth,gridHeight,year,month,pressedDate,calType);
+
+}
+
+function nextYearAction(gridWidth,gridHeight,year,month,pressedDate,calType){
+  year++;
+
+  updateCalTable(gridWidth,gridHeight,year,month,pressedDate,calType);
+
+}
+
+function lastMonthAction(gridWidth,gridHeight,year,month,pressedDate,calType){
+  month--;
+  if(month<1){
+    month+=12;
+    year--;
+  }
+
+  updateCalTable(gridWidth,gridHeight,year,month,pressedDate,calType);
+
+}
+
+function nextMonthAction(gridWidth,gridHeight,year,month,pressedDate,calType){
+  month++;
+  if(month>12){
+    month-=12;
+    year++;
+  }
+
+  updateCalTable(gridWidth,gridHeight,year,month,pressedDate,calType);
+
+}
+
+function lastHourAction(gridWidth,gridHeight,year,month,pressedDate,calType){
+  var newtime=gTime.getTime();
+  gTime.setTime(newtime-60*60*1000);
+  gYear=gTime.getYear();
+  gMonth=gTime.getMonth()+1;
+  gDate=gTime.getDate();
+  gHour=gTime.getHours();
+  gMinute=gTime.getMinutes();
+  gSecond=gTime.getSeconds();
+
+  clickGrid(pressedGridID);
+
+  timeTextBar.innerHTML=((gHour>=10)?gHour:'0'+gHour)+':'+((gMinute>=10)?gMinute:'0'+gMinute)+':'+((gSecond>=10)?gSecond:'0'+gSecond);
+}
+
+function nextHourAction(gridWidth,gridHeight,year,month,pressedDate,calType){
+  var newtime=gTime.getTime();
+  gTime.setTime(newtime+60*60*1000);
+  gYear=gTime.getYear();
+  gMonth=gTime.getMonth()+1;
+  gDate=gTime.getDate();
+  gHour=gTime.getHours();
+  gMinute=gTime.getMinutes();
+  gSecond=gTime.getSeconds();
+
+  clickGrid(pressedGridID);
+
+  timeTextBar.innerHTML=((gHour>=10)?gHour:'0'+gHour)+':'+((gMinute>=10)?gMinute:'0'+gMinute)+':'+((gSecond>=10)?gSecond:'0'+gSecond);
+}
+
+function changecalType(calType2,gridWidth,gridHeight,year,month,pressedDate,calType){
+  var cal;
+  if(calType==1&&calType2==2){
+    cal=No2Gr(year,month,pressedDate);
+    calType=2;
+  }
+  if(calType==1&&calType2==3){
+    cal=No2Ju(year,month,pressedDate);
+    calType=3;
+  }
+  if(calType==2&&calType2==1){
+    cal=Gr2No(year,month,pressedDate);
+    calType=1;
+  }
+  if(calType==2&&calType2==3){
+    cal=Gr2Ju(year,month,pressedDate);
+    calType=3;
+  }
+  if(calType==3&&calType2==1){
+    cal=Ju2No(year,month,pressedDate);
+    calType=1;
+  }
+  if(calType==3&&calType2==2){
+    cal=Ju2Gr(year,month,pressedDate);
+    calType=2;
+  }
+
+  year=floor(cal/10000);
+  month=floor((cal-year*10000)/100);
+  pressedDate=cal%100;
+
+  updateCalTable(gridWidth,gridHeight,year,month,pressedDate,calType);
+}
+
+function setTimeNow(ifReset){
+  if(ifReset){
+    clearTimeout(timer);
+    gTime=new Date();
+    gYear=gTime.getYear();
+    gMonth=gTime.getMonth()+1;
+    gDate=gTime.getDate();
+    gZone0=gZone=-gTime.getTimezoneOffset()/60;
+    updateCalTable(70,70,gYear,gMonth,gDate,1);
+
+    timer=setTimeout('setTimeNow(false)',500);
+    return 0;
+  }
+  var newtime=gTime.getTime();
+  gTime.setTime(newtime+500);
+  gYear=gTime.getYear();
+  gMonth=gTime.getMonth()+1;
+  gDate=gTime.getDate();
+  gHour=gTime.getHours();
+  gMinute=gTime.getMinutes();
+  gSecond=gTime.getSeconds();
+
+  timeTextBar.innerHTML=((gHour>=10)?gHour:'0'+gHour)+':'+((gMinute>=10)?gMinute:'0'+gMinute)+':'+((gSecond>=10)?gSecond:'0'+gSecond);
+
+
+  timer=setTimeout('setTimeNow(false)',500);
+}
+
+function refreshPressedCal(){
+  pressedCal=new CCC(gYear,gMonth,gDate,gHour+':'+gMinute+':'+gSecond,gZone,gCalType);
+}
+
+</script></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body><center>
+<script>
+
+buildCalTable(70,70,gYear,gMonth,gDate,1);
+
+</script><div id="calTable" style="cursor:default;" onmouseout="outCalTableAction()"><table width="506" height="30" cellpadding="0" cellspacing="0" style="border:solid 1px #000000;border-bottom:0px;"><tbody><tr><td onclick="lastYearAction(70,70,139,7,calGrid[parseInt(pressedGridID.id.substring(7,10))].date,1)" style="border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" title="上一年" onmouseover="this.style.backgroundColor=&quot;#C1D2EE&quot;;this.style.borderColor=&quot;#316AC5&quot;;" onmouseout="this.style.backgroundColor=&quot;#ECE9D8&quot;;this.style.borderColor=&quot;#ECE9D8&quot;;"><center style="color:#000000;font-size:9pt;;font-family:Webdings;">3</center></td><td id="yearTextBar" width="60" style="display:;border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onmouseover="this.style.backgroundColor=&quot;#C1D2EE&quot;;this.style.borderColor=&quot;#316AC5&quot;;" onmouseout="this.style.backgroundColor=&quot;#ECE9D8&quot;;this.style.borderColor=&quot;#ECE9D8&quot;;"><center style="color:#000000;font-size:9pt;" onclick="yearTextBar.style.display=&quot;none&quot;;yearOptionBar.style.display=&quot;&quot;;yearSelect.value=139;yearSelect.select();" title="　　">139年</center></td><td id="yearOptionBar" width="60" style="display:none;border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8"><center style="color:#000000;font-size:9pt;"><input type="text" size="6" id="yearSelect" onblur="yearOptionBar.style.display=&quot;none&quot;;yearTextBar.style.display=&quot;&quot;;" onchange="this.blur();updateCalTable(70,70,this.value,7,calGrid[parseInt(pressedGridID.id.substring(7,10))].date,1);"></center></td><td onclick="nextYearAction(70,70,139,7,calGrid[parseInt(pressedGridID.id.substring(7,10))].date,1)" style="border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" title="下一年" onmouseover="this.style.backgroundColor=&quot;#C1D2EE&quot;;this.style.borderColor=&quot;#316AC5&quot;;" onmouseout="this.style.backgroundColor=&quot;#ECE9D8&quot;;this.style.borderColor=&quot;#ECE9D8&quot;;"><center style="color:#000000;font-size:9pt;;font-family:Webdings;">4</center></td><td id="calTypeTextBar" width="60" style="display:;border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onmouseover="this.style.backgroundColor=&quot;#C1D2EE&quot;;this.style.borderColor=&quot;#316AC5&quot;;;refreshPressedCal();calTypeTextBarFont.title=&quot;儒略日：&quot;+pressedCal.JulianDay();" onmouseout="this.style.backgroundColor=&quot;#ECE9D8&quot;;this.style.borderColor=&quot;#ECE9D8&quot;;"><center id="calTypeTextBarFont" style="color:#000000;font-size:9pt;;" onclick="calTypeTextBar.style.display=&quot;none&quot;;calTypeOptionBar.style.display=&quot;&quot;;" title="儒略日：1772013.8948611112">[公历]</center></td><td id="calTypeOptionBar" width="60" style="display:none;border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8"><center style="color:#000000;font-size:9pt;"><select id="calTypeSelect" onblur="calTypeOptionBar.style.display=&quot;none&quot;;calTypeTextBar.style.display=&quot;&quot;;" onchange="this.blur();changecalType(this.value,70,70,139,7,calGrid[parseInt(pressedGridID.id.substring(7,10))].date,1);"><option value="0">选择</option><option value="1">公历</option><option value="2">格里历</option><option value="3">儒略历</option></select></center></td><td onclick="lastHourAction(70,70,139,7,calGrid[parseInt(pressedGridID.id.substring(7,10))].date,1)" style="border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" title="前一小时" onmouseover="this.style.backgroundColor=&quot;#C1D2EE&quot;;this.style.borderColor=&quot;#316AC5&quot;;" onmouseout="this.style.backgroundColor=&quot;#ECE9D8&quot;;this.style.borderColor=&quot;#ECE9D8&quot;;"><center style="color:#000000;font-size:9pt;;font-family:Webdings;">3</center></td><td style="border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onmouseover="this.style.backgroundColor=&quot;#C1D2EE&quot;;this.style.borderColor=&quot;#316AC5&quot;;" onmouseout="this.style.backgroundColor=&quot;#ECE9D8&quot;;this.style.borderColor=&quot;#ECE9D8&quot;;"><center id="timeTextBar" style="color:#000000;font-size:9pt;" onclick="timeTextBar.style.display=&quot;none&quot;;timeZoneOptionBar.style.display=&quot;&quot;;" title="东8区:北京,重庆,广州,上海,香港,乌鲁木齐,台北,新加坡,佩思
+[己卯年　辛未月　己亥日　癸酉时]
+[城墙土　路旁土　平地木　剑锋金]
+二十八宿：亢">17:31:33</center></td><td id="timeZoneOptionBar" width="60" style="display:none;border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8"><center style="color:#000000;font-size:9pt;"><select id="timeZoneSelect" style="position:relative;z-index:10;width:260;" onblur="timeZoneOptionBar.style.display=&quot;none&quot;;timeTextBar.style.display=&quot;&quot;;" onchange="this.blur();if(this.value==13){setTimeNow(true);}else{gZone=this.value;gTime.setTime(gTime.getTime()+(gZone-gZone0)*60*60*1000);gZone0=gZone;updateCalTable(70,70,139,7,calGrid[parseInt(pressedGridID.id.substring(7,10))].date,1);};"><option value="-13">选择时区</option><option value="-12">西12区:埃尼威托克岛,夸贾林岛</option><option value="-11">西11区:中途岛,东萨摩亚</option><option value="-10">西10区:夏威夷</option><option value="-9">西9区:阿拉斯加</option><option value="-8">西8区:太平洋时间（美国和加拿大）,蒂华纳</option><option value="-7">西7区:山地时间（美国和加拿大）,亚利桑那</option><option value="-6">西6区:中部时间（美国和加拿大）,墨西哥城,特古西加尔巴,萨斯喀彻温省</option><option value="-5">西5区:东部时间（美国和加拿大）,印第安那州（东部）,波哥大,利马,基多</option><option value="-4">西4区:大西洋时间（加拿大）,加拉加斯,拉巴斯</option><option value="-3">西3区:巴西利亚,布宜诺斯艾利斯,乔治敦</option><option value="-2">西2区:中大西洋</option><option value="-1">西1区:亚速尔群岛,佛得角群岛</option><option value="0">零时区:伦敦,都柏林,爱丁堡,里斯本,卡萨布兰卡,蒙罗维亚</option><option value="1">东1区:阿姆斯特丹,柏林,伯尔尼,罗马,斯德哥尔摩,维也纳,贝尔格莱德,布拉迪斯拉发,布达佩斯,卢布尔雅那,布拉格,布鲁赛尔,哥本哈根,马德里,巴黎,萨拉热窝,斯科普里,索非亚,华沙,萨格勒布</option><option value="2">东2区:布加勒斯特,哈拉雷,比勒陀尼亚,赫尔辛基,里加,塔林,开罗,雅典,伊斯坦布尔,明斯克,以色列</option><option value="3">东3区:巴格达,科威特,利雅得,莫斯科,圣彼得堡,伏尔加格勒,内罗毕</option><option value="4">东4区:阿布扎比,马斯喀特,巴库,第比利斯</option><option value="5">东5区:叶卡特琳堡,伊斯兰堡,卡拉奇,塔什干</option><option value="6">东6区:阿拉木图,达卡,科伦坡</option><option value="7">东7区:曼谷,河内,雅加达</option><option value="8">东8区:北京,重庆,广州,上海,香港,乌鲁木齐,台北,新加坡,佩思</option><option value="9">东9区:平壤,汉城,东京,大阪,札幌,雅库茨克</option><option value="10">东10区:布里斯班,关岛,莫尔兹比港,霍巴特,堪培拉,墨尔本,悉尼</option><option value="11">东11区:马加丹,所罗门群岛,新喀里多尼亚</option><option value="12">东12区:奥克兰,惠灵顿,斐济,堪察加半岛,马绍尔群岛</option><option value="13">恢复当前时间</option></select></center></td><td onclick="nextHourAction(70,70,139,7,calGrid[parseInt(pressedGridID.id.substring(7,10))].date,1)" style="border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" title="后一小时" onmouseover="this.style.backgroundColor=&quot;#C1D2EE&quot;;this.style.borderColor=&quot;#316AC5&quot;;" onmouseout="this.style.backgroundColor=&quot;#ECE9D8&quot;;this.style.borderColor=&quot;#ECE9D8&quot;;"><center style="color:#000000;font-size:9pt;;font-family:Webdings;">4</center></td><td onclick="lastMonthAction(70,70,139,7,calGrid[parseInt(pressedGridID.id.substring(7,10))].date,1)" style="border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" title="上个月" onmouseover="this.style.backgroundColor=&quot;#C1D2EE&quot;;this.style.borderColor=&quot;#316AC5&quot;;" onmouseout="this.style.backgroundColor=&quot;#ECE9D8&quot;;this.style.borderColor=&quot;#ECE9D8&quot;;"><center style="color:#000000;font-size:9pt;;font-family:Webdings;">3</center></td><td id="monthTextBar" width="60" style="border-width: 1px; border-style: outset solid solid; border-color: rgb(236, 233, 216); background-color: rgb(236, 233, 216);" onmouseover="this.style.backgroundColor=&quot;#C1D2EE&quot;;this.style.borderColor=&quot;#316AC5&quot;;" onmouseout="this.style.backgroundColor=&quot;#ECE9D8&quot;;this.style.borderColor=&quot;#ECE9D8&quot;;"><center style="color:#000000;font-size:9pt;" onclick="monthTextBar.style.display=&quot;none&quot;;monthOptionBar.style.display=&quot;&quot;;">7月</center></td><td id="monthOptionBar" width="60" style="display:none;border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8"><center style="color:#000000;font-size:9pt;"><select id="monthSelect" onblur="monthOptionBar.style.display=&quot;none&quot;;monthTextBar.style.display=&quot;&quot;;" onchange="this.blur();updateCalTable(70,70,139,parseInt(this.value),calGrid[parseInt(pressedGridID.id.substring(7,10))].date,1);"><option value="0">选择</option><option value="1">1月</option><option value="2">2月</option><option value="3">3月</option><option value="4">4月</option><option value="5">5月</option><option value="6">6月</option><option value="7">7月</option><option value="8">8月</option><option value="9">9月</option><option value="10">10月</option><option value="11">11月</option><option value="12">12月</option></select></center></td><td onclick="nextMonthAction(70,70,139,7,calGrid[parseInt(pressedGridID.id.substring(7,10))].date,1)" style="border-left:solid 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" title="下个月" onmouseover="this.style.backgroundColor=&quot;#C1D2EE&quot;;this.style.borderColor=&quot;#316AC5&quot;;" onmouseout="this.style.backgroundColor=&quot;#ECE9D8&quot;;this.style.borderColor=&quot;#ECE9D8&quot;;"><center style="color:#000000;font-size:9pt;;font-family:Webdings;">4</center></td></tr></tbody></table><table width="506" cellpadding="0" cellspacing="0" style="border:solid 1px #000000;border-top:solid 1px #A2AEB1;border-bottom:0px"><tbody><tr><td style="border-left:outset 0px #A2AEB1;border-top:outset 0px #A2AEB1;border-right:outset 1px #A2AEB1;border-bottom:outset 0px #ffffff;background-color:#ECE9D8" width="70&quot;" height="35&quot;"><center style="color:#ff0000;font-size:9pt;">日</center></td><td style="border-left:outset 0px #A2AEB1;border-top:outset 0px #A2AEB1;border-right:outset 1px #A2AEB1;border-bottom:outset 0px #ffffff;background-color:#ECE9D8" width="70&quot;" height="35&quot;"><center style="color:#000000;font-size:9pt;">一</center></td><td style="border-left:outset 0px #A2AEB1;border-top:outset 0px #A2AEB1;border-right:outset 1px #A2AEB1;border-bottom:outset 0px #ffffff;background-color:#ECE9D8" width="70&quot;" height="35&quot;"><center style="color:#000000;font-size:9pt;">二</center></td><td style="border-left:outset 0px #A2AEB1;border-top:outset 0px #A2AEB1;border-right:outset 1px #A2AEB1;border-bottom:outset 0px #ffffff;background-color:#ECE9D8" width="70&quot;" height="35&quot;"><center style="color:#000000;font-size:9pt;">三</center></td><td style="border-left:outset 0px #A2AEB1;border-top:outset 0px #A2AEB1;border-right:outset 1px #A2AEB1;border-bottom:outset 0px #ffffff;background-color:#ECE9D8" width="70&quot;" height="35&quot;"><center style="color:#000000;font-size:9pt;">四</center></td><td style="border-left:outset 0px #A2AEB1;border-top:outset 0px #A2AEB1;border-right:outset 1px #A2AEB1;border-bottom:outset 0px #ffffff;background-color:#ECE9D8" width="70&quot;" height="35&quot;"><center style="color:#000000;font-size:9pt;">五</center></td><td style="border-left:outset 0px #A2AEB1;border-top:outset 0px #A2AEB1;border-right:outset 1px #A2AEB1;border-bottom:outset 0px #ffffff;background-color:#ECE9D8;border-right:0px;" width="70&quot;" height="35&quot;"><center style="color:#ff0000;font-size:9pt;">六</center></td></tr></tbody></table><table cellpadding="0" cellspacing="0" style="border:solid 1px #000000;border-top:0px;border-bottom:0px;"><tbody><tr><td id="calGrid0" width="70&quot;" height="70" disabled="" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#ff0000;font-size:9pt;">29<br><span style="color:#000000;font-size:8pt;">十六</span></center></td><td id="calGrid1" width="70&quot;" height="70" disabled="" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">30<br><span style="color:#000000;font-size:8pt;">十七</span></center></td><td id="calGrid2" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">1<br><span style="color:#000000;font-size:8pt;">十八</span></center></td><td id="calGrid3" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">2<br><span style="color:#000000;font-size:8pt;">十九</span></center></td><td id="calGrid4" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">3<br><span style="color:#000000;font-size:8pt;">廿十</span></center></td><td id="calGrid5" width="70&quot;" height="70" style="border-width: 1px; border-style: outset solid solid outset; border-color: rgb(236, 233, 216); background-color: rgb(236, 233, 216);" onclick="clickGrid(this)" onmouseover="overGrid(this)" title="139-7-4　兔年　五月廿一　
+国际合作日"><center style="color:#000000;font-size:9pt;">4<br><span style="color:#000000;font-size:8pt;">廿一</span></center></td><td id="calGrid6" width="70&quot;" height="70" style="border-width: 1px; border-style: outset solid solid outset; border-color: rgb(236, 233, 216); background-color: rgb(236, 233, 216);" onclick="clickGrid(this)" onmouseover="overGrid(this)" title="139-7-5　兔年　五月廿二　
+曹娥日"><center style="color:#ff0000;font-size:9pt;">5<br><span style="color:#000000;font-size:8pt;">廿二</span></center></td></tr><tr><td id="calGrid7" width="70&quot;" height="70" style="border-width: 1px; border-style: outset solid solid outset; border-color: rgb(236, 233, 216); background-color: rgb(236, 233, 216);" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#ff0000;font-size:9pt;">6<br><span style="color:#000000;font-size:8pt;">廿三</span></center></td><td id="calGrid8" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">7<br><span style="color:#000000;font-size:8pt;">廿四</span></center></td><td id="calGrid9" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">8<br><span style="color:#000000;font-size:8pt;">廿五</span></center></td><td id="calGrid10" width="70&quot;" height="70" style="border-width: 1px; border-style: outset solid solid outset; border-color: rgb(236, 233, 216); background-color: rgb(236, 233, 216);" onclick="clickGrid(this)" onmouseover="overGrid(this)" title="139-7-9　兔年　五月廿六　"><center style="color:#000000;font-size:9pt;">9<br><span style="color:#000000;font-size:8pt;">廿六</span></center></td><td id="calGrid11" width="70&quot;" height="70" style="border-width: 1px; border-style: outset solid solid outset; border-color: rgb(236, 233, 216); background-color: rgb(236, 233, 216);" onclick="clickGrid(this)" onmouseover="overGrid(this)" title="139-7-10　兔年　五月廿七　
+小暑"><center style="color:#000000;font-size:9pt;">10<br><span style="color:#000000;font-size:8pt;">小暑</span></center></td><td id="calGrid12" width="70&quot;" height="70" style="border-width: 1px; border-style: outset solid solid outset; border-color: rgb(236, 233, 216); background-color: rgb(236, 233, 216);" onclick="clickGrid(this)" onmouseover="overGrid(this)" title="139-7-11　兔年　五月廿八　
+世界(50亿)人口日"><center style="color:#000000;font-size:9pt;">11<br><span style="color:#000000;font-size:8pt;">廿八</span></center></td><td id="calGrid13" width="70&quot;" height="70" style="border-width: 1px; border-style: outset solid solid outset; border-color: rgb(236, 233, 216); background-color: rgb(236, 233, 216);" onclick="clickGrid(this)" onmouseover="overGrid(this)" title="139-7-12　兔年　五月廿九　
+祖娘节"><center style="color:#ff0000;font-size:9pt;">12<br><span style="color:#000000;font-size:8pt;">廿九</span></center></td></tr><tr><td id="calGrid14" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#ff0000;font-size:9pt;">13<br><span style="color:#000000;font-size:8pt;">三十</span></center></td><td id="calGrid15" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">14<br><span style="color:#000000;font-size:8pt;">六月</span></center></td><td id="calGrid16" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">15<br><span style="color:#000000;font-size:8pt;">初二</span></center></td><td id="calGrid17" width="70&quot;" height="70" style="border-width: 1px; border-style: outset solid solid outset; border-color: rgb(236, 233, 216); background-color: rgb(236, 233, 216);" onclick="clickGrid(this)" onmouseover="overGrid(this)" title="139-7-16　兔年　六月初三　"><center style="color:#000000;font-size:9pt;">16<br><span style="color:#000000;font-size:8pt;">初三</span></center></td><td id="calGrid18" width="70&quot;" height="70" style="border-width: 1px; border-style: outset solid solid outset; border-color: rgb(236, 233, 216); background-color: rgb(236, 233, 216);" onclick="clickGrid(this)" onmouseover="overGrid(this)" title="139-7-17　兔年　六月初四　"><center style="color:#000000;font-size:9pt;">17<br><span style="color:#000000;font-size:8pt;">初四</span></center></td><td id="calGrid19" width="70&quot;" height="70" style="border-width: 1px; border-style: inset solid solid inset; border-color: rgb(0, 0, 0) rgb(236, 233, 216) rgb(236, 233, 216) rgb(0, 0, 0); background-color: rgb(172, 168, 153);" onclick="clickGrid(this)" onmouseover="overGrid(this)" title="139-7-18　兔年　六月初五　
+国际海洋日"><center style="color:#000000;font-size:9pt;">18<br><span style="color:#000000;font-size:8pt;">初五</span></center></td><td id="calGrid20" width="70&quot;" height="70" style="border-width: 1px; border-style: outset solid solid outset; border-color: rgb(236, 233, 216); background-color: rgb(236, 233, 216);" onclick="clickGrid(this)" onmouseover="overGrid(this)" title="139-7-19　兔年　六月初六　
+天贶节 盘古逝
+ 初伏第1天"><center style="color:#ff0000;font-size:9pt;">19<br><span style="color:#000000;font-size:8pt;">初六</span></center></td></tr><tr><td id="calGrid21" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#ff0000;font-size:9pt;">20<br><span style="color:#000000;font-size:8pt;">初七</span></center></td><td id="calGrid22" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">21<br><span style="color:#000000;font-size:8pt;">初八</span></center></td><td id="calGrid23" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">22<br><span style="color:#000000;font-size:8pt;">初九</span></center></td><td id="calGrid24" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">23<br><span style="color:#000000;font-size:8pt;">初十</span></center></td><td id="calGrid25" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">24<br><span style="color:#000000;font-size:8pt;">十一</span></center></td><td id="calGrid26" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">25<br><span style="color:#000000;font-size:8pt;">大暑</span></center></td><td id="calGrid27" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#ff0000;font-size:9pt;">26<br><span style="color:#000000;font-size:8pt;">十三</span></center></td></tr><tr><td id="calGrid28" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#ff0000;font-size:9pt;">27<br><span style="color:#000000;font-size:8pt;">十四</span></center></td><td id="calGrid29" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">28<br><span style="color:#000000;font-size:8pt;">十五</span></center></td><td id="calGrid30" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">29<br><span style="color:#000000;font-size:8pt;">十六</span></center></td><td id="calGrid31" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">30<br><span style="color:#000000;font-size:8pt;">十七</span></center></td><td id="calGrid32" width="70&quot;" height="70" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">31<br><span style="color:#000000;font-size:8pt;">十八</span></center></td><td id="calGrid33" width="70&quot;" height="70" disabled="" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">1<br><span style="color:#000000;font-size:8pt;">十九</span></center></td><td id="calGrid34" width="70&quot;" height="70" disabled="" style="border-width: 1px; border-style: outset solid solid outset; border-color: rgb(236, 233, 216); background-color: rgb(236, 233, 216);" onclick="clickGrid(this)" onmouseover="overGrid(this)" title="139-7-2　兔年　五月十九　
+国际体育记者日"><center style="color:#ff0000;font-size:9pt;">2<br><span style="color:#000000;font-size:8pt;">廿十</span></center></td></tr><tr><td id="calGrid35" width="70&quot;" height="70" disabled="" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#ff0000;font-size:9pt;">3<br><span style="color:#000000;font-size:8pt;">廿一</span></center></td><td id="calGrid36" width="70&quot;" height="70" disabled="" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">4<br><span style="color:#000000;font-size:8pt;">廿二</span></center></td><td id="calGrid37" width="70&quot;" height="70" disabled="" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">5<br><span style="color:#000000;font-size:8pt;">廿三</span></center></td><td id="calGrid38" width="70&quot;" height="70" disabled="" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">6<br><span style="color:#000000;font-size:8pt;">廿四</span></center></td><td id="calGrid39" width="70&quot;" height="70" disabled="" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">7<br><span style="color:#000000;font-size:8pt;">廿五</span></center></td><td id="calGrid40" width="70&quot;" height="70" disabled="" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#000000;font-size:9pt;">8<br><span style="color:#000000;font-size:8pt;">廿六</span></center></td><td id="calGrid41" width="70&quot;" height="70" disabled="" style="border-left:outset 1px #ECE9D8;border-top:outset 1px #ECE9D8;border-right:solid 1px #ECE9D8;border-bottom:solid 1px #ECE9D8;background-color:#ECE9D8" onclick="clickGrid(this)" onmouseover="overGrid(this)" title=""><center style="color:#ff0000;font-size:9pt;">9<br><span style="color:#000000;font-size:8pt;">廿七</span></center></td></tr></tbody></table><table cellpadding="0" cellspacing="0" width="506"><tbody><tr><td style="border-left:outset 1px #000000;border-top:outset 1px #ffffff;border-right:outset 1px #000000;border-bottom:outset 1px #000000;background-color:#ECE9D8"><center id="sTermBar" style="color:#000000;font-size:9pt;">小暑:7月10日09:11　<span id="solarZodiacBar">巨蟹座</span>　大暑:7月25日23:55</center></td></tr></tbody></table></div>
+<br>
+<span class="style1"><a href="http://www.china95.net/">元亨利贞网 </a>——周易（易经）术数类综合门户网站-真正的免费算命和易命理在线学习网。欢迎访问！</span>
+</center>
+</body></html>

@@ -1,18 +1,15 @@
 _ = require 'lodash'
 util = require 'util'
-log = (object) =>
-  console.log (util.inspect object, false, null)
+
+###
+  地支类，包含判断地支之间的关系
+###
 class Dizhi
   constructor: (@name) ->
     @config()
 
-  config: () =>
-    @xingConfig()
-    @huiConfig()
-    @liuchongConfig()
-    @haiConfig()
-    @liuheConfig()
-    @sanheConfig()
+  setName: (@name) =>
+    @config()
     @dizhiRelation =
       '地支': @name
       '藏干': @dizhicanggan(@name)
@@ -24,6 +21,14 @@ class Dizhi
       '刑': @xingDizhi[@name]
       '刑(->)': @xingDizhiWithDirection[@name]
       '刑(<-)': @beiXingDizhiWithDirection[@name]
+    @
+  config: () =>
+    @xingConfig()
+    @huiConfig()
+    @liuchongConfig()
+    @haiConfig()
+    @liuheConfig()
+    @sanheConfig()
 
   xingConfig: () =>
     @xingList =
@@ -163,7 +168,16 @@ class Dizhi
   sanhe: (dizhi, list) =>
     @rule3 dizhi, list, @sanheDizhi, '地支三合'
 
-
+  ###
+    从地支列表中，获取三合、三会信息
+    @method findRule3InDizhiList
+    @param {array} list 地支列表
+    @param {function} func 回调方法
+    @param {string} name1 三合或者三会
+    @param {string} name2 半合或者半会
+    @param {object} sourceList 规则数据
+    @return {object} 结果对象
+  ###
   findRule3InDizhiList: (list, func, name1, name2, sourceList) =>
     if typeof list!='object'
       console.log '输入必须是地支列表'
@@ -212,6 +226,7 @@ class Dizhi
   ###
   findHuiInDizhiList: (list) =>
     @findRule3InDizhiList list, @hui, '三会','半会', @huiList
+
   ###
     从输入的地支列表中寻找三合
     @method findHuiInDizhiList
@@ -220,6 +235,7 @@ class Dizhi
   ###
   findSanheInDizhiList: (list) =>
     @findRule3InDizhiList list, @sanhe, '三合','半合', @sanheList
+
   ###
     害、冲、六合的规则匹配
     @method ruleConfig
@@ -231,6 +247,7 @@ class Dizhi
     _.map ruleList, (ruleListItem) =>
       _.map ruleListItem, (ruleListItemDizhi) =>
         result[ruleListItemDizhi] = _.without(ruleListItem, ruleListItemDizhi)[0]
+
   ###
     配置六害
     @method haiConfig
@@ -285,6 +302,15 @@ class Dizhi
     ]
     @ruleConfig @liuchongList, @liuchongDizhi
 
+
+  ###
+    [rule description]
+    @method rule
+    @param {string} dizhi 地支
+    @param {array} list 地支列表
+    @param {array} sourceList 规则数据
+    @return {object} 结果对象
+  ###
   rule: (dizhi, list, sourceList) =>
     if not list
       sourceList[dizhi]
@@ -292,6 +318,7 @@ class Dizhi
       console.log '输入的内容必须为地支列表'
     else
       if _.indexOf(list, sourceList[dizhi]) >-1 then return sourceList[dizhi] else return false
+
   ###
     查找对应地支的害的情况
     @method hai
@@ -301,6 +328,8 @@ class Dizhi
   ###
   hai: (dizhi, list) =>
     @rule dizhi, list, @haiDizhi
+
+
   ###
     查找对应地址的冲的情况
     @method chong
@@ -310,6 +339,7 @@ class Dizhi
   ###
   chong: (dizhi, list) =>
     @rule dizhi, list, @liuchongDizhi
+
   ###
     查找对应地址的六合的情况
     @method liuhe
@@ -375,13 +405,35 @@ class Dizhi
       ruleArray = false
     ruleArray
 
+  ###
+    查找与当前地支相刑的地支
+    @method xing
+    @param {string} dizhi 地支
+    @param {array} list 地支列表
+    @return {无} 无
+  ###
   xing: (dizhi, list) =>
     _.filter list, (item) =>
       return true if _.indexOf(@xingDizhi[dizhi], item) >-1
+
+  ###
+    查找与当前地支相刑的地支，带方向
+    @method xing
+    @param {string} dizhi 地支
+    @param {array} list 地支列表
+    @return {无} 无
+  ###
   xingWithDirection: (dizhi, list) =>
     _.filter list, (item) =>
       return true if @xingDizhiWithDirection[dizhi] == item
 
+
+  ###
+    在当前的地支列表里面寻找刑
+    @method findXingInDizhiList
+    @param {array} list 地支
+    @return {object} 相刑的对象
+  ###
   findXingInDizhiList: (list) =>
     xingArray = {}
     _.map list, (item, index) =>
@@ -392,6 +444,12 @@ class Dizhi
       xingArray[item] = currentXing if currentXing.length
     xingArray
 
+  ###
+    在当前的地支列表里面寻找刑，带方向
+    @method findXingInDizhiList
+    @param {array} list 地支
+    @return {object} 相刑的对象
+  ###
   findXingWithDirectionInDizhiList: (list) =>
     xingArray = {}
     _.map list, (item, index) =>
@@ -401,6 +459,7 @@ class Dizhi
       currentXing = @xingWithDirection item, inputList
       xingArray[item] = currentXing if currentXing.length > 0
     xingArray
+
   ###
     找到一个地支的藏干
     @method dizhicanggan
@@ -423,8 +482,14 @@ class Dizhi
       '亥': ['壬','甲']
     if dizhi then return canggan[dizhi] else return cangan
 
-  relationsInDizhiList: (list) =>
-      {
+  ###
+    地支之间的关系
+    @method relations
+    @param {array} list 地支列表
+    @return {object} 结果对象
+  ###
+  relations: (list) =>
+      result =
         '六合': @findLiuHeInDizhiList list
         '三合': @findSanheInDizhiList list
         '害': @findHaiInDizhiList list
@@ -432,21 +497,9 @@ class Dizhi
         '冲': @findChongInDizhiList list
         '刑': @findXingInDizhiList list
         '刑(带方向)': @findXingWithDirectionInDizhiList list
-      }
+      _.map result, (value, key) =>
+        if not value
+          delete result[key]
+      result
+
 exports.Dizhi = Dizhi
-
-
-dz = new Dizhi '寅'
-log dz.dizhiRelation
-dizhis = ['卯','戌','未','巳']
-#console.log dz.huiDizhi['亥']
-#console.log dz.findHuiInDizhiList [ "午", "未","丑", "卯","子", "辰", "巳", "巳", "午","午","午","午", "未", "申"]
-# log dz.findXingInDizhiList dizhis
-# log dz.findXingWithDirectionInDizhiList dizhis
-log dz.relationsInDizhiList dizhis
-#console.log dz.findHuiInDizhiList ['辰','丑','酉','丑']
-#console.log dz.findHaiInDizhiList ['辰','丑','酉','丑']
-log dz.relationsInDizhiList ['辰','酉','酉','辰']
-#console.log dz.haiDizhi
-#console.log dz.dizhiRelation
-#console.log dz.hai '酉',['亥','戌']
